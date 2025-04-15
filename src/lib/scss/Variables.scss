@@ -1,6 +1,7 @@
 :root {
     // Animations
     --animation-duration: 1s;
+    --animation-duration-fast: 0.25s;
 
     // Text Color
     --text-color-light: #d9e7f4;
@@ -16,24 +17,32 @@
     --text-size-extra-large: 1.3rem;
 
     // Colors
-    --color-primary: #3d59a1;
-    --color-secondary: #565f89;
-    --color-highlight: #6190ed;
-    --color-success: #4fd6be;
+    --hover-modifier: #fff;
+    --color-primary: #60609a;
+    --color-secondary: #303654;
+    --color-info: #54a0ff;
+    --color-success: #1dd1a1;
     --color-warning: #ffc777;
-    --color-error: #ff757f;
+    --color-error: #ff6b6b;
     --color-background: #1f2335;
     --color-background-secondary: #14141a;
 
     --color-secondary-disabled: #565f89a7;
     
     // Spacing
+    --padding-less: 0.25rem;
     --padding: 0.5rem;
     --padding-more: 1rem;
+
+    --gap-more: 1.5rem;
     --gap: 1rem;
+    --gap-less: 0.5rem;
+
 
     // Elements
     --border-radius: 0.25rem;
     --border-radius-small: 0.12rem;
+    --border-radius-pill: 4rem;
+    --outline-size: 2px;
 
 }

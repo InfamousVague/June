@@ -1,7 +1,8 @@
 $appearances: (
     primary: --color-primary,
     secondary: --color-secondary,
-    highlight: --color-highlight,
+    info: --color-info,
+    "transparent": transparent,
     success: --color-success,
     warning: --color-warning,
     error: --color-error
@@ -10,44 +11,86 @@ $appearances: (
 $highlights: (
     primary: --color-primary,
     secondary: --color-secondary,
-    highlight: --color-highlight,
+    info: --color-info,
     success: --color-success,
     warning: --color-warning,
     error: --color-error
 );
 
 .button {
-    height: fit-content;
+    display: inline-flex;
+    flex-direction: row;
+    gap: var(--gap-less);
     border: none;
     border-radius: var(--border-radius);
-    padding: var(--padding) calc(var(--padding) * 2);
     cursor: pointer;
+    height: fit-content;
+    padding: var(--padding) calc(var(--padding) * 2);
+    transition: background-color var(--animation-duration-fast) ease, color var(--animation-duration-fast) ease, border-color var(--animation-duration-fast) ease;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;  
+    background-color: transparent;
+    color: var(--text-color-light);
+
+    @each $highlight, $var in $highlights {
+        border: var(--outline-size) solid var(--text-color-light);
+
+        &.highlight_#{$highlight} {
+            border: var(--outline-size) solid var(#{$var});
+        }
+
+        &.highlight_none {
+            border: var(--outline-size) solid transparent;
+        }
+    }
 
     @each $appearance, $var in $appearances {
         &.appearance_#{$appearance} {
-            background-color: var(#{$var});
+            @if $appearance == "transparent" {
+                background-color: transparent;
+            } @else {
+                background-color: var(#{$var});
+            }
+
             color: if(
                 $appearance == secondary or $appearance == primary,
                 var(--text-color-light),
                 var(--text-color-dark)
             );
+
+            &:hover:not(:disabled) {
+                background-color: color-mix(in srgb, var(#{$var}) 100%, var(--hover-modifier) 20%);
+            }
         }
-    }
-
-    @each $highlight, $var in $highlights {
-        border: 1px solid var(--text-color-light);
-
-        &.highlight_#{$highlight} {
-            border: 1px solid var(#{$var});
+        &.apperance_transparent {
+            &:hover:not(:disabled) {
+                background-color: var(--color-secondary);
+            }
         }
     }
 
     &.style_outline {
         background-color: transparent;
-
+    
         @each $highlight, $var in $highlights {
             &.highlight_#{$highlight} {
-                color: var(#{$var});
+                // Set the correct text color by default
+                color: if(
+                    $highlight == primary or $highlight == secondary,
+                    var(--text-color-light),
+                    var(#{$var})
+                );
+    
+                &:hover:not(:disabled) {
+                    background-color: color-mix(in srgb, var(#{$var}) 100%, var(--hover-modifier) 20%);
+                    border-color: color-mix(in srgb, var(#{$var}) 100%, var(--hover-modifier) 20%);
+                    color: if(
+                        $highlight == primary or $highlight == secondary,
+                        var(--text-color-light),
+                        var(--text-color-dark)
+                    );
+                }
             }
         }
     }
@@ -68,6 +111,10 @@ $highlights: (
 
     &.size_extra_large {
         padding: calc(var(--padding) + 0.4rem) calc((var(--padding) * 2) + 0.4rem);
+    }
+
+    &.shape_pill {
+        border-radius: var(--border-radius-pill);
     }
 
     &:disabled {
