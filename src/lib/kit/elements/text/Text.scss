@@ -1,0 +1,26 @@
+$appearances: (
+    primary: --color-primary,
+    secondary: --color-secondary,
+    success: --color-success,
+    warning: --color-warning,
+    error: --color-error
+);
+
+.text {
+    margin: 0;
+    padding: 0;
+  
+    @each $appearance, $var in $appearances {
+        &.appearance#{$appearance} {
+            color: if(
+                $appearance == primary, 
+                var(--text-color-bright),
+                if(
+                    $appearance == secondary, 
+                    var(--text-color-dark), 
+                    var(#{$var})
+                )
+            );
+        }
+    }
+}

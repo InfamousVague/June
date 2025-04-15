@@ -14,7 +14,11 @@ $appearances: (
     @each $appearance, $var in $appearances {
         &.appearance_#{$appearance} {
             background-color: var(#{$var});
-            color: if($appearance == secondary or $appearance == primary, var(--text-color-light), var(--text-color-dark));
+            color: if(
+                $appearance == secondary or $appearance == primary,
+                var(--text-color-light),
+                var(--text-color-dark)
+            );
         }
     }
 }
