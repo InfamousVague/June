@@ -14,7 +14,7 @@
 </script>
 
 <button class="button {size} {appearance} {state}">
-    <slot></slot><Text>{text}</Text>
+    <slot></slot><Text appearance={Appearance.Inherit}>{text}</Text>
 </button>
 
 <style lang="scss">

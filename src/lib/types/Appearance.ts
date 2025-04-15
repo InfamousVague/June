@@ -5,6 +5,7 @@ export enum Appearance {
     Success     = "appearance_success",
     Warning     = "appearance_warning",
     Error       = "appearance_error",
+    Inherit     = "appearance_inherit",
 }
 
 // Highlight or stroke of the element
