@@ -5,15 +5,15 @@
     export let appearance: Appearance = defaultAppearance;
     export let size: Size = defaultSize;
     export let state: State = defaultState;
-  
-    export function pressed() {
-      // stub
-    }
 </script>
 
-<p class="text {size} {appearance} {state}">
-    <slot></slot>
-</p>
+{#if state === State.Loading}
+    <p class="text loading"></p>
+{:else}
+    <p class="text {size} {(state === State.Disabled) ? Appearance.Secondary : state} {appearance}">
+        <slot></slot>
+    </p>
+{/if}
 
 <style lang="scss">
     @use "./Text.scss" as *;

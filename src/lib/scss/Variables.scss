@@ -1,22 +1,39 @@
 :root {
-    // Text
-    --text-color-light: #ffffff;
+    // Animations
+    --animation-duration: 1s;
+
+    // Text Color
+    --text-color-light: #d9e7f4;
     --text-color-dark: #000000;
+    --text-color-muted: #4d5069;
+    --text-color: #a5a8cc;
+
+    // Text Size
+    --text-size-extra-small: 0.7rem;
+    --text-size-small: 0.8rem;
+    --text-size-medium: 1rem;
+    --text-size-large: 1.2rem;
+    --text-size-extra-large: 1.3rem;
 
     // Colors
     --color-primary: #3d59a1;
     --color-secondary: #565f89;
+    --color-highlight: #6190ed;
     --color-success: #4fd6be;
     --color-warning: #ffc777;
     --color-error: #ff757f;
     --color-background: #1f2335;
     --color-background-secondary: #14141a;
+
+    --color-secondary-disabled: #565f89a7;
     
     // Spacing
     --padding: 0.5rem;
+    --padding-more: 1rem;
     --gap: 1rem;
 
     // Elements
     --border-radius: 0.25rem;
+    --border-radius-small: 0.12rem;
 
 }

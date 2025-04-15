@@ -1,26 +1,54 @@
 $appearances: (
-    primary: --color-primary,
-    secondary: --color-secondary,
+    primary: --text-color,
+    secondary: --text-color-muted,
+    highlight: --color-highlight,
     success: --color-success,
     warning: --color-warning,
-    error: --color-error
+    error: --color-error,
+    inherit: inherit
+);
+
+$sizes: (
+    extra_small: --text-size-extra-small,
+    small: --text-size-small,
+    medium: --text-size-medium,
+    large: --text-size-large,
+    extra_large: --text-size-extra-large
 );
 
 .text {
     margin: 0;
     padding: 0;
+    line-height: 100%;
   
     @each $appearance, $var in $appearances {
-        &.appearance#{$appearance} {
-            color: if(
-                $appearance == primary, 
-                var(--text-color-bright),
-                if(
-                    $appearance == secondary, 
-                    var(--text-color-dark), 
-                    var(#{$var})
-                )
-            );
+        &.appearance_#{$appearance} {
+            color: if($appearance == inherit, inherit, var(#{$var}));
         }
     }
+
+
+    @each $size, $var in $sizes {
+        &.size_#{$size} {
+            font-size: if($size == inherit, inherit, var(#{$var}));
+            height: if($size == inherit, inherit, var(#{$var}));
+        }
+    }
+
+    &.loading {
+        display: inline-block;
+        min-width: 150px;
+        max-width: 100%;
+        border-radius: var(--border-radius-small);
+        background: linear-gradient(
+            90deg,
+            var(--color-secondary) 0%,
+            var(--text-color) 40%,
+            var(--color-secondary) 41%,
+            var(--color-secondary) 100%
+        );
+        background-size: 200% 100%;
+        animation: loading-sweep var(--animation-duration) infinite ease;
+    } 
 }
+

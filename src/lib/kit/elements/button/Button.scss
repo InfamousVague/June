@@ -1,15 +1,27 @@
 $appearances: (
     primary: --color-primary,
     secondary: --color-secondary,
+    highlight: --color-highlight,
+    success: --color-success,
+    warning: --color-warning,
+    error: --color-error
+);
+
+$highlights: (
+    primary: --color-primary,
+    secondary: --color-secondary,
+    highlight: --color-highlight,
     success: --color-success,
     warning: --color-warning,
     error: --color-error
 );
 
 .button {
-    padding: var(--padding) calc(var(--padding) * 2);
+    height: fit-content;
     border: none;
     border-radius: var(--border-radius);
+    padding: var(--padding) calc(var(--padding) * 2);
+    cursor: pointer;
 
     @each $appearance, $var in $appearances {
         &.appearance_#{$appearance} {
@@ -20,5 +32,46 @@ $appearances: (
                 var(--text-color-dark)
             );
         }
+    }
+
+    @each $highlight, $var in $highlights {
+        border: 1px solid var(--text-color-light);
+
+        &.highlight_#{$highlight} {
+            border: 1px solid var(#{$var});
+        }
+    }
+
+    &.style_outline {
+        background-color: transparent;
+
+        @each $highlight, $var in $highlights {
+            &.highlight_#{$highlight} {
+                color: var(#{$var});
+            }
+        }
+    }
+
+    &.size_extra_small {
+        padding: calc(var(--padding) - 0.3rem) calc((var(--padding) * 2) - 0.3rem);
+        border-radius: var(--border-radius-small);
+    }
+
+    &.size_small {
+        padding: calc(var(--padding) - 0.2rem) calc((var(--padding) * 2) - 0.2rem);
+        border-radius: var(--border-radius-small);
+    }
+
+    &.size_large {
+        padding: calc(var(--padding) + 0.2rem) calc((var(--padding) * 2) + 0.2rem);
+    }
+
+    &.size_extra_large {
+        padding: calc(var(--padding) + 0.4rem) calc((var(--padding) * 2) + 0.4rem);
+    }
+
+    &:disabled {
+        opacity: 0.75;
+        cursor: default;
     }
 }
