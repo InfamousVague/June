@@ -1,3 +1,20 @@
+$appearances: (
+    primary: --color-primary,
+    secondary: --color-secondary,
+    success: --color-success,
+    warning: --color-warning,
+    error: --color-error
+);
+
 .button {
+    padding: var(--padding) calc(var(--padding) * 2);
     border: none;
+    border-radius: var(--border-radius);
+
+    @each $appearance, $var in $appearances {
+        &.appearance_#{$appearance} {
+            background-color: var(#{$var});
+            color: if($appearance == secondary or $appearance == primary, var(--text-color-light), var(--text-color-dark));
+        }
+    }
 }

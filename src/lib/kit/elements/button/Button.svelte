@@ -17,5 +17,5 @@
 </button>
 
 <style lang="scss">
-    @use './Button.scss' as *;
+    @use "./Button.scss" as *;
 </style>
