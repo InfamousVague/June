@@ -9,7 +9,8 @@
         defaultState,
         defaultStyle,
         defaultShape,
-        defaultText
+        defaultText,
+        onPress
     } from './Button.js';
   
     export let appearance: Appearance = defaultAppearance;
@@ -19,18 +20,22 @@
     export let shape: Shape = defaultShape;
     export let state: State = defaultState;
     export let text: string = defaultText;
-  
-    export function pressed() {
-      // stub
-    }
+    export let icon: SVGShape | null = null;
 </script>
 
-<button class="button {size} {appearance} {state} {highlight} {style} {shape}" disabled={state === State.Disabled}>
+<button
+    class="button {size} {appearance} {state} {highlight} {style} {shape}"
+    disabled={state === State.Disabled || state === State.Loading}
+    on:click={onPress}>
+
     {#if state === State.Loading}
         <Icon icon={SVGShape.Circle} fill animation={Animation.Pulse}/>
+    {:else if icon}
+        <Icon {icon} {size} />
     {/if}
     <slot></slot>
     <Text appearance={Appearance.Inherit} {size}>{text}</Text>
+
 </button>
 
 <style lang="scss">

@@ -50,5 +50,21 @@ $sizes: (
         background-size: 200% 100%;
         animation: loading-sweep var(--animation-duration) infinite ease;
     } 
+
+    &.text_style_bold {
+        font-weight: bold;
+    }
+
+    &.text_style_italic {
+        font-style: italic;
+    }
+
+    &.text_style_underline {
+        text-decoration: underline;
+    }
+
+    &.text_style_strike {
+        text-decoration: line-through;
+    }
 }
 

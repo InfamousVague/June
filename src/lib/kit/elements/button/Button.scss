@@ -72,6 +72,10 @@ $highlights: (
 
     &.style_outline {
         background-color: transparent;
+
+        &:hover:not(:disabled) {
+            background-color: var(--color-secondary);
+        }
     
         @each $highlight, $var in $highlights {
             &.highlight_#{$highlight} {
@@ -119,6 +123,6 @@ $highlights: (
 
     &:disabled {
         opacity: 0.75;
-        cursor: default;
+		cursor: not-allowed;
     }
 }

@@ -1,6 +1,7 @@
 // Text.defaults.ts
-import { Appearance, Size, State } from "$lib/types/index.js";
+import { Appearance, Size, State, TextStyle } from "$lib/types/index.js";
 
 export const defaultAppearance = Appearance.Primary;
 export const defaultSize = Size.Medium;
 export const defaultState = State.Default;
+export const defaultTextStyle = TextStyle.Standard;

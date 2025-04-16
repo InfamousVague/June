@@ -27,6 +27,14 @@ export enum Style {
     Standard    = "style_standard",
 }
 
+export enum TextStyle {
+    Standard    = "text_style_standard",
+    Bold        = "text_style_bold",
+    Italic      = "text_style_italic",
+    Underline   = "text_style_underline",
+    Strike      = "text_style_strike"
+}
+
 // Shape of element
 export enum Shape {
     Standard    = "shape_standard",

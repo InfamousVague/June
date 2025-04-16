@@ -4,3 +4,9 @@ export enum State {
     Disabled    = "state_disabled",
     Loading     = "state_loading",
 }
+
+export enum BinaryState {
+	On       = "binary_state_on",
+	Off      = "binary_state_off",
+	Disabled = "binary_state_disabled"
+}

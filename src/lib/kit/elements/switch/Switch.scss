@@ -1,0 +1,73 @@
+.switch {
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    width: calc(var(--switch-size) * 2);
+    height: var(--switch-size);
+    border-radius: var(--switch-size);
+
+    &.size_extra_small {
+        --switch-size: 0.75rem;
+    }
+    
+    &.size_small {
+        --switch-size: 1rem;
+    }
+    
+    &.size_medium {
+        --switch-size: 1.25rem;
+    }
+    
+    &.size_large {
+        --switch-size: 1.5rem;
+    }
+    
+    &.size_extra_large {
+        --switch-size: 1.75rem;
+    }
+
+    input:disabled + .slider {
+		opacity: 0.5;
+		cursor: not-allowed;
+	}
+
+    input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+
+        &:checked + .slider {
+            background-color: var(--color-success);
+
+            &:before {
+                transform: translateX(var(--switch-size));
+            }
+        }
+    }
+
+    .slider {
+        user-select: none;
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: var(--color-secondary);
+        transition: var(--animation-duration-fast);
+        border-radius: var(--switch-size);
+
+        &:before {
+            position: absolute;
+            content: "";
+            height: calc(var(--switch-size) - var(--border-size));
+            width: calc(var(--switch-size) - var(--border-size));
+            left: 0;
+            top: 0;
+            border-radius: var(--switch-size);
+            background-color: var(--text-color-light);
+            transition: var(--animation-duration-fast);
+        }
+    }
+}
