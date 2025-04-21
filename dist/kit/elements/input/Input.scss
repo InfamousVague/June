@@ -1,0 +1,110 @@
+$highlights: (
+    primary: --color-primary,
+    secondary: --color-secondary,
+    info: --color-info,
+    success: --color-success,
+    warning: --color-warning,
+    error: --color-error
+);
+
+.input-group {
+    padding: var(--padding) var(--padding-more);
+    border-radius: var(--border-radius);
+    background: var(--color-secondary);
+    border: var(--outline-size) solid transparent;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--gap);
+
+    &.state_disabled,
+    &.state_loading {
+        cursor: not-allowed;
+    }
+
+    @each $highlight, $var in $highlights {
+        border: var(--outline-size) solid var(--text-color-light);
+
+        &.highlight_#{$highlight} {
+            border: var(--outline-size) solid var(#{$var});
+        }
+
+        &.highlight_none {
+            border: var(--outline-size) solid transparent;
+        }
+    }
+
+
+    &.simple_appearance_light {
+        background-color: var(--color-background-light);
+
+        .input {
+            color: var(--text-color-dark);
+        }
+    }
+
+
+    &.shape_pill {
+        border-radius: var(--border-radius-pill);
+    }
+
+
+    &.size_extra_small {
+        padding: var(--padding-less) var(--padding);
+
+        .input {
+            font-size: var(--text-size-extra-small);
+        }
+    }
+
+    &.size_small {
+        padding: var(--padding-less) var(--padding);
+
+        .input {
+            font-size: var(--text-size-small);
+        }
+    }
+
+    &.size_medium .input {
+        font-size: var(--text-size-medium);
+    }
+
+    &.size_large .input {
+        font-size: var(--text-size-large);
+    }
+
+    &.size_extra_large .input {
+        font-size: var(--text-size-extra-large);
+    }
+
+    &:focus-within {
+        border-color: var(--color-info);
+    }
+
+    .input {
+        background: transparent;
+        font-size: var(--text-size-medium);
+        border: none;
+        color: var(--text-color-light);
+
+        &::placeholder {
+            color: var(--text-color-placeholder);
+        }
+
+        &:focus {
+            outline: none;
+        }
+
+        &:disabled {
+            opacity: var(--disabled-opacity-modifier);
+            cursor: not-allowed;
+        }
+    }
+
+    &.simple_appearance_light {
+        .input {
+            &::placeholder {
+                color: var(--text-color-placeholder-light);
+            }
+        }
+    }
+}

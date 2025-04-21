@@ -1,0 +1,15 @@
+:global(body, html) {
+    background-color: var(--color-background);
+    color: var(--text-color);
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    width: 100%;
+    margin: 0 auto;
+    display: inline-flex;
+    justify-content: center;
+}
+
+@keyframes loading-sweep {
+    0% { background-position: 100% 0; }
+    100% { background-position: -100% 0; }
+}

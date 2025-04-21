@@ -1,0 +1,89 @@
+$appearances: (
+    primary: --color-primary,
+    secondary: --color-secondary,
+    info: --color-info,
+    "transparent": transparent,
+    success: --color-success,
+    warning: --color-warning,
+    bright: --text-color-light,
+    muted: --text-color-muted,
+    error: --color-error
+);
+
+.progress-container {
+    height: var(--control-size);
+    min-width: var(--min-progress-width);
+    background-color: var(--color-secondary);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    position: relative;
+
+    &.size_extra_small {
+        --control-size: 1rem;
+    }
+
+    &.size_small {
+        --control-size: 1.25rem;
+    }
+
+    &.size_medium {
+        --control-size: 1.5rem;
+    }
+
+    &.size_large {
+        --control-size: 1.75rem;
+    }
+
+    &.size_extra_large {
+        --control-size: 2rem;
+    }
+
+    &.shape_pill {
+        border-radius: var(--border-radius-pill);
+    }
+
+    .progress-bar {
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+
+        // animated sweeping overlay using color-mix
+        &.animated::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -150%;
+            height: 100%;
+            width: 150%;
+            animation: sweep 2s infinite linear;
+            background: linear-gradient(
+                120deg,
+                transparent 0%,
+                var(--progress-glow) 50%,
+                transparent 100%
+            );
+        }
+    }
+
+    // Appearance styles and corresponding animation color-mix
+    @each $appearance, $var in $appearances {
+        &.appearance_#{$appearance} {
+            .progress-bar {
+                background: var(#{$var});
+            }
+
+            .progress-bar.animated {
+                --progress-glow: color-mix(in srgb, var(#{$var}) 70%, var(--hover-modifier));
+            }
+        }
+    }
+}
+
+@keyframes sweep {
+    from {
+        left: -150%;
+    }
+    to {
+        left: 100%;
+    }
+}

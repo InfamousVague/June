@@ -1,0 +1,26 @@
+.swatch {
+    width: var(--control-size);
+    height: var(--control-size);
+    border-radius: 50%;
+    border: none;
+
+    &.size_extra_small {
+        --control-size: 1rem;
+    }
+    
+    &.size_small {
+        --control-size: 1.5rem;
+    }
+    
+    &.size_medium {
+        --control-size: 2rem;
+    }
+    
+    &.size_large {
+        --control-size: 2.5rem;
+    }
+    
+    &.size_extra_large {
+        --control-size: 3rem;
+    }
+}
