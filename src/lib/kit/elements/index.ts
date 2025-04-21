@@ -5,6 +5,7 @@ export { default as Icon } from "./icon/Icon.svelte";
 export { default as Input } from "./input/Input.svelte";
 export { default as Progress } from "./progress/Progress.svelte";
 export { default as Radio } from "./radio/Radio.svelte";
+export { default as Range } from "./range/Range.svelte";
 export { default as RadioGroup } from "./radio/RadioGroup.svelte";
 export { default as Select } from "./select/Select.svelte";
 export { default as Swatch } from "./swatch/Swatch.svelte";

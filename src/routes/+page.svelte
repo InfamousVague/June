@@ -10,6 +10,7 @@
         Button,
         RadioGroup,
         Progress,
+        Range,
     } from "$lib/kit/elements/index.js";
     import Input from "$lib/kit/elements/input/Input.svelte";
     import Select from "$lib/kit/elements/select/Select.svelte";
@@ -344,6 +345,22 @@
             component: Progress,
             items: shapes,
             key: "shape",
+        },
+
+        // Range
+        {
+            category: "range",
+            title: "Appearance",
+            component: Range,
+            items: appearances,
+            key: "appearance",
+        },
+        {
+            category: "range",
+            title: "Size",
+            component: Range,
+            items: sizes,
+            key: "size",
         },
     ];
 </script>

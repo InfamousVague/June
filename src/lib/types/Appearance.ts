@@ -8,7 +8,7 @@ export enum Appearance {
     Error       = "appearance_error",
     Transparent = "apperance_transparent",
     Bright      = "appearance_bright",
-    Muted        = "appearance_muted",
+    Muted       = "appearance_muted",
     Inherit     = "appearance_inherit",
 }
 
