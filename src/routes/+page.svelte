@@ -424,8 +424,6 @@
 </div>
 
 <style lang="scss">
-    @use "$lib/June.scss" as *;
-
     .container {
         display: inline-flex;
         flex-direction: column;

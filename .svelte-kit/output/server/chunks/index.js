@@ -1,29 +1,4 @@
 import "clsx";
-var is_array = Array.isArray;
-var index_of = Array.prototype.indexOf;
-var array_from = Array.from;
-var define_property = Object.defineProperty;
-var get_descriptor = Object.getOwnPropertyDescriptor;
-var object_prototype = Object.prototype;
-var array_prototype = Array.prototype;
-var get_prototype_of = Object.getPrototypeOf;
-var is_extensible = Object.isExtensible;
-const noop = () => {
-};
-function run_all(arr) {
-  for (var i = 0; i < arr.length; i++) {
-    arr[i]();
-  }
-}
-function fallback(value, fallback2, lazy = false) {
-  return value === void 0 ? lazy ? (
-    /** @type {() => V} */
-    fallback2()
-  ) : (
-    /** @type {V} */
-    fallback2
-  ) : value;
-}
 const HYDRATION_START = "[";
 const HYDRATION_END = "]";
 const HYDRATION_ERROR = {};
@@ -244,36 +219,24 @@ function ensure_array_like(array_like_or_iterator) {
   return [];
 }
 export {
-  ensure_array_like as A,
-  copy_payload as B,
-  assign_payload as C,
-  spread_props as D,
   HYDRATION_ERROR as H,
   UNINITIALIZED as U,
-  array_prototype as a,
-  get_prototype_of as b,
-  is_extensible as c,
-  index_of as d,
-  define_property as e,
-  HYDRATION_START as f,
-  get_descriptor as g,
-  HYDRATION_END as h,
-  is_array as i,
-  array_from as j,
-  render as k,
-  pop as l,
-  getContext as m,
-  noop as n,
-  object_prototype as o,
+  HYDRATION_START as a,
+  HYDRATION_END as b,
+  pop as c,
+  slot as d,
+  escape_html as e,
+  attr_class as f,
+  getContext as g,
+  attr_style as h,
+  bind_props as i,
+  stringify as j,
+  attr as k,
+  ensure_array_like as l,
+  copy_payload as m,
+  assign_payload as n,
+  spread_props as o,
   push as p,
-  escape_html as q,
-  run_all as r,
-  setContext as s,
-  fallback as t,
-  slot as u,
-  attr_class as v,
-  attr_style as w,
-  bind_props as x,
-  stringify as y,
-  attr as z
+  render as r,
+  setContext as s
 };
