@@ -98,7 +98,7 @@
     }
 
     .radio-input:disabled~.radio-control {
-        opacity: 0.5;
+        opacity: var(--disabled-opacity-modifier);
         cursor: not-allowed;
     }
 }

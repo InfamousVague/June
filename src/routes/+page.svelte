@@ -1,5 +1,6 @@
 <script lang="ts">
-    import {
+    import Hamburger from "$lib/kit/elements/hamburger/Hamburger.svelte";
+import {
         Icon,
         Radio,
         Switch,
@@ -8,13 +9,18 @@
         Button,
         RadioGroup,
     } from "$lib/kit/elements/index.js";
+    import Input from "$lib/kit/elements/input/Input.svelte";
+    import Select from "$lib/kit/elements/select/Select.svelte";
+    import Swatch from "$lib/kit/elements/swatch/Swatch.svelte";
     import {
         Appearance,
         Style,
         Highlight,
         Shape,
         TextStyle,
+        SimpleApperance,
     } from "$lib/types/Appearance.js";
+    import { PredefinedColor } from "$lib/types/Color.js";
     import { SVGShape } from "$lib/types/Shapes.js";
     import { Size } from "$lib/types/Size.js";
     import { State, BinaryState } from "$lib/types/State.js";
@@ -29,10 +35,13 @@
 
     // Value collections
     const appearances = Object.values(Appearance);
+    const simpleAppearances = Object.values(SimpleApperance);
     const highlights = Object.values(Highlight);
     const sizes = Object.values(Size);
+    const shapes = Object.values(Shape);
     const states = Object.values(State);
     const binaryStates = Object.values(BinaryState);
+    const colors = Object.values(PredefinedColor);
     const textStyles = Object.values(TextStyle);
 
     let selectedRadio = "system";
@@ -77,6 +86,23 @@
             key: "size",
             props: { icon: SVGShape.CheckMark },
         },
+        {
+            category: "icons",
+            title: "Appearance",
+            component: Icon,
+            items: appearances,
+            key: "appearance",
+            props: { icon: SVGShape.CheckMark, size: Size.Large },
+        },
+
+        // Swatch
+        {
+            category: "swatches",
+            title: "Colors",
+            component: Swatch,
+            items: colors,
+            key: "color" 
+        },
 
         // Switch
         {
@@ -94,6 +120,22 @@
             key: "size",
         },
 
+        // Hamburger
+        {
+            category: "hamburger",
+            title: "Hamburger",
+            component: Hamburger,
+            items: sizes,
+            key: "size",
+        },
+        {
+            category: "hamburger",
+            title: "Apperance",
+            component: Hamburger,
+            items: appearances,
+            key: "appearance",
+        },
+
         // Checkbox
         {
             category: "checkbox",
@@ -108,6 +150,92 @@
             component: Checkbox,
             items: sizes,
             key: "size",
+        },
+
+        // Input
+        {
+            category: "input",
+            title: "Size",
+            component: Input,
+            items: sizes,
+            key: "size",
+        },
+        {
+            category: "input",
+            title: "State",
+            component: Input,
+            items: states,
+            key: "state",
+        },
+        {
+            category: "input",
+            title: "Icons",
+            component: Input,
+            items: states,
+            key: "state",
+            props: { icon: SVGShape.Heart },
+        },
+        {
+            category: "input",
+            title: "Highlights",
+            component: Input,
+            items: highlights,
+            key: "highlight",
+        },
+        {
+            category: "input",
+            title: "Appearances",
+            component: Input,
+            items: simpleAppearances,
+            key: "appearance",
+        },
+        {
+            category: "input",
+            title: "Shape",
+            component: Input,
+            items: shapes,
+            key: "shape",
+        },
+
+        // Select
+        {
+            category: "select",
+            title: "Shape",
+            component: Select,
+            items: shapes,
+            key: "shape",
+            props: {
+                options: [
+                    ["Option One", "one"],
+                    ["Option 2", "two"],
+                ],
+            },
+        },
+        {
+            category: "select",
+            title: "Shape",
+            component: Select,
+            items: simpleAppearances,
+            key: "appearance",
+            props: {
+                options: [
+                    ["Option One", "one"],
+                    ["Option 2", "two"],
+                ],
+            },
+        },
+        {
+            category: "select",
+            title: "Binary State",
+            component: Select,
+            items: binaryStates,
+            key: "state",
+            props: {
+                options: [
+                    ["Option One", "one"],
+                    ["Option 2", "two"],
+                ],
+            },
         },
 
         // Radio
@@ -135,24 +263,16 @@
         },
         {
             category: "button",
-            title: "Shape Pill",
+            title: "Shapes",
             component: Button,
-            items: appearances,
-            props: { shape: Shape.Pill },
+            items: shapes,
+            key: "shape",
         },
         {
             category: "button",
             title: "Highlight",
             component: Button,
             items: highlights,
-            key: "highlight",
-        },
-        {
-            category: "button",
-            title: "Highlight Pill",
-            component: Button,
-            items: highlights,
-            props: { shape: Shape.Pill },
             key: "highlight",
         },
         {
@@ -166,38 +286,9 @@
         },
         {
             category: "button",
-            title: "Outline Pill",
-            component: Button,
-            items: highlights,
-            props: {
-                appearance: Appearance.Primary,
-                style: Style.Outline,
-                shape: Shape.Pill,
-            },
-            key: "highlight",
-            labelMod: (label: string) => label.replace("Highlight", "Outline"),
-        },
-        {
-            category: "button",
             title: "Size",
             component: Button,
             items: sizes,
-            key: "size",
-        },
-        {
-            category: "button",
-            title: "Size Pill",
-            component: Button,
-            items: sizes,
-            props: { shape: Shape.Pill },
-            key: "size",
-        },
-        {
-            category: "button",
-            title: "Icons",
-            component: Button,
-            items: sizes,
-            props: { icon: SVGShape.Heart, shape: Shape.Pill },
             key: "size",
         },
         {
@@ -209,10 +300,10 @@
         },
         {
             category: "button",
-            title: "State Pill",
+            title: "Icons",
             component: Button,
             items: states,
-            props: { shape: Shape.Pill },
+            props: { icon: SVGShape.Heart },
             key: "state",
         },
     ];
@@ -227,6 +318,7 @@
                     <Text>{title}</Text>
                     <div class="grid">
                         {#each items as item}
+                            {/* @ts-ignore */ null}
                             <svelte:component
                                 this={component}
                                 {...props}
@@ -249,21 +341,19 @@
             {/each}
 
             {#if category === "radio"}
-				<!-- ✅ Radio Group Section -->
-				<div class="section">
-					<Text>Radio Group Example</Text>
-					<RadioGroup
-						name="theme"
-						options={radioGroupOptions}
-						bind:selected={selectedRadio}
-					/>
-					<Text size={Size.Small}>Selected: {selectedRadio}</Text>
-				</div>
-			{/if}
+                <!-- ✅ Radio Group Section -->
+                <div class="section">
+                    <Text>Radio Group</Text>
+                    <RadioGroup
+                        name="theme"
+                        options={radioGroupOptions}
+                        bind:selected={selectedRadio}
+                    />
+                </div>
+            {/if}
         </div>
     {/each}
 </div>
-
 
 <style lang="scss">
     @use "$lib/June.scss" as *;

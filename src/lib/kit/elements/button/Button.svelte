@@ -1,5 +1,6 @@
 <script lang="ts">
     import { Appearance, Size, State, Highlight, Style, Shape, SVGShape, Animation } from "$lib/types/index.js";
+    import { createEventDispatcher } from "svelte";
     import Icon from "../icon/Icon.svelte";
     import Text from "../text/Text.svelte";
     import { 
@@ -10,7 +11,6 @@
         defaultStyle,
         defaultShape,
         defaultText,
-        onPress
     } from './Button.js';
   
     export let appearance: Appearance = defaultAppearance;
@@ -21,12 +21,18 @@
     export let state: State = defaultState;
     export let text: string = defaultText;
     export let icon: SVGShape | null = null;
+
+    const dispatch = createEventDispatcher();
+
+    function pressed(event: Event) {
+		dispatch("pressed", event);
+	}
 </script>
 
 <button
     class="button {size} {appearance} {state} {highlight} {style} {shape}"
     disabled={state === State.Disabled || state === State.Loading}
-    on:click={onPress}>
+    on:click={pressed}>
 
     {#if state === State.Loading}
         <Icon icon={SVGShape.Circle} fill animation={Animation.Pulse}/>

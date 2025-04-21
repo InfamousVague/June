@@ -7,7 +7,14 @@ export enum Appearance {
     Warning     = "appearance_warning",
     Error       = "appearance_error",
     Transparent = "apperance_transparent",
+    Bright      = "appearance_bright",
     Inherit     = "appearance_inherit",
+}
+
+export enum SimpleApperance {
+    Light       = "simple_appearance_light",
+    Dark        = "simple_appearance_dark",
+    Inherit     = "simple_appearance_inherit",
 }
 
 // Highlight or stroke of the element

@@ -4,10 +4,11 @@
     --animation-duration-fast: 0.2s;
 
     // Text Color
-    --text-color-light: #d9e7f4;
+    --text-color: #b8b8bc;
+    --text-color-light: #fbfbfe;
     --text-color-dark: #000000;
     --text-color-muted: #4d5069;
-    --text-color: #a5a8cc;
+    --text-color-placeholder: rgb(131, 131, 134);
 
     // Text Size
     --text-size-extra-small: 0.5rem;
@@ -16,21 +17,29 @@
     --text-size-large: 1.5rem;
     --text-size-extra-large: 2rem;
     
-    
-
     // Colors
     --hover-modifier: #fff;
-    --color-primary: #2cb7a9;
-    --color-secondary: #303654;
+    --color-primary: #25d4b4;
+    --color-secondary: #333239;
     --color-info: #54a0ff;
     --color-success: #1dd1a1;
     --color-warning: #ffc777;
     --color-error: #ff6b6b;
-    --color-background: #1f2335;
-    --color-background-secondary: #23273b;
-    --color-border: #303652;
-
+    --color-background: #1c1b21;
+    --color-background-secondary: #222127;
+    --color-background-light: #cfcdde;
+    --color-border: #2b2930;
     --color-secondary-disabled: #565f89a7;
+    
+
+    // Generic Colors
+    --color-red: #ff3838;
+    --color-yellow: #fff200;
+    --color-green: #32ff7e;
+    --color-blue: #18dcff;
+    --color-purple: #7d5fff;
+    --color-pink: #ffcccc;
+
     
     // Spacing
     --padding-less: 0.25rem;
@@ -41,21 +50,19 @@
     --margin: 2rem;
     --margin-more: 3rem;
 
-
     --gap-more: 1.5rem;
     --gap: 1rem;
     --gap-less: 0.5rem;
 
 
     // Elements
+    --border-size: 1px;
     --border-radius: 0.25rem;
     --border-radius-small: 0.12rem;
     --border-radius-pill: 4rem;
     --outline-size: 2px;
-    --border-size: 1px;
     --control-size: 1.5rem;
-
-    // Sizes
+    --min-control-width: 8rem;
+    --disabled-opacity-modifier: 0.5;
     --switch-size: 1.5rem;
-
 }

@@ -8,7 +8,3 @@ export const defaultSize = Size.Medium;
 export const defaultState = State.Default;
 export const defaultStyle = Style.Standard;
 export const defaultShape = Shape.Standard;
-
-export function onPress() {
-    
-}
