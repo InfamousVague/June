@@ -8,29 +8,29 @@
     border-radius: var(--switch-size);
 
     &.size_extra_small {
-        --switch-size: 0.75rem;
-    }
-    
-    &.size_small {
         --switch-size: 1rem;
     }
-    
-    &.size_medium {
+
+    &.size_small {
         --switch-size: 1.25rem;
     }
-    
-    &.size_large {
+
+    &.size_medium {
         --switch-size: 1.5rem;
     }
-    
-    &.size_extra_large {
+
+    &.size_large {
         --switch-size: 1.75rem;
+    }
+
+    &.size_extra_large {
+        --switch-size: 2rem;
     }
 
     input:disabled + .slider {
         opacity: var(--disabled-opacity-modifier);
-		cursor: not-allowed;
-	}
+        cursor: not-allowed;
+    }
 
     input {
         opacity: 0;
@@ -42,6 +42,13 @@
 
             &:before {
                 transform: translateX(var(--switch-size));
+            }
+
+            :global(.icon) {
+                transform: translate(
+                    calc(var(--switch-size) + var(--switch-size) * 0.1),
+                    -50%
+                );
             }
         }
     }
@@ -68,6 +75,17 @@
             border-radius: var(--switch-size);
             background-color: var(--text-color-light);
             transition: var(--animation-duration-fast);
+        }
+
+        :global(.icon) {
+            position: absolute;
+            top: 50%;
+            left: calc(var(--switch-size) * 0.1);
+            font-size: calc(var(--switch-size) * 0.6); // more proportional
+            line-height: 1;
+            transform: translateY(-50%);
+            pointer-events: none;
+            transition: transform var(--animation-duration-fast);
         }
     }
 }

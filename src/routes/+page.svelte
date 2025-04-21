@@ -1,6 +1,7 @@
 <script lang="ts">
+    import { Tooltip } from "$lib/kit/components/index.js";
     import Hamburger from "$lib/kit/elements/hamburger/Hamburger.svelte";
-import {
+    import {
         Icon,
         Radio,
         Switch,
@@ -8,6 +9,7 @@ import {
         Checkbox,
         Button,
         RadioGroup,
+        Progress,
     } from "$lib/kit/elements/index.js";
     import Input from "$lib/kit/elements/input/Input.svelte";
     import Select from "$lib/kit/elements/select/Select.svelte";
@@ -21,6 +23,7 @@ import {
         SimpleApperance,
     } from "$lib/types/Appearance.js";
     import { PredefinedColor } from "$lib/types/Color.js";
+    import { Position } from "$lib/types/Position.js";
     import { SVGShape } from "$lib/types/Shapes.js";
     import { Size } from "$lib/types/Size.js";
     import { State, BinaryState } from "$lib/types/State.js";
@@ -32,6 +35,13 @@ import {
                 /\w\S*/g,
                 (t) => t[0].toUpperCase() + t.slice(1).toLowerCase(),
             );
+
+    function getRandomPosition(): Position {
+        const positions = Object.values(Position);
+        return positions[Math.floor(Math.random() * positions.length)];
+    }
+
+    let theme: "light" | "dark" = "dark";
 
     // Value collections
     const appearances = Object.values(Appearance);
@@ -56,7 +66,7 @@ import {
         // Text Sections
         {
             category: "text",
-            title: "Text Size",
+            title: "Size",
             component: Text,
             items: sizes,
             key: "size",
@@ -64,17 +74,24 @@ import {
         },
         {
             category: "text",
-            title: "Text Appearance",
+            title: "Appearance",
             component: Text,
             items: appearances,
             key: "appearance",
         },
         {
             category: "text",
-            title: "Text Style",
+            title: "Style",
             component: Text,
             items: textStyles,
             key: "textStyle",
+        },
+        {
+            category: "text",
+            title: "State",
+            component: Text,
+            items: states,
+            key: "state",
         },
 
         // Icons
@@ -101,7 +118,7 @@ import {
             title: "Colors",
             component: Swatch,
             items: colors,
-            key: "color" 
+            key: "color",
         },
 
         // Switch
@@ -173,18 +190,18 @@ import {
             component: Input,
             items: states,
             key: "state",
-            props: { icon: SVGShape.Heart },
+            props: { icon: SVGShape.Search, iconRight: SVGShape.Heart },
         },
         {
             category: "input",
-            title: "Highlights",
+            title: "Highlight",
             component: Input,
             items: highlights,
             key: "highlight",
         },
         {
             category: "input",
-            title: "Appearances",
+            title: "Appearance",
             component: Input,
             items: simpleAppearances,
             key: "appearance",
@@ -263,7 +280,7 @@ import {
         },
         {
             category: "button",
-            title: "Shapes",
+            title: "Shape",
             component: Button,
             items: shapes,
             key: "shape",
@@ -300,22 +317,57 @@ import {
         },
         {
             category: "button",
-            title: "Icons",
+            title: "Icon",
             component: Button,
             items: states,
             props: { icon: SVGShape.Heart },
             key: "state",
         },
+
+        // Progress
+        {
+            category: "progress",
+            title: "Appearance",
+            component: Progress,
+            items: appearances,
+        },
+        {
+            category: "progress",
+            title: "Size",
+            component: Progress,
+            items: sizes,
+            key: "size",
+        },
+        {
+            category: "progress",
+            title: "Shape",
+            component: Progress,
+            items: shapes,
+            key: "shape",
+        },
     ];
 </script>
 
 <div class="container">
+    <Switch
+        size={Size.Large}
+        icons={[SVGShape.Sun, SVGShape.Moon]}
+        on:toggled={(e) => {
+            theme = e.detail === BinaryState.On ? "light" : "dark";
+            document.documentElement.dataset.theme = theme;
+        }}
+    />
+
     {#each Array.from(new Set(sections.map((s) => s.category))) as category}
         <div class="category-group">
-            <Text size={Size.Large}>{toTitle(category)}</Text>
+            <Text size={Size.Medium} appearance={Appearance.Muted}
+                >{toTitle(category)}</Text
+            >
             {#each sections.filter((s) => s.category === category) as { title, component, items, props = { }, key = "appearance", labelMod }}
                 <div class="section">
-                    <Text>{title}</Text>
+                    <Text appearance={Appearance.Bright} size={Size.Small}
+                        >{title}</Text
+                    >
                     <div class="grid">
                         {#each items as item}
                             {/* @ts-ignore */ null}
@@ -353,6 +405,22 @@ import {
             {/if}
         </div>
     {/each}
+
+    <div class="category-group row">
+        <Text size={Size.Medium} appearance={Appearance.Muted}>Tooltips</Text>
+        <div class="section">
+            <Text appearance={Appearance.Bright} size={Size.Small}
+                >Position</Text
+            >
+            <div class="grid">
+                {#each colors as color}
+                    <Tooltip position={getRandomPosition()} content={color}>
+                        <Swatch {color} />
+                    </Tooltip>
+                {/each}
+            </div>
+        </div>
+    </div>
 </div>
 
 <style lang="scss">
@@ -363,6 +431,7 @@ import {
         flex-direction: column;
         gap: calc(var(--gap) * 2);
         margin: var(--margin) var(--margin-more);
+        width: calc(100% - (var(--margin-more) * 2));
 
         .category-group {
             display: inline-flex;
@@ -374,7 +443,6 @@ import {
             display: inline-flex;
             gap: var(--gap);
             flex-direction: column;
-            border: 1px solid var(--color-border);
             padding: var(--padding-more);
             border-radius: var(--border-radius);
             background-color: var(--color-background-secondary);

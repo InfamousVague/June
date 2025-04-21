@@ -3,7 +3,7 @@ import { Appearance, Size, State, Highlight, Style, Shape } from "$lib/types/ind
 
 export const defaultAppearance = Appearance.Secondary;
 export const defaultHighlight = Highlight.None;
-export const defaultText = "UNASSIGNED TEXT";
+export const defaultText = "";
 export const defaultSize = Size.Medium;
 export const defaultState = State.Default;
 export const defaultStyle = Style.Standard;

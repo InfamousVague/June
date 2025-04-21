@@ -7,8 +7,10 @@
     --text-color: #b8b8bc;
     --text-color-light: #fbfbfe;
     --text-color-dark: #000000;
-    --text-color-muted: #4d5069;
-    --text-color-placeholder: rgb(131, 131, 134);
+    --text-color-muted: #71748f;
+    --text-color-placeholder: #818187;
+    --text-color-placeholder-light: #505056;
+
 
     // Text Size
     --text-size-extra-small: 0.5rem;
@@ -26,6 +28,7 @@
     --color-warning: #ffc777;
     --color-error: #ff6b6b;
     --color-background: #1c1b21;
+    --color-background-dark: #131316;
     --color-background-secondary: #222127;
     --color-background-light: #cfcdde;
     --color-border: #2b2930;
@@ -65,4 +68,26 @@
     --min-control-width: 8rem;
     --disabled-opacity-modifier: 0.5;
     --switch-size: 1.5rem;
+    --min-progress-width: 16rem;
+}
+
+:root[data-theme="light"] {
+    // Text Color overrides
+    --text-color: #1c1c1e;
+    --text-color-light: #1c1c1e;
+    --text-color-dark: #ffffff;
+    --text-color-muted: #63636d;
+    --text-color-placeholder: #9a9aa0;
+
+    // Backgrounds
+    --color-background: #ffffff;
+    --color-background-secondary: #f0f0f5;
+    --color-background-light: #ffffff;
+    --color-background-dark: #c8c8c8;
+
+
+    // Secondary Elements
+    --color-secondary: #e4e4ea;
+    --color-border: #d3d3dc;
+    --color-secondary-disabled: #b6b6c9a7;
 }

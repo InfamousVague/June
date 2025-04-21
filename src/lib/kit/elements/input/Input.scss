@@ -99,4 +99,12 @@ $highlights: (
             cursor: not-allowed;
         }
     }
+
+    &.simple_appearance_light {
+        .input {
+            &::placeholder {
+                color: var(--text-color-placeholder-light);
+            }
+        }
+    }
 }

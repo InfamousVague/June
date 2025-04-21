@@ -40,7 +40,9 @@
         <Icon {icon} {size} />
     {/if}
     <slot></slot>
-    <Text appearance={Appearance.Inherit} {size}>{text}</Text>
+    {#if text.length}
+        <Text appearance={Appearance.Inherit} {size}>{text}</Text>
+    {/if}
 
 </button>
 

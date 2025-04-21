@@ -5,6 +5,8 @@ $appearances: (
     "transparent": transparent,
     success: --color-success,
     warning: --color-warning,
+    bright: --text-color-light,
+    muted: --text-color-muted,
     error: --color-error
 );
 
@@ -25,6 +27,7 @@ $highlights: (
     border-radius: var(--border-radius);
     cursor: pointer;
     height: fit-content;
+    width: fit-content;
     padding: var(--padding) calc(var(--padding) * 2);
     transition: background-color var(--animation-duration-fast) ease, color var(--animation-duration-fast) ease, border-color var(--animation-duration-fast) ease;
     white-space: nowrap;

@@ -3,6 +3,7 @@ export { default as Checkbox } from "./checkbox/Checkbox.svelte";
 export { default as Hamburger } from "./hamburger/Hamburger.svelte";
 export { default as Icon } from "./icon/Icon.svelte";
 export { default as Input } from "./input/Input.svelte";
+export { default as Progress } from "./progress/Progress.svelte";
 export { default as Radio } from "./radio/Radio.svelte";
 export { default as RadioGroup } from "./radio/RadioGroup.svelte";
 export { default as Select } from "./select/Select.svelte";

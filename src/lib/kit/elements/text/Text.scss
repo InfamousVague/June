@@ -6,6 +6,7 @@ $appearances: (
     warning: --color-warning,
     error: --color-error,
     bright: --text-color-light,
+    muted: --text-color-muted,
     inherit: inherit
 );
 
@@ -16,6 +17,12 @@ $sizes: (
     large: --text-size-large,
     extra_large: --text-size-extra-large
 );
+
+@keyframes loading-sweep {
+    0% { background-position: 100% 0; }
+    100% { background-position: -100% 0; }
+}
+
 
 .text {
     margin: 0;
@@ -40,6 +47,7 @@ $sizes: (
         display: inline-block;
         min-width: 150px;
         max-width: 100%;
+        min-height: var(--text-size-medium);
         border-radius: var(--border-radius-small);
         background: linear-gradient(
             90deg,

@@ -10,6 +10,7 @@
     export let shape: Shape = defaultShape;
     export let placeholder: string = defaultPlaceholder;
     export let icon: SVGShape | null = null;
+    export let iconRight: SVGShape | null = null;
     export let appearance: Appearance = defaultAppearance;
     export let highlight: Highlight = defaultHighlight;
 </script>
@@ -22,6 +23,9 @@
         <Icon {icon} {size} />
     {/if}
     <input class="input" placeholder={state === State.Loading ? "Loading" : placeholder} disabled={state === State.Disabled || state === State.Loading} />
+    {#if iconRight && state !== State.Loading}
+        <Icon icon={iconRight} {size} />
+    {/if}
 </div>
 
 <style lang="scss">

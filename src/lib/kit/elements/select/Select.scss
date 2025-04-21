@@ -48,6 +48,14 @@
         }
     }
 
+    &.simple_appearance_light {
+        .select {
+            &.null_selection {
+                color: var(--text-color-placeholder-light);
+            }
+        }
+    }
+
     &.binary_state_disabled {
         opacity: var(--disabled-opacity-modifier);
         cursor: not-allowed;
