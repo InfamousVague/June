@@ -21,6 +21,7 @@
             on:input={(e) => onInput(e, i)}
             on:keyevent={(e) => onKey(e, i)}
             hideCursor
+            clearOnFocus
         />
     {/each}
 </div>

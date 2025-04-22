@@ -33,9 +33,17 @@
     export let charLimit: number | null = null;
     export let numeric: boolean = false;
     export let hideCursor: boolean = false;
+    export let clearOnFocus: boolean = false;
     export let inputRef: HTMLInputElement | undefined;
 
     const dispatch = createEventDispatcher();
+
+    function handleFocus(e: FocusEvent) {
+        if (clearOnFocus && inputRef) {
+            inputRef.value = "";
+            dispatch("input", { value: "" });
+        }
+    }
 </script>
 
 <div
@@ -64,6 +72,7 @@
         on:input={(e) => handleInput(e, charLimit, numeric, dispatch)}
         on:beforeinput={(e) => handleBeforeInput(e, charLimit, numeric)}
         on:keydown={(e) => forwardKeyEvent(e, dispatch)}
+        on:focus={handleFocus}
     />
     {#if iconRight && state !== State.Loading}
         <Icon icon={iconRight} {size} />
