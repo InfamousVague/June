@@ -18,16 +18,15 @@
 - [x] Switch
 - [x] Text
 - [x] Range Selector
-- [ ] Volume Selector
 - [ ] Volume Meter
-- [ ] Loader
-- [ ] Keyboard Key
+- [x] Loader
+- [x] Keyboard Key
 
 ### Components
 
 - [x] Tooltip
 - [ ] Language Selection
-- [ ] MFA Code
+- [x] MFA Code
 - [ ] Slide & Pop Modal
 - [ ] Toolbar
 - [ ] Emoji Picker

@@ -107,4 +107,13 @@ $highlights: (
             }
         }
     }
+
+    &.single-char {
+        padding: 0;
+        .input {
+            padding: var(--padding) var(--padding-more);
+            width: 1rem;
+            text-align: center;
+        }
+    }
 }

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Tooltip } from "$lib/kit/components/index.js";
+    import { MFAInput, Tooltip } from "$lib/kit/components/index.js";
     import Hamburger from "$lib/kit/elements/hamburger/Hamburger.svelte";
     import {
         Icon,
@@ -14,6 +14,7 @@
         Key,
     } from "$lib/kit/elements/index.js";
     import Input from "$lib/kit/elements/input/Input.svelte";
+    import Loader from "$lib/kit/elements/loader/Loader.svelte";
     import Select from "$lib/kit/elements/select/Select.svelte";
     import Swatch from "$lib/kit/elements/swatch/Swatch.svelte";
     import {
@@ -379,6 +380,15 @@
             items: sizes,
             key: "size",
         },
+
+        // Loader
+        {
+            category: "loader",
+            title: "Size",
+            component: Loader,
+            items: sizes,
+            key: "size",
+        },
     ];
 </script>
 
@@ -394,9 +404,9 @@
 
     {#each Array.from(new Set(sections.map((s) => s.category))) as category}
         <div class="category-group">
-            <Text size={Size.Medium} appearance={Appearance.Muted}
-                >{toTitle(category)}</Text
-            >
+            <Text size={Size.Medium} appearance={Appearance.Muted}>
+                {toTitle(category)}
+            </Text>
             {#each sections.filter((s) => s.category === category) as { title, component, items, props = { }, key = "appearance", labelMod }}
                 <div class="section">
                     <Text appearance={Appearance.Bright} size={Size.Small}
@@ -443,15 +453,27 @@
     <div class="category-group row">
         <Text size={Size.Medium} appearance={Appearance.Muted}>Tooltips</Text>
         <div class="section">
-            <Text appearance={Appearance.Bright} size={Size.Small}
-                >Position</Text
-            >
+            <Text appearance={Appearance.Bright} size={Size.Small}>
+                Position
+            </Text>
             <div class="grid">
                 {#each colors as color}
                     <Tooltip position={getRandomPosition()} content={color}>
                         <Swatch {color} />
                     </Tooltip>
                 {/each}
+            </div>
+        </div>
+    </div>
+
+    <div class="category-group row">
+        <Text size={Size.Medium} appearance={Appearance.Muted}>MFAInput</Text>
+        <div class="section">
+            <Text appearance={Appearance.Bright} size={Size.Small}>
+                Default
+            </Text>
+            <div class="grid">
+                <MFAInput />
             </div>
         </div>
     </div>
