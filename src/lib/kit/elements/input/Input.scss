@@ -98,6 +98,10 @@ $highlights: (
             opacity: var(--disabled-opacity-modifier);
             cursor: not-allowed;
         }
+
+        &.no-caret {
+            caret-color: transparent;
+        }
     }
 
     &.simple_appearance_light {
