@@ -1,15 +1,24 @@
 <script lang="ts">
     import { Appearance } from "$lib/types/Appearance.js";
     import { Size } from "$lib/types/index.js";
+    import {
+        defaultAppearance,
+        defaultDisplayPercent,
+        defaultMax,
+        defaultMin,
+        defaultSize,
+        defaultStep,
+        defaultValue,
+    } from "./Range.js";
 
-    export let min = 0;
-    export let max = 100;
-    export let step = 1;
-    export let value = 50;
+    export let min: number = defaultMin;
+    export let max: number = defaultMax;
+    export let step: number = defaultStep;
+    export let value: number = defaultValue;
 
-    export let displayPercent: boolean = false;
-    export let appearance: Appearance = Appearance.Primary;
-    export let size: Size = Size.Medium;
+    export let displayPercent: boolean = defaultDisplayPercent;
+    export let appearance: Appearance = defaultAppearance;
+    export let size: Size = defaultSize;
 
     const calcPercent = (val: number) => ((val - min) * 100) / (max - min);
 </script>
@@ -29,5 +38,5 @@
 </div>
 
 <style lang="scss">
-   @use "./Range.scss" as *;
+    @use "./Range.scss" as *;
 </style>

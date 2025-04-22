@@ -17,11 +17,11 @@
 - [x] Color Swatch
 - [x] Switch
 - [x] Text
-- [ ] Range Selector
+- [x] Range Selector
 - [ ] Volume Selector
 - [ ] Volume Meter
 - [ ] Loader
-
+- [ ] Keyboard Key
 
 ### Components
 

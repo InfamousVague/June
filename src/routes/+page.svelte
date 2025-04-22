@@ -11,6 +11,7 @@
         RadioGroup,
         Progress,
         Range,
+        Key,
     } from "$lib/kit/elements/index.js";
     import Input from "$lib/kit/elements/input/Input.svelte";
     import Select from "$lib/kit/elements/select/Select.svelte";
@@ -323,6 +324,22 @@
             items: states,
             props: { icon: SVGShape.Heart },
             key: "state",
+        },
+
+        // Key
+        {
+            category: "key",
+            title: "Size",
+            component: Key,
+            items: sizes,
+            key: "size",
+        },
+        {
+            category: "key",
+            title: "Appearance",
+            component: Key,
+            items: appearances,
+            key: "appearance",
         },
 
         // Progress
