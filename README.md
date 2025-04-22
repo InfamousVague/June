@@ -1,6 +1,6 @@
 # June UIKit
 
-For usage and examples see [Usage.md](Usage.md).
+For usage and examples see [USAGE.md](USAGE.md).
 
 ## Checklist
 
