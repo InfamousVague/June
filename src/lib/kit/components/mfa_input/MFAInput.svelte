@@ -3,12 +3,14 @@
     import {
         handleMFAKey,
         handleMFAWrappedInput,
-        defaultLength,
+        defaultLength
     } from "./MFAInput.js";
     import { Highlight } from "$lib/types/Appearance.js";
+    import { createEventDispatcher } from "svelte";
 
     export let length: number = defaultLength;
 
+    const dispatch = createEventDispatcher();
     let inputRefs: (HTMLInputElement | undefined)[] = [];
     let values: string[] = Array(length).fill("");
     let highlights: (Highlight | undefined)[] = Array(length).fill(undefined);
@@ -18,6 +20,10 @@
 
     const onKey = (e: CustomEvent<KeyboardEvent>, index: number) =>
         handleMFAKey(e.detail, index, inputRefs);
+
+    const emitComplete = (code: string) => {
+        dispatch("complete", code);
+    };
 </script>
 
 <div class="mfa_group">
@@ -35,7 +41,8 @@
                     highlights,
                     updateHighlights,
                     inputRefs,
-                    length
+                    length,
+                    emitComplete // ← pass dispatch handler
                 )
             }
             on:keyevent={(e) => onKey(e, i)}
@@ -45,3 +52,7 @@
         />
     {/each}
 </div>
+
+<style lang="scss">
+    @use "./MFAInput.scss" as *;
+</style>

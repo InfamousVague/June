@@ -34,14 +34,15 @@ export function handleMFAWrappedInput(
     highlights: (Highlight | undefined)[],
     setHighlights: (h: (Highlight | undefined)[]) => void,
     refs: (HTMLInputElement | undefined)[],
-    length: number
+    length: number,
+    emitComplete: (code: string) => void // NEW
 ) {
     const value: string =
         typeof e.detail === "string"
             ? e.detail
             : typeof e.detail?.value === "string"
-            ? e.detail.value
-            : (e.target as HTMLInputElement)?.value ?? "";
+                ? e.detail.value
+                : (e.target as HTMLInputElement)?.value ?? "";
 
     const newValues = [...values];
     newValues[index] = value;
@@ -52,4 +53,10 @@ export function handleMFAWrappedInput(
     setHighlights(newHighlights);
 
     handleMFAInput(e, index, refs, length);
+
+    const code = newValues.join("");
+    const isComplete = newValues.every((v) => v.trim().length === 1);
+    if (isComplete) {
+        emitComplete(code);
+    }
 }
