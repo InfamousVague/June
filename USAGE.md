@@ -1,5 +1,8 @@
 # June UI Kit – Usage Guide
 
+For type usage and examples see [TYPES.md](TYPES.md).
+
+
 ## Elements 
 
 ### Button

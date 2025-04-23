@@ -1,4 +1,7 @@
+import { Highlight } from "$lib/types/Appearance.js";
+
 export const defaultLength: number = 5;
+
 export function handleMFAInput(
     e: CustomEvent<string>,
     index: number,
@@ -21,4 +24,32 @@ export function handleMFAKey(
         event.preventDefault();
         refs[index - 1]?.focus();
     }
+}
+
+export function handleMFAWrappedInput(
+    e: CustomEvent<any>,
+    index: number,
+    values: string[],
+    setValues: (v: string[]) => void,
+    highlights: (Highlight | undefined)[],
+    setHighlights: (h: (Highlight | undefined)[]) => void,
+    refs: (HTMLInputElement | undefined)[],
+    length: number
+) {
+    const value: string =
+        typeof e.detail === "string"
+            ? e.detail
+            : typeof e.detail?.value === "string"
+            ? e.detail.value
+            : (e.target as HTMLInputElement)?.value ?? "";
+
+    const newValues = [...values];
+    newValues[index] = value;
+    setValues(newValues);
+
+    const newHighlights = [...highlights];
+    newHighlights[index] = value.trim() ? Highlight.Success : undefined;
+    setHighlights(newHighlights);
+
+    handleMFAInput(e, index, refs, length);
 }
