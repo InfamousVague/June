@@ -73,6 +73,11 @@ $highlights: (
         }
     }
 
+    &.icon_only {
+        padding: var(--padding);
+        border-radius: 50%;
+    }
+
     &.style_outline {
         background-color: transparent;
 

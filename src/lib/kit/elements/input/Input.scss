@@ -16,6 +16,11 @@ $highlights: (
     align-items: center;
     gap: var(--gap);
 
+
+    &.fill {
+        width: 100%;
+    }
+    
     &.state_disabled,
     &.state_loading {
         cursor: not-allowed;

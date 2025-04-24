@@ -7,6 +7,7 @@ For usage and examples see [USAGE.md](USAGE.md).
 ### Elements
 
 - [x] Button
+- [ ] Icon Only Button
 - [x] Checkbox
 - [x] Hamburger Menu
 - [x] Icon

@@ -31,8 +31,8 @@ export function handleMFAWrappedInput(
     index: number,
     values: string[],
     setValues: (v: string[]) => void,
-    highlights: (Highlight | undefined)[],
-    setHighlights: (h: (Highlight | undefined)[]) => void,
+    highlights: (Highlight)[],
+    setHighlights: (h: Highlight[]) => void,
     refs: (HTMLInputElement | undefined)[],
     length: number,
     emitComplete: (code: string) => void // NEW
@@ -49,7 +49,7 @@ export function handleMFAWrappedInput(
     setValues(newValues);
 
     const newHighlights = [...highlights];
-    newHighlights[index] = value.trim() ? Highlight.Success : undefined;
+    newHighlights[index] = value.trim() ? Highlight.Success : Highlight.None;
     setHighlights(newHighlights);
 
     handleMFAInput(e, index, refs, length);

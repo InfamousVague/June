@@ -52,28 +52,28 @@ $appearances: (
     }
 
     &.size_extra_small {
-        width: var(--text-size-extra-small);
-        height: var(--text-size-extra-small);
+        min-width: var(--text-size-extra-small);
+        min-height: var(--text-size-extra-small);
     }
 
     &.size_small {
-        width: var(--text-size-small);
-        height: var(--text-size-small);
+        min-width: var(--text-size-small);
+        min-height: var(--text-size-small);
     }
 
     &.size_medium {
-        width: var(--text-size-medium);
-        height: var(--text-size-medium);
+        min-width: var(--text-size-medium);
+        min-height: var(--text-size-medium);
     }
 
     &.size_large {
-        width: var(--text-size-large);
-        height: var(--text-size-large);
+        min-width: var(--text-size-large);
+        min-height: var(--text-size-large);
     }
 
     &.size_extra_large {
-        width: var(--text-size-extra-large);
-        height: var(--text-size-extra-large);
+        min-width: var(--text-size-extra-large);
+        min-height: var(--text-size-extra-large);
     }
 
     @each $appearance, $var in $appearances {

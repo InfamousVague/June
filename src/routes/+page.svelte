@@ -1,4 +1,5 @@
 <script lang="ts">
+    import EmojiPicker from "$lib/kit/components/emoji_picker/EmojiPicker.svelte";
     import { MFAInput, Tooltip } from "$lib/kit/components/index.js";
     import Hamburger from "$lib/kit/elements/hamburger/Hamburger.svelte";
     import {
@@ -474,6 +475,18 @@
             </Text>
             <div class="grid">
                 <MFAInput />
+            </div>
+        </div>
+    </div>
+
+    <div class="category-group row">
+        <Text size={Size.Medium} appearance={Appearance.Muted}>Emoji Picker</Text>
+        <div class="section">
+            <Text appearance={Appearance.Bright} size={Size.Small}>
+                Default
+            </Text>
+            <div class="grid">
+                <EmojiPicker />
             </div>
         </div>
     </div>

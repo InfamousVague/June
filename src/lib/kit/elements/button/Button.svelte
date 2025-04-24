@@ -21,6 +21,8 @@
     export let state: State = defaultState;
     export let text: string = defaultText;
     export let icon: SVGShape | null = null;
+    
+    let iconOnly = icon && !text;
 
     const dispatch = createEventDispatcher();
 
@@ -30,7 +32,7 @@
 </script>
 
 <button
-    class="button {size} {appearance} {state} {highlight} {style} {shape}"
+    class="button {size} {appearance} {state} {highlight} {style} {shape} {iconOnly ? "icon_only" : ""}"
     disabled={state === State.Disabled || state === State.Loading}
     on:click={pressed}>
 

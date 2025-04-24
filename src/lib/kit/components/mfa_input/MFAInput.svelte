@@ -13,10 +13,10 @@
     const dispatch = createEventDispatcher();
     let inputRefs: (HTMLInputElement | undefined)[] = [];
     let values: string[] = Array(length).fill("");
-    let highlights: (Highlight | undefined)[] = Array(length).fill(undefined);
+    let highlights: Highlight[] = Array(length).fill(undefined);
 
     const updateValues = (v: string[]) => (values = v);
-    const updateHighlights = (h: (Highlight | undefined)[]) => (highlights = h);
+    const updateHighlights = (h: Highlight[]) => (highlights = h);
 
     const onKey = (e: CustomEvent<KeyboardEvent>, index: number) =>
         handleMFAKey(e.detail, index, inputRefs);

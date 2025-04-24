@@ -1,0 +1,82 @@
+.emoji_picker {
+    --emoji-picker-z-index: 1000;;
+
+    .trigger-wrap {
+        position: relative;
+        display: inline-block;
+    }
+
+    .picker {
+        display: none;
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        width: var(--emoji-picker-width);
+        min-height: var(--emoji-picker-height);
+        background-color: var(--color-background);
+        border-radius: var(--border-radius);
+        padding: var(--padding-more);
+        z-index: var(--emoji-picker-z-index);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+
+        .controls {
+            flex: 0 0 auto;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: var(--gap);
+
+            .scale {
+                display: inline-flex;
+                flex-direction: column;
+                gap: var(--gap-less);
+            }
+        }
+
+        &.open {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            gap: var(--gap);
+            height: 100%;
+
+            .list-wrap {
+                flex: 1 1 auto;
+                min-height: 0;
+                width: 100%;
+
+                overflow-y: auto;
+                overflow-x: hidden;
+
+                padding-right: var(--padding-more);
+                scrollbar-gutter: stable both-edges;
+            }
+
+            .list {
+                display: flex;
+                flex-direction: column;
+                gap: var(--gap);
+
+                .category {
+                    display: flex;
+                    flex-direction: column;
+                    gap: var(--gap);
+
+                    .emojis {
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: var(--gap-less);
+                        justify-content: space-evenly;
+
+                        .emoji {
+                            font-size: var(--emoji-size);
+                            transition: font-size
+                                var(--animation-duration-fast) ease;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

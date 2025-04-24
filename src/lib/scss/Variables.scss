@@ -60,7 +60,7 @@
 
     // Elements
     --border-size: 1px;
-    --border-radius: 0.25rem;
+    --border-radius: 0.5rem;
     --border-radius-small: 0.12rem;
     --border-radius-pill: 4rem;
     --outline-size: 2px;
@@ -70,6 +70,8 @@
     --switch-size: 1.5rem;
     --min-progress-width: 16rem;
     --min-volume-width: 10rem;
+    --emoji-picker-width: 20rem;
+    --emoji-picker-height: 25rem;
 }
 
 :root[data-theme="light"] {

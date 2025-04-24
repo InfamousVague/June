@@ -34,7 +34,8 @@
     export let numeric: boolean = false;
     export let hideCursor: boolean = false;
     export let clearOnFocus: boolean = false;
-    export let inputRef: HTMLInputElement | undefined;
+    export let inputRef: HTMLInputElement | undefined = undefined;
+    export let fill: boolean = false;
 
     const dispatch = createEventDispatcher();
 
@@ -47,11 +48,7 @@
 </script>
 
 <div
-    class="input-group {size} {shape} {appearance} {highlight} {state} {charLimit ===
-    1
-        ? 'single-char'
-        : ''}"
->
+    class="input-group {size} {shape} {appearance} {highlight} {state} {charLimit === 1 ? 'single-char' : ''} {fill ? "fill" : ""}">
     {#if state === State.Loading}
         <Icon icon={SVGShape.Spinner} fill animation={Animation.Spin} />
     {:else if icon}
