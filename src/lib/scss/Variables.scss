@@ -28,6 +28,7 @@
     --color-warning: #ffc777;
     --color-error: #ff6b6b;
     --color-background: #1c1b21;
+    --color-background-opaque: #131316c1;
     --color-background-dark: #131316;
     --color-background-secondary: #222127;
     --color-background-light: #cfcdde;
@@ -65,13 +66,17 @@
     --border-radius-pill: 4rem;
     --outline-size: 2px;
     --control-size: 1.5rem;
+    --element-size: 2.5rem;
     --min-control-width: 8rem;
     --disabled-opacity-modifier: 0.5;
     --switch-size: 1.5rem;
     --min-progress-width: 16rem;
     --min-volume-width: 10rem;
-    --emoji-picker-width: 20rem;
-    --emoji-picker-height: 25rem;
+    --emoji-picker-width: 28rem;
+    --emoji-picker-height: 30rem;
+
+    // General
+    --blur-radius: 1rem;
 }
 
 :root[data-theme="light"] {

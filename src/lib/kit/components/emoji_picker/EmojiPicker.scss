@@ -19,18 +19,113 @@
         z-index: var(--emoji-picker-z-index);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 
+        .tab-row {
+            display: flex;
+            padding: var(--padding-less) var(--padding);
+            overflow-x: auto;
+            overflow-y: hidden;
+            height: var(--control-size);
+            align-items: center;
+            box-sizing: border-box;
+            justify-content: space-between;
+            flex-shrink: 0;
+    
+            button {
+                border: none;
+                padding: none;
+                background: transparent;
+            }
+        }
+
         .controls {
             flex: 0 0 auto;
             width: 100%;
             display: flex;
             flex-direction: column;
             gap: var(--gap);
+            position: relative;
+
+            .header {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: var(--gap-less);
+            
+                :global(.input-group) {
+                    flex: 1 1 auto;
+                    min-width: 0;
+                }
+
+                .skin_tone_selector {
+                    font-size: 1.5rem;
+                }
+            }
+
+            .skin_tone_selector_options {
+                display: none;
+                font-size: var(--emoji-size);
+                justify-content: flex-end;
+                gap: var(--gap-less);
+                background-color: var(--color-background-opaque);
+                position: absolute;
+                right: 0;
+                border-radius: var(--border-radius-pill);
+                padding: var(--padding-less) var(--padding-more);
+                top: calc(100% - 0.25rem);
+                z-index: 1001;
+                backdrop-filter: blur(var(--blur-radius));
+
+                .skin_tones {
+                    display: inline-flex;
+                    gap: var(--gap-less);
+
+                    .option {
+                        cursor: pointer;
+                        font-size: 2rem;
+                        background: none;
+                        border: none;
+                    }
+                }
+
+                &.open {
+                    display: inline-flex;
+                }
+            }
+            
 
             .scale {
                 display: inline-flex;
                 flex-direction: column;
                 gap: var(--gap-less);
             }
+
+            .hover-info {
+                display: flex;
+                align-items: center;
+                gap: var(--gap);
+                padding: var(--padding);
+                margin-top: auto;
+                position: absolute;
+                background-color: var(--color-background-opaque);
+                backdrop-filter: blur(var(--blur-radius));
+                right: 0;
+                left: 0;
+                bottom: calc(100% + 1rem);
+                border-radius: var(--border-radius);
+                margin: var(--padding-less) var(--padding);
+            
+                .emoji-preview {
+                    font-size: 2.5rem;
+                    line-height: 1;
+                }
+            
+                .details {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                }
+            }
+            
         }
 
         &.open {
@@ -56,6 +151,7 @@
                 display: flex;
                 flex-direction: column;
                 gap: var(--gap);
+                margin-bottom: 5rem;
 
                 .category {
                     display: flex;
@@ -63,18 +159,20 @@
                     gap: var(--gap);
 
                     .emojis {
-                        display: flex;
-                        flex-wrap: wrap;
+                        display: grid;
+                        grid-template-columns: repeat(auto-fill, minmax(var(--emoji-size), 1fr));
                         gap: var(--gap-less);
-                        justify-content: space-evenly;
-
+                        justify-items: center;
+                    
                         .emoji {
                             font-size: var(--emoji-size);
-                            transition: font-size
-                                var(--animation-duration-fast) ease;
+                            transition: font-size var(--animation-duration-fast) ease;
                             cursor: pointer;
+                            background: none;
+                            border: none;
                         }
                     }
+                    
                 }
             }
         }

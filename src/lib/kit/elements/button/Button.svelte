@@ -21,8 +21,9 @@
     export let state: State = defaultState;
     export let text: string = defaultText;
     export let icon: SVGShape | null = null;
+    export let simple: boolean = false;
     
-    let iconOnly = icon && !text;
+    let iconOnly = icon && !text || simple;
 
     const dispatch = createEventDispatcher();
 

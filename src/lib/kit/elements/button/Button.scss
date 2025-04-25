@@ -28,6 +28,8 @@ $highlights: (
     cursor: pointer;
     height: fit-content;
     width: fit-content;
+    height: var(--element-size);
+    min-width: var(--element-size);
     padding: var(--padding) calc(var(--padding) * 2);
     transition: background-color var(--animation-duration-fast) ease, color var(--animation-duration-fast) ease, border-color var(--animation-duration-fast) ease;
     white-space: nowrap;
@@ -66,16 +68,6 @@ $highlights: (
                 background-color: color-mix(in srgb, var(#{$var}) 100%, var(--hover-modifier) 20%);
             }
         }
-        &.apperance_transparent {
-            &:hover:not(:disabled) {
-                background-color: var(--color-secondary);
-            }
-        }
-    }
-
-    &.icon_only {
-        padding: var(--padding);
-        border-radius: 50%;
     }
 
     &.style_outline {
@@ -110,19 +102,27 @@ $highlights: (
     &.size_extra_small {
         padding: calc(var(--padding) - 0.3rem) calc((var(--padding) * 2) - 0.3rem);
         border-radius: var(--border-radius-small);
+        height: fit-content;
     }
 
     &.size_small {
         padding: calc(var(--padding) - 0.2rem) calc((var(--padding) * 2) - 0.2rem);
         border-radius: var(--border-radius-small);
+        height: fit-content;
+    }
+
+    &.size_medium {
+        padding: var(--padding) calc((var(--padding) * 2));
     }
 
     &.size_large {
         padding: calc(var(--padding) + 0.2rem) calc((var(--padding) * 2) + 0.2rem);
+        height: fit-content;
     }
 
     &.size_extra_large {
         padding: calc(var(--padding) + 0.4rem) calc((var(--padding) * 2) + 0.4rem);
+        height: fit-content;
     }
 
     &.shape_pill {
@@ -132,5 +132,17 @@ $highlights: (
     &:disabled {
         opacity: var(--disabled-opacity-modifier);
 		cursor: not-allowed;
+    }
+
+
+    &.icon_only {
+        padding: var(--padding);
+        aspect-ratio: 1 / 1;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: fit-content;
+        font-size: var(--text-size-large);
     }
 }
