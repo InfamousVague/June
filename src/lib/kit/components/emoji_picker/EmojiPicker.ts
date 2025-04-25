@@ -33,7 +33,7 @@ export const defaultEmoji: Emoji = {
 export const tabIcons = {
     "people": SVGShape.User,
     "nature": SVGShape.Nature,
-    "foods": SVGShape.Heart,
+    "foods": SVGShape.Grapes,
     "activity": SVGShape.Basketball,
     "places": SVGShape.Earth,
     "objects": SVGShape.Pencil,

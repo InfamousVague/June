@@ -257,6 +257,7 @@
 						step={0.1}
 						bind:value={emojiScale}
 						size={Size.ExtraSmall}
+                        appearance={Appearance.Muted}
 					/>
 				</div>
 			</div>

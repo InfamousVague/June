@@ -22,6 +22,7 @@ For usage and examples see [USAGE.md](USAGE.md).
 - [ ] Volume Meter
 - [x] Loader
 - [x] Keyboard Key
+- [ ] Input Actions for Secondary Button (Clear for example)
 
 ### Components
 
