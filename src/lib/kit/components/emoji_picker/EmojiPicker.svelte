@@ -122,6 +122,7 @@
 						icon={SVGShape.Search}
 						on:input={(v) => (searchTerm = v.detail)}
 						placeholder="Search emojis..."
+                        iconRight={SVGShape.Backspace}
 					/>
 					<Button
 						simple

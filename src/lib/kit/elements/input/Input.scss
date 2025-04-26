@@ -90,6 +90,7 @@ $highlights: (
         font-size: var(--text-size-medium);
         border: none;
         color: var(--text-color-light);
+        flex: 1;
 
         &::placeholder {
             color: var(--text-color-placeholder);

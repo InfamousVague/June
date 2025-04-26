@@ -72,7 +72,12 @@
         on:focus={handleFocus}
     />
     {#if iconRight && state !== State.Loading}
-        <Icon icon={iconRight} {size} />
+        <Icon icon={iconRight} {size} on:press={() => {
+            if (inputRef) {
+                inputRef.value = "";
+                dispatch("input", { value: "" });
+            }
+        }}/>
     {/if}
 </div>
 
