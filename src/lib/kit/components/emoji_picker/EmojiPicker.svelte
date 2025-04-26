@@ -37,9 +37,11 @@
     let icon = "🙂";
 	let skintoneEmoji = emojiData.emojis["call_me_hand"];
 	let frequentlyUsedIds: string[] = [];
-	let selectedCategory: string | null = null;
+	let selectedCategory: string | null = "frequently-used";
 	let listWrapRef: HTMLDivElement;
 	let disableScrollUpdate = false;
+
+    let searchInputRef: Input | null = null;
 
 	onMount(() => {
 		frequentlyUsedIds = loadFrequentlyUsed();
@@ -110,6 +112,14 @@
 			selectedCategory = closestCategory;
 		}
 	}
+
+    function clearSearch() {
+		searchTerm = "";
+        if (searchInputRef) {
+            const realInput = searchInputRef.getInputElement();
+            if (realInput) realInput.value = "";   
+        }
+	}
 </script>
 
 <div class="emoji_picker" style={`--emoji-size: ${emojiScale}rem`}>
@@ -123,9 +133,8 @@
 						on:input={(v) => (searchTerm = v.detail)}
 						placeholder="Search emojis..."
                         iconRight={SVGShape.Backspace}
-                        on:rightIconPressed={() => {
-                            searchTerm = ""
-                        }}
+                        bind:this={searchInputRef}
+                        on:rightIconPressed={clearSearch}
 					/>
 					<Button
 						simple

@@ -37,6 +37,10 @@
     export let inputRef: HTMLInputElement | undefined = undefined;
     export let fill: boolean = false;
 
+	export function getInputElement() {
+		return inputRef;
+	}
+
     const dispatch = createEventDispatcher();
 
     function handleFocus(e: FocusEvent) {
