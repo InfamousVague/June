@@ -73,10 +73,7 @@
     />
     {#if iconRight && state !== State.Loading}
         <Icon icon={iconRight} {size} on:press={() => {
-            if (inputRef) {
-                inputRef.value = "";
-                dispatch("input", { value: "" });
-            }
+            dispatch("rightIconPressed")
         }}/>
     {/if}
 </div>

@@ -123,6 +123,9 @@
 						on:input={(v) => (searchTerm = v.detail)}
 						placeholder="Search emojis..."
                         iconRight={SVGShape.Backspace}
+                        on:rightIconPressed={() => {
+                            searchTerm = ""
+                        }}
 					/>
 					<Button
 						simple
