@@ -32,8 +32,8 @@
 			<option disabled selected value="">Select Option</option>
 		{/if}
 
-		{#each options as [value, label]}
-			<option value={value}>{label}</option>
+		{#each options as { key, value }}
+			<option value={key}>{value}</option>
 		{/each}
 	</select>
 	<Icon icon={SVGShape.ChevronDown} />

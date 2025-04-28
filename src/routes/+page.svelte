@@ -1,7 +1,11 @@
 <script lang="ts">
-    import EmojiPicker from "$lib/kit/components/emoji_picker/EmojiPicker.svelte";
-    import { MFAInput, Tooltip } from "$lib/kit/components/index.js";
-    import Hamburger from "$lib/kit/elements/hamburger/Hamburger.svelte";
+    import {
+        MFAInput,
+        Tooltip,
+        LanguageSelector,
+        EmojiPicker,
+        Modal,
+    } from "$lib/kit/components/index.js";
     import {
         Icon,
         Radio,
@@ -13,11 +17,12 @@
         Progress,
         Range,
         Key,
+        Input,
+        Loader,
+        Select,
+        Swatch,
+        Hamburger,
     } from "$lib/kit/elements/index.js";
-    import Input from "$lib/kit/elements/input/Input.svelte";
-    import Loader from "$lib/kit/elements/loader/Loader.svelte";
-    import Select from "$lib/kit/elements/select/Select.svelte";
-    import Swatch from "$lib/kit/elements/swatch/Swatch.svelte";
     import {
         Appearance,
         Style,
@@ -26,11 +31,15 @@
         TextStyle,
         SimpleApperance,
     } from "$lib/types/Appearance.js";
-    import { PredefinedColor } from "$lib/types/Color.js";
-    import { Position } from "$lib/types/Position.js";
-    import { SVGShape } from "$lib/types/Shapes.js";
-    import { Size } from "$lib/types/Size.js";
-    import { State, BinaryState } from "$lib/types/State.js";
+    import {
+        PredefinedColor,
+        Position,
+        SVGShape,
+        Size,
+        State,
+        BinaryState,
+        ModalKind,
+    } from "$lib/types/index.js";
 
     const toTitle = (str: string) =>
         str
@@ -227,8 +236,8 @@
             key: "shape",
             props: {
                 options: [
-                    ["Option One", "one"],
-                    ["Option 2", "two"],
+                    { key: "one", value: "Option One" },
+                    { key: "two", value: "Option Two" },
                 ],
             },
         },
@@ -240,8 +249,8 @@
             key: "appearance",
             props: {
                 options: [
-                    ["Option One", "one"],
-                    ["Option 2", "two"],
+                    { key: "one", value: "Option One" },
+                    { key: "two", value: "Option Two" },
                 ],
             },
         },
@@ -253,8 +262,8 @@
             key: "state",
             props: {
                 options: [
-                    ["Option One", "one"],
-                    ["Option 2", "two"],
+                    { key: "one", value: "Option One" },
+                    { key: "two", value: "Option Two" },
                 ],
             },
         },
@@ -391,6 +400,9 @@
             key: "size",
         },
     ];
+
+    let modalOneOpen = false;
+    let modalTwoOpen = false;
 </script>
 
 <div class="container">
@@ -480,13 +492,98 @@
     </div>
 
     <div class="category-group row">
-        <Text size={Size.Medium} appearance={Appearance.Muted}>Emoji Picker</Text>
+        <Text size={Size.Medium} appearance={Appearance.Muted}
+            >Emoji Picker</Text
+        >
         <div class="section">
             <Text appearance={Appearance.Bright} size={Size.Small}>
                 Default
             </Text>
             <div class="grid">
                 <EmojiPicker />
+            </div>
+        </div>
+    </div>
+
+    <div class="category-group row">
+        <Text size={Size.Medium} appearance={Appearance.Muted}
+            >Language Selector</Text
+        >
+        <div class="section">
+            <Text appearance={Appearance.Bright} size={Size.Small}>
+                Default
+            </Text>
+            <div class="grid">
+                <LanguageSelector />
+            </div>
+        </div>
+    </div>
+
+    <div class="category-group row">
+        <Text size={Size.Medium} appearance={Appearance.Muted}
+            >Modal</Text
+        >
+        <div class="section">
+            <Text appearance={Appearance.Bright} size={Size.Small}>
+                Popup
+            </Text>
+            <div class="grid">
+                <Modal open={modalOneOpen} kind={ModalKind.Pop} on:close={() => {modalOneOpen = false;}} title="Approval Requested">
+                    <div class="modal-content">
+                        <div class="text">
+                            <Text appearance={Appearance.Muted} size={Size.Large}>Nothing Wants Your Location</Text>
+                            <Text>
+                                Nothing wants to use your location, this is purely for mockup purposes.
+                            </Text>
+                            <Text>
+                                If you'd like to fake allow "Nothing" to use your location, it will do nothing.
+                            </Text>
+                            <br />
+                            <Text appearance={Appearance.Muted} size={Size.Small}>
+                                Furthermore, this is a second paragraph that really means nothing. 
+                            </Text>
+                        </div>
+                        <div class="controls">
+                            <Button text="Allow" fill appearance={Appearance.Success}></Button>
+                            <Button text="Deny" fill appearance={Appearance.Secondary}></Button>
+                        </div>
+                    </div>
+                </Modal>
+
+                <Modal open={modalTwoOpen} kind={ModalKind.Slide} on:close={() => {modalTwoOpen = false;}} title="Approval Requested">
+                    <div class="modal-content">
+                        <div class="text">
+                            <Text appearance={Appearance.Muted} size={Size.Large}>Nothing Wants Your Location</Text>
+                            <Text>
+                                Nothing wants to use your location, this is purely for mockup purposes.
+                            </Text>
+                            <Text>
+                                If you'd like to fake allow "Nothing" to use your location, it will do nothing.
+                            </Text>
+                            <br />
+                            <Text appearance={Appearance.Muted} size={Size.Small}>
+                                Furthermore, this is a second paragraph that really means nothing. 
+                            </Text>
+                        </div>
+                        <div class="controls">
+                            <Button text="Allow" fill appearance={Appearance.Success}></Button>
+                            <Button text="Deny" fill appearance={Appearance.Secondary}></Button>
+                        </div>
+                    </div>
+                </Modal>
+
+                <Button on:pressed={() => {
+                    modalOneOpen = !modalOneOpen;
+                }}>
+                    Open Popup
+                </Button>
+
+
+                <Button on:pressed={() => {
+                    modalTwoOpen = !modalTwoOpen;
+                }}>
+                    Open Slide
+                </Button>
             </div>
         </div>
     </div>
@@ -520,6 +617,31 @@
                 gap: 1rem;
                 align-items: flex-end;
             }
+        }
+    }
+
+    .modal-content {
+        display: inline-flex;
+        flex-direction: column;
+        gap: var(--gap);
+        flex: 1;
+        height: 100%;
+        padding: calc(var(--padding) * 2);
+        justify-content: flex-end;
+
+        .controls {
+            display: inline-flex;
+            flex-direction: column;
+            gap: var(--gap-less);
+        }
+
+        .text {
+            display: inline-flex;
+            flex-direction: column;
+            gap: var(--gap);
+            flex: 1;
+            text-align: center;
+            justify-content: center;
         }
     }
 </style>

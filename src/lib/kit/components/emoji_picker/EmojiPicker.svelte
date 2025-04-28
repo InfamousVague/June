@@ -280,7 +280,7 @@
             simple
 			on:pressed={toggle}
 			size={Size.Medium}
-			appearance={open ? Appearance.Primary : Appearance.Secondary}
+			appearance={Appearance.Secondary}
 		>
             {icon}
         </Button>

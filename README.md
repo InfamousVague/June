@@ -7,7 +7,7 @@ For usage and examples see [USAGE.md](USAGE.md).
 ### Elements
 
 - [x] Button
-- [ ] Icon Only Button
+- [x] Icon Only Button
 - [x] Checkbox
 - [x] Hamburger Menu
 - [x] Icon
@@ -22,13 +22,30 @@ For usage and examples see [USAGE.md](USAGE.md).
 - [ ] Volume Meter
 - [x] Loader
 - [x] Keyboard Key
-- [ ] Input Actions for Secondary Button (Clear for example)
+- [ ] Textarea
+- [ ] Breadcrumbs
+- [ ] Badge
+  
 
 ### Components
 
 - [x] Tooltip
-- [ ] Language Selection
+- [x] Language Selection
 - [x] MFA Code
 - [ ] Slide & Pop Modal
 - [ ] Toolbar
 - [ ] Emoji Picker
+- [ ] Progress Stepper
+- [ ] Time Picker
+- [ ] Date Picker
+- [ ] Toast Notification
+- [ ] Alert
+- [ ] Avatar
+- [ ] Tab Menu
+- [ ] Dropdown Menu
+
+### Layout
+
+- [ ] Card
+- [ ] Accordion
+- [ ] Carousel 

@@ -4,7 +4,7 @@ export { default as Hamburger } from "./hamburger/Hamburger.svelte";
 export { default as Icon } from "./icon/Icon.svelte";
 export { default as Input } from "./input/Input.svelte";
 export { default as Key } from "./key/Key.svelte";
-export { default as Loading } from "./loader/Loader.svelte";
+export { default as Loader } from "./loader/Loader.svelte";
 export { default as Progress } from "./progress/Progress.svelte";
 export { default as Radio } from "./radio/Radio.svelte";
 export { default as Range } from "./range/Range.svelte";

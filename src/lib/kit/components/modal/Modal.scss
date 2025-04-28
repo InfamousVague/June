@@ -1,0 +1,88 @@
+
+
+.modal {
+    pointer-events: none;
+    opacity: 0;
+
+    .modal_mask {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background-color: var(--color-background-opaque);
+        backdrop-filter: blur(var(--blur-radius));
+    }
+
+    .body {
+        min-width: var(--min-modal-width);
+        min-height: var(--min-modal-height);
+        background-color: var(--color-background);
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: var(--border-radius);
+        display: inline-flex;
+        flex-direction: column;
+
+        .titlebar {
+            width: calc(100% - (var(--padding) * 2));
+            display: inline-flex;
+            justify-content: space-between;
+            padding: var(--padding) var(--padding) 0 var(--padding);
+            align-items: center;
+
+            .dummy {
+                visibility: hidden;
+            }
+        }
+
+        .content {
+            display: inline-flex;
+            flex: 1;
+            flex-direction: column;
+            padding: var(--padding);
+        }
+    }
+
+    &.open {
+        pointer-events: all;
+        opacity: 1;
+    }
+
+    &.slide_modal {
+        .modal_mask {
+            background-color: var(--color-background-opaque);
+            backdrop-filter: blur(var(--blur-radius));
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .body {
+            width: 90%;
+            max-width: 600px;
+            background-color: var(--color-background);
+            position: fixed;
+            left: 50%;
+            bottom: 0;
+            transform: translate(-50%, 100%);
+            border-top-left-radius: var(--border-radius);
+            border-top-right-radius: var(--border-radius);
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            display: flex;
+            flex-direction: column;
+            transition: transform 300ms ease, opacity 300ms ease;
+        }
+
+        &.open {
+            .body {
+                transform: translate(-50%, 0);
+            }
+        }
+    }
+}

@@ -75,8 +75,11 @@
     --emoji-picker-width: 28rem;
     --emoji-picker-height: 30rem;
 
+    --min-modal-width: 25rem;
+    --min-modal-height: 25rem;
+
     // General
-    --blur-radius: 1rem;
+    --blur-radius: 0.25rem;
 }
 
 :root[data-theme="light"] {

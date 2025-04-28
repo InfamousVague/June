@@ -22,6 +22,7 @@
     export let text: string = defaultText;
     export let icon: SVGShape | null = null;
     export let simple: boolean = false;
+    export let fill: boolean = false;
     
     let iconOnly = icon && !text || simple;
 
@@ -33,7 +34,7 @@
 </script>
 
 <button
-    class="button {size} {appearance} {state} {highlight} {style} {shape} {iconOnly ? "icon_only" : ""}"
+    class="button {size} {appearance} {state} {highlight} {style} {shape} {iconOnly ? "icon_only" : ""} {fill ? "fill" : ""}"
     disabled={state === State.Disabled || state === State.Loading}
     on:click={pressed}>
 

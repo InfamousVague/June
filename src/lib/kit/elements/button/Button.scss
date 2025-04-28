@@ -145,4 +145,11 @@ $highlights: (
         min-width: fit-content;
         font-size: var(--text-size-large);
     }
+
+    &.fill {
+        width: 100%;
+        flex: 1;
+        display: inline-flex;
+        justify-content: center;
+    }
 }

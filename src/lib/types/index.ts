@@ -1,12 +1,16 @@
 export * from "./Animations.js";
 export * from "./Appearance.js";
 export * from "./Color.js";
+export * from "./Modal.js";
 export * from "./Position.js";
 export * from "./Shapes.js";
 export * from "./Size.js";
 export * from "./State.js";
 
-export type SelectOption = [string, string][];
+export type SelectOption = {
+    key: string,
+    value: string
+};
 
 
 export type Range_1_100 = `100` | `${Range_1_99}`;
