@@ -13,8 +13,8 @@
 
 
     // Text Size
-    --text-size-extra-small: 0.5rem;
-    --text-size-small: 0.75rem;
+    --text-size-extra-small: 0.75rem;
+    --text-size-small: 0.85rem;
     --text-size-medium: 1rem;
     --text-size-large: 1.5rem;
     --text-size-extra-large: 2rem;
@@ -28,7 +28,7 @@
     --color-warning: #ffc777;
     --color-error: #ff6b6b;
     --color-background: #1c1b21;
-    --color-background-opaque: #131316c1;
+    --color-background-opaque: #040404c1;
     --color-background-dark: #131316;
     --color-background-secondary: #222127;
     --color-background-light: #cfcdde;
@@ -67,7 +67,7 @@
     --outline-size: 2px;
     --control-size: 1.5rem;
     --element-size: 2.5rem;
-    --min-control-width: 8rem;
+    --min-control-width: 4rem;
     --disabled-opacity-modifier: 0.5;
     --switch-size: 1.5rem;
     --min-progress-width: 16rem;
@@ -75,8 +75,9 @@
     --emoji-picker-width: 28rem;
     --emoji-picker-height: 30rem;
 
-    --min-modal-width: 25rem;
-    --min-modal-height: 25rem;
+    --modal-size: 25rem;
+    --min-modal-width: 15rem;
+    --min-modal-height: 15rem;
 
     // General
     --blur-radius: 0.25rem;
@@ -95,6 +96,8 @@
     --color-background-secondary: #f0f0f5;
     --color-background-light: #ffffff;
     --color-background-dark: #c8c8c8;
+    --color-background-opaque: #97979795;
+
 
 
     // Secondary Elements

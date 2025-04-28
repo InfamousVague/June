@@ -8,27 +8,26 @@ $highlights: (
 );
 
 .input-group {
-    padding: var(--padding) var(--padding-more);
-    border-radius: var(--border-radius);
     background: var(--color-secondary);
     border: var(--outline-size) solid transparent;
     display: inline-flex;
     align-items: center;
     gap: var(--gap);
-
+    height: var(--element-size);
+    min-height: var(--element-size);
+    border-radius: var(--border-radius);
+    padding: 0 var(--padding-more); // vertical padding controlled by height
 
     &.fill {
         width: 100%;
     }
-    
+
     &.state_disabled,
     &.state_loading {
         cursor: not-allowed;
     }
 
     @each $highlight, $var in $highlights {
-        border: var(--outline-size) solid var(--text-color-light);
-
         &.highlight_#{$highlight} {
             border: var(--outline-size) solid var(#{$var});
         }
@@ -38,35 +37,29 @@ $highlights: (
         }
     }
 
-
     &.simple_appearance_light {
         background-color: var(--color-background-light);
 
         .input {
             color: var(--text-color-dark);
+
+            &::placeholder {
+                color: var(--text-color-placeholder-light);
+            }
         }
     }
-
 
     &.shape_pill {
         border-radius: var(--border-radius-pill);
     }
 
-
-    &.size_extra_small {
-        padding: var(--padding-less) var(--padding);
-
-        .input {
-            font-size: var(--text-size-extra-small);
-        }
+    // Size classes now only adjust font-size
+    &.size_extra_small .input {
+        font-size: var(--text-size-extra-small);
     }
 
-    &.size_small {
-        padding: var(--padding-less) var(--padding);
-
-        .input {
-            font-size: var(--text-size-small);
-        }
+    &.size_small .input {
+        font-size: var(--text-size-small);
     }
 
     &.size_medium .input {
@@ -87,10 +80,13 @@ $highlights: (
 
     .input {
         background: transparent;
-        font-size: var(--text-size-medium);
         border: none;
         color: var(--text-color-light);
         flex: 1;
+        font-size: var(--text-size-medium);
+        height: 100%;
+        width: 100%;
+        padding: 0; // input inherits height from parent, no vertical padding
 
         &::placeholder {
             color: var(--text-color-placeholder);
@@ -110,20 +106,14 @@ $highlights: (
         }
     }
 
-    &.simple_appearance_light {
-        .input {
-            &::placeholder {
-                color: var(--text-color-placeholder-light);
-            }
-        }
-    }
-
     &.single-char {
         padding: 0;
+
         .input {
             padding: var(--padding) var(--padding-more);
             width: 1rem;
             text-align: center;
+            height: auto; // override for single character inputs
         }
     }
 }

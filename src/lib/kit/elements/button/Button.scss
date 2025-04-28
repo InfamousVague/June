@@ -21,22 +21,21 @@ $highlights: (
 
 .button {
     display: inline-flex;
-    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     gap: var(--gap-less);
     border: none;
     border-radius: var(--border-radius);
     cursor: pointer;
-    height: fit-content;
-    width: fit-content;
+    background-color: transparent;
+    color: var(--text-color-light);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: background-color var(--animation-duration-fast) ease, color var(--animation-duration-fast) ease, border-color var(--animation-duration-fast) ease;
     height: var(--element-size);
     min-width: var(--element-size);
     padding: var(--padding) calc(var(--padding) * 2);
-    transition: background-color var(--animation-duration-fast) ease, color var(--animation-duration-fast) ease, border-color var(--animation-duration-fast) ease;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;  
-    background-color: transparent;
-    color: var(--text-color-light);
 
     @each $highlight, $var in $highlights {
         border: var(--outline-size) solid var(--text-color-light);
@@ -76,16 +75,15 @@ $highlights: (
         &:hover:not(:disabled) {
             background-color: var(--color-secondary);
         }
-    
+
         @each $highlight, $var in $highlights {
             &.highlight_#{$highlight} {
-                // Set the correct text color by default
                 color: if(
                     $highlight == primary or $highlight == secondary,
                     var(--text-color-light),
                     var(#{$var})
                 );
-    
+
                 &:hover:not(:disabled) {
                     background-color: color-mix(in srgb, var(#{$var}) 100%, var(--hover-modifier) 20%);
                     border-color: color-mix(in srgb, var(#{$var}) 100%, var(--hover-modifier) 20%);
@@ -100,29 +98,30 @@ $highlights: (
     }
 
     &.size_extra_small {
-        padding: calc(var(--padding) - 0.3rem) calc((var(--padding) * 2) - 0.3rem);
+        --element-size: 1.75rem;
+        --padding: 0.25rem;
         border-radius: var(--border-radius-small);
-        height: fit-content;
     }
 
     &.size_small {
-        padding: calc(var(--padding) - 0.2rem) calc((var(--padding) * 2) - 0.2rem);
+        --element-size: 2rem;
+        --padding: 0.4rem;
         border-radius: var(--border-radius-small);
-        height: fit-content;
     }
 
     &.size_medium {
-        padding: var(--padding) calc((var(--padding) * 2));
+        --element-size: 2.5rem;
+        --padding: 0.5rem;
     }
 
     &.size_large {
-        padding: calc(var(--padding) + 0.2rem) calc((var(--padding) * 2) + 0.2rem);
-        height: fit-content;
+        --element-size: 3rem;
+        --padding: 0.6rem;
     }
 
     &.size_extra_large {
-        padding: calc(var(--padding) + 0.4rem) calc((var(--padding) * 2) + 0.4rem);
-        height: fit-content;
+        --element-size: 3.5rem;
+        --padding: 0.8rem;
     }
 
     &.shape_pill {
@@ -131,25 +130,33 @@ $highlights: (
 
     &:disabled {
         opacity: var(--disabled-opacity-modifier);
-		cursor: not-allowed;
+        cursor: not-allowed;
     }
 
-
+    // 🛠 NEW proper icon_only behavior
     &.icon_only {
-        padding: var(--padding);
-        aspect-ratio: 1 / 1;
+        width: var(--element-size);
+        height: var(--element-size);
+        min-width: var(--element-size);
+        min-height: var(--element-size);
+        padding: 0;
+        aspect-ratio: 1/1;
         border-radius: 50%;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        min-width: fit-content;
-        font-size: var(--text-size-large);
+        font-size: 1.2em; // Optional: adjust font-size if needed
+
+        > svg, > i {
+            width: 60%;
+            height: 60%;
+            object-fit: contain;
+        }
     }
 
     &.fill {
         width: 100%;
         flex: 1;
-        display: inline-flex;
         justify-content: center;
     }
 }

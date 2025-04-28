@@ -7,6 +7,7 @@
     import { createEventDispatcher, onMount } from "svelte";
     import { defaultKind, defaultOpen, defaultTitle } from "./Modal.js";
     import { browser } from "$app/environment"; // <-- This is the important part
+    import { Size } from "$lib/types/Size.js";
 
     export let kind: ModalKind = defaultKind;
     export let open: boolean = defaultOpen;
@@ -61,7 +62,7 @@
             {#if title.length}
                 <Text appearance={Appearance.Muted}>{title}</Text>
             {/if}
-            <Button icon={SVGShape.XMark} on:pressed={close} appearance={Appearance.Secondary} />
+            <Button icon={SVGShape.XMark} on:pressed={close} appearance={Appearance.Secondary} size={Size.Small} />
         </div>
         <div class="content">
             <slot></slot>

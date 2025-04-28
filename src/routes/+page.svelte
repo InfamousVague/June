@@ -594,8 +594,8 @@
         display: inline-flex;
         flex-direction: column;
         gap: calc(var(--gap) * 2);
-        margin: var(--margin) var(--margin-more);
-        width: calc(100% - (var(--margin-more) * 2));
+        padding: var(--padding-more);
+        flex: 1;
 
         .category-group {
             display: inline-flex;
