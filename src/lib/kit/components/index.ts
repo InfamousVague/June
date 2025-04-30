@@ -4,4 +4,4 @@ export { default as LanguageSelector } from "./language_selector/LanguageSelecto
 export { default as MFAInput } from "./mfa_input/MFAInput.svelte";
 export { default as Modal } from "./modal/Modal.svelte";
 export { default as Tooltip } from "./tooltip/Tooltip.svelte";
-export { default as NotificationGroup } from "./notifications/NotificationGroup.svelte";
+export { default as Notifications } from "./notifications/Notifications.svelte";

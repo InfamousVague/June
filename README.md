@@ -39,7 +39,7 @@ For usage and examples see [USAGE.md](USAGE.md).
 - [ ] Progress Stepper
 - [ ] Time Picker
 - [ ] Date Picker
-- [ ] Toast Notification
+- [x] Toast Notification
 - [ ] Alert
 - [ ] Avatar
 - [ ] Tab Menu

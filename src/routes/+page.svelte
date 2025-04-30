@@ -7,7 +7,7 @@
         EmojiPicker,
         Modal,
     } from "$lib/kit/components/index.js";
-    import NotificationGroup from "$lib/kit/components/notifications/NotificationGroup.svelte";
+    import Notifications from "$lib/kit/components/notifications/Notifications.svelte";
     import { notifications } from "$lib/kit/components/notifications/store.js";
     import {
         Icon,
@@ -628,14 +628,14 @@
                 Default
             </Text>
             <div class="grid">
-                <NotificationGroup />
+                <Notifications />
 
                 <Button appearance={Appearance.Primary} on:pressed={() => {
                     notify(Appearance.Primary, SVGShape.Info)
                 }} text="Notify Primary"></Button>
 
                 <Button appearance={Appearance.Secondary} on:pressed={() => {
-                    notify(Appearance.Secondary, SVGShape.CheckMark)
+                    notify(Appearance.Secondary, SVGShape.Grapes)
                 }} text="Notify Secondary"></Button>
 
                 <Button appearance={Appearance.Success} on:pressed={() => {
