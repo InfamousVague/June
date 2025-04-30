@@ -1,4 +1,7 @@
 .modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
     pointer-events: none;
     opacity: 0;
 
@@ -19,9 +22,9 @@
         display: flex;
         flex-direction: column;
         padding: var(--padding-more);
-        width: 90vw;             // ← Always 90% of viewport width
-        max-width: 600px;         // ← Only limit on really large screens
-        min-width: 0;             // ← No enforced minimum
+        width: 90vw;
+        max-width: 600px;
+        min-width: 0;
         max-height: 90vh;
         overflow-y: auto;
 
@@ -53,28 +56,27 @@
     }
 
     &.slide_modal {
-        .modal_mask {
-            position: fixed;
-            inset: 0;
-            background-color: var(--color-background-opaque);
-            backdrop-filter: blur(var(--blur-radius));
-        }
-
         .body {
+            position: fixed;
+            bottom: 0;
+            top: unset;
+            left: 50%;
+            transform: translateX(-50%) translateY(100%);
             width: 90vw;
             max-width: 600px;
+            min-width: 0;
+            max-height: 90vh;
+            background-color: var(--color-background);
             padding: var(--padding-more);
-            position: fixed;
-            left: 50%;
-            bottom: 0;
-            transform: translateX(-50%) translateY(100%);
+            display: flex;
+            flex-direction: column;
             border-top-left-radius: var(--border-radius);
             border-top-right-radius: var(--border-radius);
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
             transition: transform 300ms ease, opacity 300ms ease;
-            max-height: 90vh;
-            overflow-y: auto;
+            overflow: hidden;
+            height: auto;
         }
 
         &.open {

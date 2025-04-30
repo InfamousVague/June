@@ -1,6 +1,7 @@
 export * from "./Animations.js";
 export * from "./Appearance.js";
 export * from "./Color.js";
+export * from "./Notifications.js";
 export * from "./Modal.js";
 export * from "./Position.js";
 export * from "./Shapes.js";

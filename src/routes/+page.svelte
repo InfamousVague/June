@@ -1,4 +1,5 @@
 <script lang="ts">
+    import Badge from "$lib/kit/components/badge/Badge.svelte";
     import {
         MFAInput,
         Tooltip,
@@ -6,6 +7,8 @@
         EmojiPicker,
         Modal,
     } from "$lib/kit/components/index.js";
+    import NotificationGroup from "$lib/kit/components/notifications/NotificationGroup.svelte";
+    import { notifications } from "$lib/kit/components/notifications/store.js";
     import {
         Icon,
         Radio,
@@ -23,6 +26,7 @@
         Swatch,
         Hamburger,
     } from "$lib/kit/elements/index.js";
+    import Spacer from "$lib/kit/elements/spacer/Spacer.svelte";
     import {
         Appearance,
         Style,
@@ -403,6 +407,15 @@
 
     let modalOneOpen = false;
     let modalTwoOpen = false;
+
+    function notify(appearance: Appearance = Appearance.Primary, icon: SVGShape = SVGShape.Info) {
+        notifications.push({
+            title: "Notification Test",
+            subtitle: "This is a test notificaiton.",
+            icon,
+            appearance
+        });
+    }
 </script>
 
 <div class="container">
@@ -538,10 +551,11 @@
                             <Text>
                                 If you'd like to fake allow "Nothing" to use your location, it will do nothing.
                             </Text>
-                            <br />
+                            <Spacer size={Size.Small} />
                             <Text appearance={Appearance.Muted} size={Size.Small}>
                                 Furthermore, this is a second paragraph that really means nothing. 
                             </Text>
+                            <Spacer size={Size.Small} />
                         </div>
                         <div class="controls">
                             <Button text="Allow" fill appearance={Appearance.Success}></Button>
@@ -560,10 +574,11 @@
                             <Text>
                                 If you'd like to fake allow "Nothing" to use your location, it will do nothing.
                             </Text>
-                            <br />
+                            <Spacer size={Size.Small} />
                             <Text appearance={Appearance.Muted} size={Size.Small}>
                                 Furthermore, this is a second paragraph that really means nothing. 
                             </Text>
+                            <Spacer size={Size.Small} />
                         </div>
                         <div class="controls">
                             <Button text="Allow" fill appearance={Appearance.Success}></Button>
@@ -587,6 +602,60 @@
             </div>
         </div>
     </div>
+
+    <div class="category-group row">
+        <Text size={Size.Medium} appearance={Appearance.Muted}>Badge</Text>
+        <div class="section">
+            <Text appearance={Appearance.Bright} size={Size.Small}>
+                Default
+            </Text>
+            <div class="grid">
+                <Badge count={13}>
+                    <Button icon={SVGShape.User} text="Friends"></Button>
+                </Badge>
+
+                <Badge count={999}>
+                    <Button icon={SVGShape.User}></Button>
+                </Badge>
+            </div>
+        </div>
+    </div>
+
+    <div class="category-group row">
+        <Text size={Size.Medium} appearance={Appearance.Muted}>Notifications</Text>
+        <div class="section">
+            <Text appearance={Appearance.Bright} size={Size.Small}>
+                Default
+            </Text>
+            <div class="grid">
+                <NotificationGroup />
+
+                <Button appearance={Appearance.Primary} on:pressed={() => {
+                    notify(Appearance.Primary, SVGShape.Info)
+                }} text="Notify Primary"></Button>
+
+                <Button appearance={Appearance.Secondary} on:pressed={() => {
+                    notify(Appearance.Secondary, SVGShape.CheckMark)
+                }} text="Notify Secondary"></Button>
+
+                <Button appearance={Appearance.Success} on:pressed={() => {
+                    notify(Appearance.Success, SVGShape.CheckMark)
+                }} text="Notify Success"></Button>
+
+                <Button appearance={Appearance.Info} on:pressed={() => {
+                    notify(Appearance.Info, SVGShape.Info)
+                }} text="Notify Info"></Button>
+
+                <Button appearance={Appearance.Warning} on:pressed={() => {
+                    notify(Appearance.Warning, SVGShape.Flag)
+                }} text="Notify Warning"></Button>
+
+                <Button appearance={Appearance.Error} on:pressed={() => {
+                    notify(Appearance.Error, SVGShape.XMark)
+                }} text="Notify Error"></Button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <style lang="scss">
@@ -596,6 +665,7 @@
         gap: calc(var(--gap) * 2);
         padding: var(--padding-more);
         flex: 1;
+        overflow-x: hidden;
 
         .category-group {
             display: inline-flex;

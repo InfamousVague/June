@@ -24,7 +24,8 @@ For usage and examples see [USAGE.md](USAGE.md).
 - [x] Keyboard Key
 - [ ] Textarea
 - [ ] Breadcrumbs
-- [ ] Badge
+- [x] Badge
+- [x] Spacer
   
 
 ### Components
@@ -32,7 +33,7 @@ For usage and examples see [USAGE.md](USAGE.md).
 - [x] Tooltip
 - [x] Language Selection
 - [x] MFA Code
-- [ ] Slide & Pop Modal
+- [x] Slide & Pop Modal
 - [ ] Toolbar
 - [ ] Emoji Picker
 - [ ] Progress Stepper

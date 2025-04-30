@@ -10,6 +10,7 @@ export { default as Radio } from "./radio/Radio.svelte";
 export { default as Range } from "./range/Range.svelte";
 export { default as RadioGroup } from "./radio/RadioGroup.svelte";
 export { default as Select } from "./select/Select.svelte";
+export { default as Spacer } from "./spacer/Spacer.svelte";
 export { default as Swatch } from "./swatch/Swatch.svelte";
 export { default as Switch } from "./switch/Switch.svelte";
 export { default as Text } from "./text/Text.svelte";

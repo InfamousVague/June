@@ -21,14 +21,14 @@
     
     // Colors
     --hover-modifier: #fff;
-    --color-primary: #25d4b4;
+    --color-primary: #05b0b9;
     --color-secondary: #333239;
     --color-info: #54a0ff;
     --color-success: #1dd1a1;
     --color-warning: #ffc777;
-    --color-error: #ff6b6b;
+    --color-error: #ef4343;
     --color-background: #1c1b21;
-    --color-background-opaque: #040404c1;
+    --color-background-opaque: #0b0b0b87;
     --color-background-dark: #131316;
     --color-background-secondary: #222127;
     --color-background-light: #cfcdde;
@@ -62,7 +62,8 @@
     // Elements
     --border-size: 1px;
     --border-radius: 0.5rem;
-    --border-radius-small: 0.12rem;
+    --border-radius-small: 0.25rem;
+    --border-radius-large: 2rem;
     --border-radius-pill: 4rem;
     --outline-size: 2px;
     --control-size: 1.5rem;
@@ -74,10 +75,11 @@
     --min-volume-width: 10rem;
     --emoji-picker-width: 28rem;
     --emoji-picker-height: 30rem;
-
     --modal-size: 25rem;
     --min-modal-width: 15rem;
     --min-modal-height: 15rem;
+    --spacer-size: 2.5rem;
+    --notification-size: 23rem;
 
     // General
     --blur-radius: 0.25rem;

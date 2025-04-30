@@ -133,7 +133,6 @@ $highlights: (
         cursor: not-allowed;
     }
 
-    // 🛠 NEW proper icon_only behavior
     &.icon_only {
         width: var(--element-size);
         height: var(--element-size);
@@ -145,13 +144,7 @@ $highlights: (
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.2em; // Optional: adjust font-size if needed
-
-        > svg, > i {
-            width: 60%;
-            height: 60%;
-            object-fit: contain;
-        }
+        font-size: 1.2em;
     }
 
     &.fill {
