@@ -83,6 +83,7 @@
 
     // General
     --blur-radius: 0.25rem;
+    --shadow: 4px 8px 14px var(--color-background-opaque);
 }
 
 :root[data-theme="light"] {

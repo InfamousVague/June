@@ -6,7 +6,7 @@ const { subscribe, update } = writable<Notification[]>([]);
 
 let counter = 0;
 
-function push(notification: Omit<Notification, "id">, autoDismissTime = 4000) {
+function push(notification: Omit<Notification, "id">, autoDismissTime = 400000) {
 	const id = ++counter;
 	const n = { ...notification, id };
 	update((notifications) => [...notifications, n]);

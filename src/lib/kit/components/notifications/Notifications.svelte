@@ -39,48 +39,5 @@
 
 
 <style lang="scss">
-.notification_group {
-    position: fixed;
-    width: var(--notification-size);
-    display: flex;
-    flex-direction: column;
-    gap: var(--gap);
-    z-index: 9999;
-    padding: var(--padding);
-
-    &.top         { top: 0; left: 50%; transform: translateX(-50%); }
-    &.top_right   { top: 0; right: 0; }
-    &.top_left    { top: 0; left: 0; }
-    &.left        { top: 50%; left: 0; transform: translateY(-50%); }
-    &.right       { top: 50%; right: 0; transform: translateY(-50%); }
-    &.bottom      { bottom: 0; left: 50%; transform: translateX(-50%); }
-    &.bottom_right{ bottom: 0; right: 0; }
-    &.bottom_left { bottom: 0; left: 0; }
-    &.middle      { top: 50%; left: 50%; transform: translate(-50%, -50%); }
-}
-
-.notification {
-    background: var(--color-background-opaque);
-    backdrop-filter: blur(var(--blur-radius));
-    border-radius: var(--border-radius);
-    padding: var(--padding-more);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--gap);
-    box-shadow: var(--shadow);
-
-    .text {
-        flex: 1;
-    }
-
-    .close {
-        background: none;
-        border: none;
-        font-size: 1.2rem;
-        cursor: pointer;
-        color: var(--text-color);
-    }
-
-}
+    @use "./Notifications.scss" as *;
 </style>
