@@ -41,7 +41,7 @@
             background-color: var(--color-success);
 
             &:before {
-                transform: translateX(var(--switch-size));
+                transform: translateX(calc(var(--switch-size) + var(--border-size)));
             }
 
             :global(.icon) {
@@ -71,7 +71,7 @@
             height: calc(var(--switch-size) - var(--border-size));
             width: calc(var(--switch-size) - var(--border-size));
             left: 0;
-            top: 0;
+            top: var(--border-size);
             border-radius: var(--switch-size);
             background-color: var(--text-color-light);
             transition: var(--animation-duration-fast);

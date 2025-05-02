@@ -1,11 +1,12 @@
 <script lang="ts">
-    import Badge from "$lib/kit/components/badge/Badge.svelte";
     import {
         MFAInput,
         Tooltip,
         LanguageSelector,
         EmojiPicker,
         Modal,
+        Alert,
+        Badge
     } from "$lib/kit/components/index.js";
     import Notifications from "$lib/kit/components/notifications/Notifications.svelte";
     import { notifications } from "$lib/kit/components/notifications/store.js";
@@ -43,6 +44,7 @@
         State,
         BinaryState,
         ModalKind,
+        AbsolutePosition,
     } from "$lib/types/index.js";
 
     const toTitle = (str: string) =>
@@ -416,6 +418,11 @@
             appearance
         });
     }
+
+    let showAlert = false;
+    function popAlert() {
+        showAlert = true;
+    }
 </script>
 
 <div class="container">
@@ -628,7 +635,7 @@
                 Default
             </Text>
             <div class="grid">
-                <Notifications />
+                <Notifications position={AbsolutePosition.TopRight} />
 
                 <Button appearance={Appearance.Primary} on:pressed={() => {
                     notify(Appearance.Primary, SVGShape.Info)
@@ -653,6 +660,27 @@
                 <Button appearance={Appearance.Error} on:pressed={() => {
                     notify(Appearance.Error, SVGShape.XMark)
                 }} text="Notify Error"></Button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="category-group row">
+        <Text size={Size.Medium} appearance={Appearance.Muted}>Alert</Text>
+        <div class="section">
+            <Text appearance={Appearance.Bright} size={Size.Small}>
+                Default
+            </Text>
+            <div class="grid">
+                <Alert 
+                    appearance={Appearance.Error}
+                    message="This is a mock alert which does nothing."
+                    on:confirm={() => showAlert = false} 
+                    on:deny={() => showAlert = false} 
+                    dismissed={!showAlert}/>
+                <Button appearance={Appearance.Secondary} on:pressed={() => {
+                    showAlert = true;
+                }} text="Trigger Alert"></Button>
             </div>
         </div>
     </div>
