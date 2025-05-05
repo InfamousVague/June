@@ -26,7 +26,6 @@ For usage and examples see [USAGE.md](USAGE.md).
 - [ ] Breadcrumbs
 - [x] Badge
 - [x] Spacer
-  
 
 ### Components
 
@@ -35,12 +34,12 @@ For usage and examples see [USAGE.md](USAGE.md).
 - [x] MFA Code
 - [x] Slide & Pop Modal
 - [ ] Toolbar
-- [ ] Emoji Picker
+- [x] Emoji Picker
 - [ ] Progress Stepper
 - [ ] Time Picker
 - [ ] Date Picker
 - [x] Toast Notification
-- [ ] Alert
+- [x] Alert
 - [ ] Avatar
 - [ ] Tab Menu
 - [ ] Dropdown Menu

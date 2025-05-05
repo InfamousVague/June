@@ -12,10 +12,11 @@ $appearances: (
 
 div.key {
     min-width: var(--control-size);
-    height: var(--control-size);
+    min-height: var(--control-size);
     text-transform: uppercase;
-    padding-bottom: 8px;
-
+    padding-bottom: 4px;
+    display: inline-flex;
+    height: fit-content;
 
     >span {
         background-color: var(--color-secondary);
@@ -24,6 +25,7 @@ div.key {
         align-items: center;
         justify-content: center;
         min-width: var(--control-size);
+        flex: 1;
         padding: var(--padding);
         height: calc(var(--control-size) - 4px);
         border: var(--outline-size) solid var(--text-color);

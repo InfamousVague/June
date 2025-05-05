@@ -6,8 +6,9 @@
         EmojiPicker,
         Modal,
         Alert,
-        Badge
+        Badge,
     } from "$lib/kit/components/index.js";
+    import KeyRecording from "$lib/kit/components/keyrecording/KeyRecording.svelte";
     import Notifications from "$lib/kit/components/notifications/Notifications.svelte";
     import { notifications } from "$lib/kit/components/notifications/store.js";
     import {
@@ -28,6 +29,8 @@
         Hamburger,
     } from "$lib/kit/elements/index.js";
     import Spacer from "$lib/kit/elements/spacer/Spacer.svelte";
+    import Card from "$lib/kit/layout/card/Card.svelte";
+    import Sidebar from "$lib/kit/layout/sidebar/Sidebar.svelte";
     import {
         Appearance,
         Style,
@@ -410,283 +413,467 @@
     let modalOneOpen = false;
     let modalTwoOpen = false;
 
-    function notify(appearance: Appearance = Appearance.Primary, icon: SVGShape = SVGShape.Info) {
+    function notify(
+        appearance: Appearance = Appearance.Primary,
+        icon: SVGShape = SVGShape.Info,
+    ) {
         notifications.push({
             title: "Notification Test",
             subtitle: "This is a test notificaiton.",
             icon,
-            appearance
+            appearance,
         });
     }
 
     let showAlert = false;
-    function popAlert() {
-        showAlert = true;
+
+    function scrollToId(id: string) {
+        const el = document.getElementById(id);
+        if (el) {
+            el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
     }
 </script>
 
-<div class="container">
-    <Switch
-        size={Size.Large}
-        icons={[SVGShape.Sun, SVGShape.Moon]}
-        on:toggled={(e) => {
-            theme = e.detail === BinaryState.On ? "light" : "dark";
-            document.documentElement.dataset.theme = theme;
-        }}
-    />
+<Sidebar>
+    <div slot="title" class="title">
+        <Icon icon={SVGShape.Grapes} size={Size.ExtraLarge} appearance={Appearance.Primary}></Icon>
+        <Text size={Size.Medium} appearance={Appearance.Primary}>June UI Kit</Text>
+    </div>
 
-    {#each Array.from(new Set(sections.map((s) => s.category))) as category}
-        <div class="category-group">
-            <Text size={Size.Medium} appearance={Appearance.Muted}>
-                {toTitle(category)}
-            </Text>
-            {#each sections.filter((s) => s.category === category) as { title, component, items, props = { }, key = "appearance", labelMod }}
-                <div class="section">
-                    <Text appearance={Appearance.Bright} size={Size.Small}
-                        >{title}</Text
-                    >
-                    <div class="grid">
-                        {#each items as item}
-                            {/* @ts-ignore */ null}
-                            <svelte:component
-                                this={component}
-                                {...props}
-                                {...{ [key]: item }}
-                                text={component === Button
-                                    ? labelMod
-                                        ? labelMod(toTitle(item))
-                                        : toTitle(item)
-                                    : undefined}
-                            >
-                                {#if component !== Button}
-                                    {labelMod
-                                        ? labelMod(toTitle(item))
-                                        : toTitle(item)}
-                                {/if}
-                            </svelte:component>
-                        {/each}
-                    </div>
-                </div>
-            {/each}
-
-            {#if category === "radio"}
-                <!-- ✅ Radio Group Section -->
-                <div class="section">
-                    <Text>Radio Group</Text>
-                    <RadioGroup
-                        name="theme"
-                        options={radioGroupOptions}
-                        bind:selected={selectedRadio}
-                    />
-                </div>
-            {/if}
+    <div slot="body">
+        <div class="sidebar">
+            <Text appearance={Appearance.Muted}>Elements</Text>
+            <div class="nav-buttons">
+                <Button text="Text" on:pressed={() => scrollToId("text")} />
+                <Button text="Icons" on:pressed={() => scrollToId("icons")} />
+                <Button
+                    text="Swatches"
+                    on:pressed={() => scrollToId("swatches")}
+                />
+                <Button text="Switch" on:pressed={() => scrollToId("switch")} />
+                <Button
+                    text="Hamburger"
+                    on:pressed={() => scrollToId("hamburger")}
+                />
+                <Button
+                    text="Checkbox"
+                    on:pressed={() => scrollToId("checkbox")}
+                />
+                <Button text="Input" on:pressed={() => scrollToId("input")} />
+                <Button text="Select" on:pressed={() => scrollToId("select")} />
+                <Button text="Radio" on:pressed={() => scrollToId("radio")} />
+                <Button text="Button" on:pressed={() => scrollToId("button")} />
+                <Button text="Key" on:pressed={() => scrollToId("key")} />
+                <Button
+                    text="Progress"
+                    on:pressed={() => scrollToId("progress")}
+                />
+                <Button text="Range" on:pressed={() => scrollToId("range")} />
+                <Button text="Loader" on:pressed={() => scrollToId("loader")} />
+            </div>
+            <Spacer />
+            <Text appearance={Appearance.Muted}>Components</Text>
+            <div class="nav-buttons">
+                <Button
+                    text="Tooltip"
+                    on:pressed={() => scrollToId("tooltips")}
+                />
+                <Button
+                    text="MFA Input"
+                    on:pressed={() => scrollToId("mfainput")}
+                />
+                <Button
+                    text="Emoji Picker"
+                    on:pressed={() => scrollToId("emojipicker")}
+                />
+                <Button
+                    text="Language Selector"
+                    on:pressed={() => scrollToId("languageselector")}
+                />
+                <Button text="Modal" on:pressed={() => scrollToId("modal")} />
+                <Button text="Badges" on:pressed={() => scrollToId("badges")} />
+                <Button
+                    text="Notification"
+                    on:pressed={() => scrollToId("notifications")}
+                />
+                <Button text="Alert" on:pressed={() => scrollToId("alerts")} />
+                <Button
+                    text="Key Recording"
+                    on:pressed={() => scrollToId("keyrecording")}
+                />
+            </div>
         </div>
-    {/each}
+    </div>
 
-    <div class="category-group row">
-        <Text size={Size.Medium} appearance={Appearance.Muted}>Tooltips</Text>
-        <div class="section">
-            <Text appearance={Appearance.Bright} size={Size.Small}>
-                Position
-            </Text>
-            <div class="grid">
-                {#each colors as color}
-                    <Tooltip position={getRandomPosition()} content={color}>
-                        <Swatch {color} />
-                    </Tooltip>
+    <div class="container">
+        <Text appearance={Appearance.Muted}>Options</Text>
+        <Switch
+            size={Size.Large}
+            icons={[SVGShape.Sun, SVGShape.Moon]}
+            on:toggled={(e) => {
+                theme = e.detail === BinaryState.On ? "light" : "dark";
+                document.documentElement.dataset.theme = theme;
+            }}
+        />
+        <Text appearance={Appearance.Muted}>UI Kit</Text>
+        {#each Array.from(new Set(sections.map((s) => s.category))) as category}
+            <span id={category}></span>
+            <Card title={toTitle(category)}>
+                {#each sections.filter((s) => s.category === category) as { title, component, items, props = { }, key = "appearance", labelMod }}
+                    <div class="section">
+                        <Text appearance={Appearance.Muted} size={Size.Small}
+                            >{title}</Text
+                        >
+                        <div class="grid">
+                            {#each items as item}
+                                {/* @ts-ignore */ null}
+                                <svelte:component
+                                    this={component}
+                                    {...props}
+                                    {...{ [key]: item }}
+                                    text={component === Button
+                                        ? labelMod
+                                            ? labelMod(toTitle(item))
+                                            : toTitle(item)
+                                        : undefined}
+                                >
+                                    {#if component !== Button}
+                                        {labelMod
+                                            ? labelMod(toTitle(item))
+                                            : toTitle(item)}
+                                    {/if}
+                                </svelte:component>
+                            {/each}
+                        </div>
+                    </div>
                 {/each}
-            </div>
-        </div>
-    </div>
 
-    <div class="category-group row">
-        <Text size={Size.Medium} appearance={Appearance.Muted}>MFAInput</Text>
-        <div class="section">
-            <Text appearance={Appearance.Bright} size={Size.Small}>
-                Default
-            </Text>
-            <div class="grid">
-                <MFAInput />
-            </div>
-        </div>
-    </div>
-
-    <div class="category-group row">
-        <Text size={Size.Medium} appearance={Appearance.Muted}
-            >Emoji Picker</Text
-        >
-        <div class="section">
-            <Text appearance={Appearance.Bright} size={Size.Small}>
-                Default
-            </Text>
-            <div class="grid">
-                <EmojiPicker />
-            </div>
-        </div>
-    </div>
-
-    <div class="category-group row">
-        <Text size={Size.Medium} appearance={Appearance.Muted}
-            >Language Selector</Text
-        >
-        <div class="section">
-            <Text appearance={Appearance.Bright} size={Size.Small}>
-                Default
-            </Text>
-            <div class="grid">
-                <LanguageSelector />
-            </div>
-        </div>
-    </div>
-
-    <div class="category-group row">
-        <Text size={Size.Medium} appearance={Appearance.Muted}
-            >Modal</Text
-        >
-        <div class="section">
-            <Text appearance={Appearance.Bright} size={Size.Small}>
-                Popup
-            </Text>
-            <div class="grid">
-                <Modal open={modalOneOpen} kind={ModalKind.Pop} on:close={() => {modalOneOpen = false;}} title="Approval Requested">
-                    <div class="modal-content">
-                        <div class="text">
-                            <Text appearance={Appearance.Muted} size={Size.Large}>Nothing Wants Your Location</Text>
-                            <Text>
-                                Nothing wants to use your location, this is purely for mockup purposes.
-                            </Text>
-                            <Text>
-                                If you'd like to fake allow "Nothing" to use your location, it will do nothing.
-                            </Text>
-                            <Spacer size={Size.Small} />
-                            <Text appearance={Appearance.Muted} size={Size.Small}>
-                                Furthermore, this is a second paragraph that really means nothing. 
-                            </Text>
-                            <Spacer size={Size.Small} />
-                        </div>
-                        <div class="controls">
-                            <Button text="Allow" fill appearance={Appearance.Success}></Button>
-                            <Button text="Deny" fill appearance={Appearance.Secondary}></Button>
-                        </div>
+                {#if category === "radio"}
+                    <!-- ✅ Radio Group Section -->
+                    <div class="section">
+                        <Text appearance={Appearance.Muted} size={Size.Small}
+                            >Radio Group</Text
+                        >
+                        <RadioGroup
+                            name="theme"
+                            options={radioGroupOptions}
+                            bind:selected={selectedRadio}
+                        />
                     </div>
-                </Modal>
+                {/if}
+            </Card>
+        {/each}
 
-                <Modal open={modalTwoOpen} kind={ModalKind.Slide} on:close={() => {modalTwoOpen = false;}} title="Approval Requested">
-                    <div class="modal-content">
-                        <div class="text">
-                            <Text appearance={Appearance.Muted} size={Size.Large}>Nothing Wants Your Location</Text>
-                            <Text>
-                                Nothing wants to use your location, this is purely for mockup purposes.
-                            </Text>
-                            <Text>
-                                If you'd like to fake allow "Nothing" to use your location, it will do nothing.
-                            </Text>
-                            <Spacer size={Size.Small} />
-                            <Text appearance={Appearance.Muted} size={Size.Small}>
-                                Furthermore, this is a second paragraph that really means nothing. 
-                            </Text>
-                            <Spacer size={Size.Small} />
+        <span id="tooltips"></span>
+        <Card title="Tooltips">
+            <div class="section">
+                <Text appearance={Appearance.Bright} size={Size.Small}>
+                    Position
+                </Text>
+                <div class="grid">
+                    {#each colors as color}
+                        <Tooltip position={getRandomPosition()} content={color}>
+                            <Swatch {color} />
+                        </Tooltip>
+                    {/each}
+                </div>
+            </div>
+        </Card>
+
+        <span id="mfainput"></span>
+        <Card title="MFAInput">
+            <div class="section">
+                <Text appearance={Appearance.Bright} size={Size.Small}>
+                    Default
+                </Text>
+                <div class="grid">
+                    <MFAInput />
+                </div>
+            </div>
+        </Card>
+
+        <span id="emojipicker"></span>
+        <Card title="Emoji Picker">
+            <div class="section">
+                <Text appearance={Appearance.Bright} size={Size.Small}>
+                    Default
+                </Text>
+                <div class="grid">
+                    <EmojiPicker />
+                </div>
+            </div>
+        </Card>
+
+        <span id="languageselector"></span>
+        <Card title="Language Selector">
+            <div class="section">
+                <Text appearance={Appearance.Bright} size={Size.Small}>
+                    Default
+                </Text>
+                <div class="grid">
+                    <LanguageSelector />
+                </div>
+            </div>
+        </Card>
+
+        <span id="modal"></span>
+        <Card title="Modal">
+            <div class="section">
+                <Text appearance={Appearance.Bright} size={Size.Small}>
+                    Popup
+                </Text>
+                <div class="grid">
+                    <Modal
+                        open={modalOneOpen}
+                        kind={ModalKind.Pop}
+                        on:close={() => {
+                            modalOneOpen = false;
+                        }}
+                        title="Approval Requested"
+                    >
+                        <div class="modal-content">
+                            <div class="text">
+                                <Text
+                                    appearance={Appearance.Muted}
+                                    size={Size.Large}
+                                    >Nothing Wants Your Location</Text
+                                >
+                                <Text>
+                                    Nothing wants to use your location, this is
+                                    purely for mockup purposes.
+                                </Text>
+                                <Text>
+                                    If you'd like to fake allow "Nothing" to use
+                                    your location, it will do nothing.
+                                </Text>
+                                <Spacer size={Size.Small} />
+                                <Text
+                                    appearance={Appearance.Muted}
+                                    size={Size.Small}
+                                >
+                                    Furthermore, this is a second paragraph that
+                                    really means nothing.
+                                </Text>
+                                <Spacer size={Size.Small} />
+                            </div>
+                            <div class="controls">
+                                <Button
+                                    text="Allow"
+                                    fill
+                                    appearance={Appearance.Success}
+                                ></Button>
+                                <Button
+                                    text="Deny"
+                                    fill
+                                    appearance={Appearance.Secondary}
+                                ></Button>
+                            </div>
                         </div>
-                        <div class="controls">
-                            <Button text="Allow" fill appearance={Appearance.Success}></Button>
-                            <Button text="Deny" fill appearance={Appearance.Secondary}></Button>
+                    </Modal>
+
+                    <Modal
+                        open={modalTwoOpen}
+                        kind={ModalKind.Slide}
+                        on:close={() => {
+                            modalTwoOpen = false;
+                        }}
+                        title="Approval Requested"
+                    >
+                        <div class="modal-content">
+                            <div class="text">
+                                <Text
+                                    appearance={Appearance.Muted}
+                                    size={Size.Large}
+                                    >Nothing Wants Your Location</Text
+                                >
+                                <Text>
+                                    Nothing wants to use your location, this is
+                                    purely for mockup purposes.
+                                </Text>
+                                <Text>
+                                    If you'd like to fake allow "Nothing" to use
+                                    your location, it will do nothing.
+                                </Text>
+                                <Spacer size={Size.Small} />
+                                <Text
+                                    appearance={Appearance.Muted}
+                                    size={Size.Small}
+                                >
+                                    Furthermore, this is a second paragraph that
+                                    really means nothing.
+                                </Text>
+                                <Spacer size={Size.Small} />
+                            </div>
+                            <div class="controls">
+                                <Button
+                                    text="Allow"
+                                    fill
+                                    appearance={Appearance.Success}
+                                ></Button>
+                                <Button
+                                    text="Deny"
+                                    fill
+                                    appearance={Appearance.Secondary}
+                                ></Button>
+                            </div>
                         </div>
-                    </div>
-                </Modal>
+                    </Modal>
 
-                <Button on:pressed={() => {
-                    modalOneOpen = !modalOneOpen;
-                }}>
-                    Open Popup
-                </Button>
+                    <Button
+                        on:pressed={() => {
+                            modalOneOpen = !modalOneOpen;
+                        }}
+                    >
+                        Open Popup
+                    </Button>
 
-
-                <Button on:pressed={() => {
-                    modalTwoOpen = !modalTwoOpen;
-                }}>
-                    Open Slide
-                </Button>
+                    <Button
+                        on:pressed={() => {
+                            modalTwoOpen = !modalTwoOpen;
+                        }}
+                    >
+                        Open Slide
+                    </Button>
+                </div>
             </div>
-        </div>
-    </div>
+        </Card>
 
-    <div class="category-group row">
-        <Text size={Size.Medium} appearance={Appearance.Muted}>Badge</Text>
-        <div class="section">
+        <span id="badges"></span>
+        <Card title="Badge">
+            <div class="section">
+                <Text appearance={Appearance.Bright} size={Size.Small}>
+                    Default
+                </Text>
+                <div class="grid">
+                    <Badge count={13}>
+                        <Button icon={SVGShape.User} text="Friends"></Button>
+                    </Badge>
+
+                    <Badge count={999}>
+                        <Button icon={SVGShape.User}></Button>
+                    </Badge>
+                </div>
+            </div>
+        </Card>
+
+        <span id="notifications"></span>
+        <Card title="Notifications">
+            <div class="section">
+                <Text appearance={Appearance.Bright} size={Size.Small}>
+                    Default
+                </Text>
+                <div class="grid">
+                    <Notifications position={AbsolutePosition.TopRight} />
+
+                    <Button
+                        appearance={Appearance.Primary}
+                        on:pressed={() => {
+                            notify(Appearance.Primary, SVGShape.Info);
+                        }}
+                        text="Notify Primary"
+                    ></Button>
+
+                    <Button
+                        appearance={Appearance.Secondary}
+                        on:pressed={() => {
+                            notify(Appearance.Secondary, SVGShape.Grapes);
+                        }}
+                        text="Notify Secondary"
+                    ></Button>
+
+                    <Button
+                        appearance={Appearance.Success}
+                        on:pressed={() => {
+                            notify(Appearance.Success, SVGShape.CheckMark);
+                        }}
+                        text="Notify Success"
+                    ></Button>
+
+                    <Button
+                        appearance={Appearance.Info}
+                        on:pressed={() => {
+                            notify(Appearance.Info, SVGShape.Info);
+                        }}
+                        text="Notify Info"
+                    ></Button>
+
+                    <Button
+                        appearance={Appearance.Warning}
+                        on:pressed={() => {
+                            notify(Appearance.Warning, SVGShape.Flag);
+                        }}
+                        text="Notify Warning"
+                    ></Button>
+
+                    <Button
+                        appearance={Appearance.Error}
+                        on:pressed={() => {
+                            notify(Appearance.Error, SVGShape.XMark);
+                        }}
+                        text="Notify Error"
+                    ></Button>
+                </div>
+            </div>
+        </Card>
+
+        <span id="alerts"></span>
+        <Card title="Alert">
             <Text appearance={Appearance.Bright} size={Size.Small}>
                 Default
             </Text>
             <div class="grid">
-                <Badge count={13}>
-                    <Button icon={SVGShape.User} text="Friends"></Button>
-                </Badge>
-
-                <Badge count={999}>
-                    <Button icon={SVGShape.User}></Button>
-                </Badge>
-            </div>
-        </div>
-    </div>
-
-    <div class="category-group row">
-        <Text size={Size.Medium} appearance={Appearance.Muted}>Notifications</Text>
-        <div class="section">
-            <Text appearance={Appearance.Bright} size={Size.Small}>
-                Default
-            </Text>
-            <div class="grid">
-                <Notifications position={AbsolutePosition.TopRight} />
-
-                <Button appearance={Appearance.Primary} on:pressed={() => {
-                    notify(Appearance.Primary, SVGShape.Info)
-                }} text="Notify Primary"></Button>
-
-                <Button appearance={Appearance.Secondary} on:pressed={() => {
-                    notify(Appearance.Secondary, SVGShape.Grapes)
-                }} text="Notify Secondary"></Button>
-
-                <Button appearance={Appearance.Success} on:pressed={() => {
-                    notify(Appearance.Success, SVGShape.CheckMark)
-                }} text="Notify Success"></Button>
-
-                <Button appearance={Appearance.Info} on:pressed={() => {
-                    notify(Appearance.Info, SVGShape.Info)
-                }} text="Notify Info"></Button>
-
-                <Button appearance={Appearance.Warning} on:pressed={() => {
-                    notify(Appearance.Warning, SVGShape.Flag)
-                }} text="Notify Warning"></Button>
-
-                <Button appearance={Appearance.Error} on:pressed={() => {
-                    notify(Appearance.Error, SVGShape.XMark)
-                }} text="Notify Error"></Button>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="category-group row">
-        <Text size={Size.Medium} appearance={Appearance.Muted}>Alert</Text>
-        <div class="section">
-            <Text appearance={Appearance.Bright} size={Size.Small}>
-                Default
-            </Text>
-            <div class="grid">
-                <Alert 
+                <Alert
+                    position={AbsolutePosition.Top}
                     appearance={Appearance.Error}
                     message="This is a mock alert which does nothing."
-                    on:confirm={() => showAlert = false} 
-                    on:deny={() => showAlert = false} 
-                    dismissed={!showAlert}/>
-                <Button appearance={Appearance.Secondary} on:pressed={() => {
-                    showAlert = true;
-                }} text="Trigger Alert"></Button>
+                    on:confirm={() => (showAlert = false)}
+                    on:deny={() => (showAlert = false)}
+                    dismissed={!showAlert}
+                />
+                <Button
+                    appearance={Appearance.Secondary}
+                    on:pressed={() => {
+                        showAlert = true;
+                    }}
+                    text="Trigger Alert"
+                ></Button>
             </div>
-        </div>
+        </Card>
+
+        <span id="keyrecording"></span>
+        <Card title="Keyboard Shortcuts">
+            <div class="section">
+                <Text appearance={Appearance.Bright} size={Size.Small}>
+                    Default
+                </Text>
+                <div class="grid">
+                    <KeyRecording />
+                </div>
+            </div>
+        </Card>
     </div>
-</div>
+</Sidebar>
 
 <style lang="scss">
+    .title {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--gap-less);
+    }
+    .sidebar {
+        display: inline-flex;
+        flex-wrap: wrap;
+        gap: var(--gap-less);
+        padding: 0 var(--padding);
+
+        .nav-buttons {
+            display: inline-flex;
+            flex-wrap: wrap;
+            gap: var(--gap-less);
+        }
+    }
+
     .container {
         display: inline-flex;
         flex-direction: column;
@@ -695,19 +882,14 @@
         flex: 1;
         overflow-x: hidden;
 
-        .category-group {
-            display: inline-flex;
-            flex-direction: column;
-            gap: var(--gap);
-        }
-
         .section {
             display: inline-flex;
             gap: var(--gap);
             flex-direction: column;
             padding: var(--padding-more);
             border-radius: var(--border-radius);
-            background-color: var(--color-background-secondary);
+            background-color: var(--color-background);
+            flex: 1;
 
             .grid {
                 display: flex;

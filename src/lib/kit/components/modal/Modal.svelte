@@ -6,7 +6,7 @@
     import { SVGShape } from "$lib/types/Shapes.js";
     import { createEventDispatcher, onMount } from "svelte";
     import { defaultKind, defaultOpen, defaultTitle } from "./Modal.js";
-    import { browser } from "$app/environment"; // <-- This is the important part
+    import { browser } from "$app/environment";
     import { Size } from "$lib/types/Size.js";
 
     export let kind: ModalKind = defaultKind;

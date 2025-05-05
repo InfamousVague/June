@@ -9,7 +9,7 @@
 <style lang="scss">
     .spacer {
         height: var(--spacer-size);
-        width: var(--spacer-size);
+        width: 100%;
 
         &.size_extra_small {
             --spacer-size: calc(var(--spacer-size) / 1.5);

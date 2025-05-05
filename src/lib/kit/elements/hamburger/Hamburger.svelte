@@ -1,14 +1,18 @@
 <script lang="ts">
     import type { Appearance } from "$lib/types/Appearance.js";
     import type { Size } from "$lib/types/Size.js";
+    import { createEventDispatcher } from "svelte";
     import { defaultOpen, defaultSize, defaultAppearance } from "./Hamburger.js";
 
 	export let open = defaultOpen;
     export let size: Size = defaultSize;
 	export let appearance: Appearance = defaultAppearance;
 
+	const dispatch = createEventDispatcher();
+
 	function toggle() {
 		open = !open;
+		dispatch("toggle", open);
 	}
 </script>
 

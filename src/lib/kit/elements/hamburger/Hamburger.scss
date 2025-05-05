@@ -14,11 +14,11 @@ $appearances: (
 	background: none;
 	border: none;
 	cursor: pointer;
-	padding: var(--padding);
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
     color: var(--text-color-bright);
+	padding: 0;
 
 	.icon {
 		width: var(--text-size-large);
