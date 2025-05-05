@@ -46,6 +46,7 @@ For usage and examples see [USAGE.md](USAGE.md).
 
 ### Layout
 
-- [ ] Card
+- [x] Card
 - [ ] Accordion
-- [ ] Carousel 
+- [ ] Carousel
+- [x] Sidebar

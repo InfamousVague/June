@@ -516,7 +516,7 @@
                 document.documentElement.dataset.theme = theme;
             }}
         />
-        <Text appearance={Appearance.Muted}>UI Kit</Text>
+        <Text appearance={Appearance.Muted}>Elements</Text>
         {#each Array.from(new Set(sections.map((s) => s.category))) as category}
             <span id={category}></span>
             <Card title={toTitle(category)}>
@@ -561,9 +561,24 @@
                             bind:selected={selectedRadio}
                         />
                     </div>
+                {:else if category === "icons"}
+                    <div class="section">
+                        <Text appearance={Appearance.Muted} size={Size.Small}
+                            >Included Shapes</Text
+                        >
+                        <div class="icons">
+                            {#each Object.keys(SVGShape) as shape}
+                            <Tooltip content={shape}>
+                                <Icon icon={SVGShape[shape as keyof typeof SVGShape]} size={Size.ExtraLarge}></Icon>
+                            </Tooltip>
+                            {/each}
+                        </div>
+                    </div>
                 {/if}
             </Card>
         {/each}
+
+        <Text appearance={Appearance.Muted}>Components</Text>
 
         <span id="tooltips"></span>
         <Card title="Tooltips">
@@ -819,25 +834,27 @@
 
         <span id="alerts"></span>
         <Card title="Alert">
-            <Text appearance={Appearance.Bright} size={Size.Small}>
-                Default
-            </Text>
-            <div class="grid">
-                <Alert
-                    position={AbsolutePosition.Top}
-                    appearance={Appearance.Error}
-                    message="This is a mock alert which does nothing."
-                    on:confirm={() => (showAlert = false)}
-                    on:deny={() => (showAlert = false)}
-                    dismissed={!showAlert}
-                />
-                <Button
-                    appearance={Appearance.Secondary}
-                    on:pressed={() => {
-                        showAlert = true;
-                    }}
-                    text="Trigger Alert"
-                ></Button>
+            <div class="section">
+                <Text appearance={Appearance.Bright} size={Size.Small}>
+                    Default
+                </Text>
+                <div class="grid">
+                    <Alert
+                        position={AbsolutePosition.Top}
+                        appearance={Appearance.Error}
+                        message="This is a mock alert which does nothing."
+                        on:confirm={() => (showAlert = false)}
+                        on:deny={() => (showAlert = false)}
+                        dismissed={!showAlert}
+                    />
+                    <Button
+                        appearance={Appearance.Secondary}
+                        on:pressed={() => {
+                            showAlert = true;
+                        }}
+                        text="Trigger Alert"
+                    ></Button>
+                </div>
             </div>
         </Card>
 
@@ -861,6 +878,7 @@
         align-items: center;
         gap: var(--gap-less);
     }
+
     .sidebar {
         display: inline-flex;
         flex-wrap: wrap;
@@ -896,6 +914,12 @@
                 flex-wrap: wrap;
                 gap: 1rem;
                 align-items: flex-end;
+            }
+
+            .icons {
+                display: inline-flex;
+                flex-wrap: wrap;
+                gap: var(--gap-less);
             }
         }
     }
