@@ -524,22 +524,14 @@
 
         <span id="carousel"></span>
         <Card title="Carousel">
-            <div class="section">
-                <Text appearance={Appearance.Bright} size={Size.Small}>
-                    Default
-                </Text>
-                <div class="grid">
-                    <Carousel interval={3000} adaptive>
-                        <div style="background-color: #40407a"></div>
-                        <div style="background-color: #706fd3"></div>
-                        <div style="background-color: #ff793f"></div>
-                        <div style="background-color: #ffb142"></div>
-                    </Carousel>
-                </div>
-            </div>
+            <Carousel interval={3000} adaptive>
+                <img src="/carousel/frame_1.avif" alt="Frame 1">
+                <img src="/carousel/frame_2.avif" alt="Frame 2">
+                <img src="/carousel/frame_3.avif" alt="Frame 3">
+                <img src="/carousel/frame_4.avif" alt="Frame 4">
+            </Carousel>
         </Card>
 
-        <Text appearance={Appearance.Muted}>Elements</Text>
         {#each Array.from(new Set(sections.map((s) => s.category))) as category}
             <span id={category}></span>
             <Card title={toTitle(category)}>
@@ -600,8 +592,6 @@
                 {/if}
             </Card>
         {/each}
-
-        <Text appearance={Appearance.Muted}>Components</Text>
 
         <span id="tooltips"></span>
         <Card title="Tooltips">

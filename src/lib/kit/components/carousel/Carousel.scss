@@ -6,7 +6,6 @@
 		width: 100%;
 	}
 
-	// Fallback for browsers that don’t support aspect-ratio
 	&::before {
 		content: '';
 		display: block;
@@ -22,19 +21,34 @@
         border-radius: var(--border-radius);
 
 		.frame-container {
-			display: flex;
-			width: 100%;
-			height: 100%;
-			transition: transform 0.5s ease;
-
-			:global(div) {
-				min-width: 100%;
-				height: 100%;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-			}
-		}
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease;
+        
+            // Only affect the top-level slotted frames
+            > :global(div) {
+                min-width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-shrink: 0;
+                position: relative;
+                overflow: hidden;
+            }
+        
+            // Target content like images inside each frame
+            :global(img),
+            :global(video),
+            :global(canvas) {
+                min-width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+            }
+        }
+        
 
 		.controls {
 			position: absolute;
