@@ -525,10 +525,10 @@
         <span id="carousel"></span>
         <Card title="Carousel">
             <Carousel interval={3000} adaptive>
-                <img src="/carousel/frame_1.avif" alt="Frame 1">
-                <img src="/carousel/frame_2.avif" alt="Frame 2">
-                <img src="/carousel/frame_3.avif" alt="Frame 3">
-                <img src="/carousel/frame_4.avif" alt="Frame 4">
+                <img src="/june/carousel/frame_1.avif" alt="Frame 1">
+                <img src="/june/carousel/frame_2.avif" alt="Frame 2">
+                <img src="/june/carousel/frame_3.avif" alt="Frame 3">
+                <img src="/june/carousel/frame_4.avif" alt="Frame 4">
             </Carousel>
         </Card>
 
