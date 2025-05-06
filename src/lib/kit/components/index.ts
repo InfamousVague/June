@@ -1,5 +1,6 @@
 export { default as Alert } from "./alert/Alert.svelte";
 export { default as Badge } from "./badge/Badge.svelte";
+export { default as Carousel } from "./carousel/Carousel.svelte";
 export { default as EmojiPicker } from "./emoji_picker/EmojiPicker.svelte";
 export { default as Keyboard } from "./keyboard/Keyboard.svelte";
 export { default as KeybaordRecording } from "./keyrecording/KeyRecording.svelte";

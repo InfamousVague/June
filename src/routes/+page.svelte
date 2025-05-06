@@ -7,6 +7,7 @@
         Modal,
         Alert,
         Badge,
+        Carousel,
     } from "$lib/kit/components/index.js";
     import KeyRecording from "$lib/kit/components/keyrecording/KeyRecording.svelte";
     import Notifications from "$lib/kit/components/notifications/Notifications.svelte";
@@ -502,6 +503,10 @@
                     text="Key Recording"
                     on:pressed={() => scrollToId("keyrecording")}
                 />
+                <Button
+                    text="Carousel"
+                    on:pressed={() => scrollToId("carousel")}
+                />
             </div>
         </div>
     </div>
@@ -516,6 +521,24 @@
                 document.documentElement.dataset.theme = theme;
             }}
         />
+
+        <span id="carousel"></span>
+        <Card title="Carousel">
+            <div class="section">
+                <Text appearance={Appearance.Bright} size={Size.Small}>
+                    Default
+                </Text>
+                <div class="grid">
+                    <Carousel interval={3000} adaptive>
+                        <div style="background-color: #40407a"></div>
+                        <div style="background-color: #706fd3"></div>
+                        <div style="background-color: #ff793f"></div>
+                        <div style="background-color: #ffb142"></div>
+                    </Carousel>
+                </div>
+            </div>
+        </Card>
+
         <Text appearance={Appearance.Muted}>Elements</Text>
         {#each Array.from(new Set(sections.map((s) => s.category))) as category}
             <span id={category}></span>
