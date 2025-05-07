@@ -43,10 +43,12 @@ For usage and examples see [USAGE.md](USAGE.md).
 - [ ] Avatar
 - [ ] Tab Menu
 - [ ] Dropdown Menu
+- [ ] Chatbar
+- [ ] Navigation
 
 ### Layout
 
 - [x] Card
 - [ ] Accordion
-- [ ] Carousel
+- [x] Carousel
 - [x] Sidebar

@@ -7,5 +7,6 @@ export { default as KeybaordRecording } from "./keyrecording/KeyRecording.svelte
 export { default as LanguageSelector } from "./language_selector/LanguageSelector.svelte";
 export { default as MFAInput } from "./mfa_input/MFAInput.svelte";
 export { default as Modal } from "./modal/Modal.svelte";
+export { default as Navigation } from "./navigation/Navigation.svelte";
 export { default as Tooltip } from "./tooltip/Tooltip.svelte";
 export { default as Notifications } from "./notifications/Notifications.svelte";

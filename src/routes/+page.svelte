@@ -10,6 +10,7 @@
         Carousel,
     } from "$lib/kit/components/index.js";
     import KeyRecording from "$lib/kit/components/keyrecording/KeyRecording.svelte";
+    import Navigation from "$lib/kit/components/navigation/Navigation.svelte";
     import Notifications from "$lib/kit/components/notifications/Notifications.svelte";
     import { notifications } from "$lib/kit/components/notifications/store.js";
     import {
@@ -438,7 +439,7 @@
 
 <Sidebar>
     <div slot="title" class="title">
-        <Icon icon={SVGShape.Grapes} size={Size.ExtraLarge} appearance={Appearance.Primary}></Icon>
+        <Icon icon={SVGShape.Junebug} size={Size.ExtraLarge} appearance={Appearance.Primary}></Icon>
         <Text size={Size.Medium} appearance={Appearance.Primary}>June UI Kit</Text>
     </div>
 
@@ -511,6 +512,16 @@
         </div>
     </div>
 
+    <div slot="footer">
+        <Navigation routes={[
+            { to: "/home", name: "Home", icon: SVGShape.Home },
+            { to: "/friends", name: "Friends", icon: SVGShape.Users },
+            { to: "/pulse", name: "Pulse", icon: SVGShape.Pulse },
+            { to: "/notifications", name: "Notifications", icon: SVGShape.Bell },
+            { to: "/settings", name: "Settings", icon: SVGShape.Cog },
+        ]} active={"/pulse"}></Navigation>
+    </div>
+
     <div class="container">
         <Text appearance={Appearance.Muted}>Options</Text>
         <Switch
@@ -524,7 +535,7 @@
 
         <span id="carousel"></span>
         <Card title="Carousel">
-            <Carousel interval={3000} adaptive>
+            <Carousel interval={3000} adaptive showDots={false}>
                 <img src="/june/carousel/frame_1.avif" alt="Frame 1">
                 <img src="/june/carousel/frame_2.avif" alt="Frame 2">
                 <img src="/june/carousel/frame_3.avif" alt="Frame 3">

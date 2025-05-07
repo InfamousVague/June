@@ -6,6 +6,7 @@
 	export let interval: number = 0;         // Auto-slide interval in ms
 	export let size: string = "920px";       // Width if adaptive = false
 	export let adaptive: boolean = false;    // If true, width is 100%
+    export let showDots: boolean = true;     // If true, shows pagination dots
 
 	let currentIndex = 0;
 	let totalFrames = 0;
@@ -80,7 +81,7 @@
 			/>
 		</div>
 
-		{#if totalFrames > 1}
+		{#if totalFrames > 1 && showDots}
 			<div class="indicators">
 				<!-- svelte-ignore a11y_no_static_element_interactions -->
 				<!-- svelte-ignore element_invalid_self_closing_tag -->

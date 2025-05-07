@@ -66,6 +66,12 @@
 
                 footer {
                     flex: 0 1;
+                    display: inline-flex;
+
+                    :global(div) { // Slot
+                        display: inline-flex;
+                        flex: 1;
+                    }
                 }
             }
 

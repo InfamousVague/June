@@ -1,7 +1,8 @@
 .tooltip-wrapper {
     position: relative;
     display: inline-block;
-
+    justify-content: center;
+    
     .tooltip-box {
         position: absolute;
         background-color: var(--color-background-dark);
