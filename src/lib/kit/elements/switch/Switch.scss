@@ -1,30 +1,32 @@
 .switch {
+    --computed-switch-size: var(--switch-size);
+
     user-select: none;
     cursor: pointer;
     position: relative;
     display: inline-block;
-    width: calc(var(--switch-size) * 2);
-    height: var(--switch-size);
-    border-radius: var(--switch-size);
+    width: calc(var(--computed-switch-size) * 2);
+    height: var(--computed-switch-size);
+    border-radius: var(--computed-switch-size);
 
     &.size_extra_small {
-        --switch-size: 1rem;
+        --computed-switch-size: calc(var(--switch-size) * 0.67);
     }
 
     &.size_small {
-        --switch-size: 1.25rem;
+        --computed-switch-size: calc(var(--switch-size) * 0.83);
     }
 
     &.size_medium {
-        --switch-size: 1.5rem;
+        --computed-switch-size: var(--switch-size);
     }
 
     &.size_large {
-        --switch-size: 1.75rem;
+        --computed-switch-size: calc(var(--switch-size) * 1.17);
     }
 
     &.size_extra_large {
-        --switch-size: 2rem;
+        --computed-switch-size: calc(var(--switch-size) * 1.33);
     }
 
     input:disabled + .slider {
@@ -41,12 +43,12 @@
             background-color: var(--color-success);
 
             &:before {
-                transform: translateX(calc(var(--switch-size) + var(--border-size)));
+                transform: translateX(calc(var(--computed-switch-size) + var(--border-size)));
             }
 
             :global(.icon) {
                 transform: translate(
-                    calc(var(--switch-size) + var(--switch-size) * 0.1),
+                    calc(var(--computed-switch-size) + var(--computed-switch-size) * 0.1),
                     -50%
                 );
             }
@@ -63,16 +65,16 @@
         bottom: 0;
         background-color: var(--color-secondary);
         transition: var(--animation-duration-fast);
-        border-radius: var(--switch-size);
+        border-radius: var(--computed-switch-size);
 
         &:before {
             position: absolute;
             content: "";
-            height: calc(var(--switch-size) - var(--border-size));
-            width: calc(var(--switch-size) - var(--border-size));
+            height: calc(var(--computed-switch-size) - var(--border-size));
+            width: calc(var(--computed-switch-size) - var(--border-size));
             left: 0;
             top: var(--border-size);
-            border-radius: var(--switch-size);
+            border-radius: var(--computed-switch-size);
             background-color: var(--text-color-light);
             transition: var(--animation-duration-fast);
         }
@@ -80,8 +82,8 @@
         :global(.icon) {
             position: absolute;
             top: 50%;
-            left: calc(var(--switch-size) * 0.1);
-            font-size: calc(var(--switch-size) * 0.6); // more proportional
+            left: calc(var(--computed-switch-size) * 0.1);
+            font-size: calc(var(--computed-switch-size) * 0.6);
             line-height: 1;
             transform: translateY(-50%);
             pointer-events: none;

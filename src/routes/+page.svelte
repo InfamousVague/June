@@ -1,4 +1,5 @@
 <script lang="ts">
+    import Avatar from "$lib/kit/components/avatar/Avatar.svelte";
     import Breadcrumb from "$lib/kit/components/breadcrumb/Breadcrumb.svelte";
 import {
         MFAInput,
@@ -540,6 +541,11 @@ import {
                     text="Breadcrumb"
                     on:pressed={() => scrollToId("breadcrumb")}
                 />
+                <Button
+                    shape={Shape.Pill} 
+                    text="Avatar"
+                    on:pressed={() => scrollToId("avatar")}
+                />
             </div>
         </div>
     </div>
@@ -924,6 +930,56 @@ import {
                 </Text>
                 <div class="grid">
                     <Breadcrumb route="/settings/users/123/edit" />
+                </div>
+            </div>
+        </Card>
+
+        <span id="avatar"></span>
+        <Card title="Avatar">
+            <div class="section">
+                <Text appearance={Appearance.Bright} size={Size.Small}>
+                    Default
+                </Text>
+                <div class="grid">
+                    <Avatar image="/assets/june.png" />
+                </div>
+            </div>
+            <div class="section">
+                <Text appearance={Appearance.Bright} size={Size.Small}>
+                    Highlight
+                </Text>
+                <div class="grid">
+                    <Avatar image="/assets/june.png" highlight={Highlight.Primary}/>
+                    <Avatar image="/assets/june.png" highlight={Highlight.Secondary}/>
+                    <Avatar image="/assets/june.png" highlight={Highlight.Info}/>
+                    <Avatar image="/assets/june.png" highlight={Highlight.Success}/>
+                    <Avatar image="/assets/june.png" highlight={Highlight.Warning}/>
+                    <Avatar image="/assets/june.png" highlight={Highlight.Error}/>
+                </div>
+            </div>
+            <div class="section">
+                <Text appearance={Appearance.Bright} size={Size.Small}>
+                    Size
+                </Text>
+                <div class="grid">
+                    <Avatar image="/assets/june.png" size={Size.ExtraSmall}/>
+                    <Avatar image="/assets/june.png" size={Size.Small}/>
+                    <Avatar image="/assets/june.png" size={Size.Medium}/>
+                    <Avatar image="/assets/june.png" size={Size.Large}/>
+                    <Avatar image="/assets/june.png" size={Size.ExtraLarge}/>
+                </div>
+            </div>
+            <div class="section">
+                <Text appearance={Appearance.Bright} size={Size.Small}>
+                    Indicator
+                </Text>
+                <div class="grid">
+                    <Avatar image="/assets/june.png" indicator={Appearance.Primary}/>
+                    <Avatar image="/assets/june.png" indicator={Appearance.Secondary}/>
+                    <Avatar image="/assets/june.png" indicator={Appearance.Success}/>
+                    <Avatar image="/assets/june.png" indicator={Appearance.Warning}/>
+                    <Avatar image="/assets/june.png" indicator={Appearance.Info}/>
+                    <Avatar image="/assets/june.png" indicator={Appearance.Error}/>
                 </div>
             </div>
         </Card>

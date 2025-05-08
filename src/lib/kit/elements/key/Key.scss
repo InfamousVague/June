@@ -11,23 +11,25 @@ $appearances: (
 );
 
 div.key {
-    min-width: var(--control-size);
-    min-height: var(--control-size);
+    --computed-control-size: var(--control-size);
+
+    min-width: var(--computed-control-size);
+    min-height: var(--computed-control-size);
     text-transform: uppercase;
     padding-bottom: 4px;
     display: inline-flex;
     height: fit-content;
 
-    >span {
+    > span {
         background-color: var(--color-secondary);
         user-select: none;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        min-width: var(--control-size);
+        min-width: var(--computed-control-size);
         flex: 1;
         padding: var(--padding);
-        height: calc(var(--control-size) - 4px);
+        height: calc(var(--computed-control-size) - 4px);
         border: var(--outline-size) solid var(--text-color);
         border-radius: var(--border-radius);
         font-size: var(--text-size-medium);
@@ -38,57 +40,59 @@ div.key {
     }
 
     &.size_extra_small {
-        --control-size: 1rem;
+        --computed-control-size: calc(var(--control-size) * 0.5);
 
-        >span {
+        > span {
             font-size: var(--text-size-extra-small);
         }
     }
 
     &.size_small {
-        --control-size: 1.5rem;
+        --computed-control-size: calc(var(--control-size) * 0.75);
 
-        >span {
+        > span {
             font-size: var(--text-size-small);
         }
     }
 
     &.size_medium {
-        --control-size: 2rem;
+        --computed-control-size: var(--control-size);
 
-        >span {
+        > span {
             font-size: var(--text-size-medium);
         }
     }
 
     &.size_large {
-        --control-size: 2.5rem;
+        --computed-control-size: calc(var(--control-size) * 1.25);
 
-        >span {
+        > span {
             font-size: var(--text-size-large);
         }
     }
 
     &.size_extra_large {
-        --control-size: 3rem;
+        --computed-control-size: calc(var(--control-size) * 1.5);
 
-        >span {
+        > span {
             font-size: var(--text-size-extra-large);
         }
     }
 
     @each $appearance, $var in $appearances {
         &.appearance_#{$appearance} {
-            >span {
-                background-color: if($appearance ==secondary,
-                        var(--color-background-secondary),
-                        var(--color-secondary));
+            > span {
+                background-color: if($appearance == secondary,
+                    var(--color-background-secondary),
+                    var(--color-secondary));
                 border: var(--outline-size) solid var(#{$var});
                 color: var(#{$var});
-                box-shadow: 0px 5px 0px calc(var(--outline-size) * -1) if($appearance ==secondary,
-                    var(--color-background-secondary),
-                    var(--color-secondary)),
-                0px 4px 0px 0px var(#{$var});
+                box-shadow:
+                    0px 5px 0px calc(var(--outline-size) * -1)
+                        if($appearance == secondary,
+                            var(--color-background-secondary),
+                            var(--color-secondary)),
+                    0px 4px 0px 0px var(#{$var});
             }
         }
     }
