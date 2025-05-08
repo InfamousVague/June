@@ -9,12 +9,13 @@
     padding: 0 var(--padding-more);
     gap: var(--gap);
     height: var(--element-size);
-    min-width: var(--min-control-width);
+    min-width: var(--select-size);
     color: var(--text-color-bright);
     font-size: var(--text-size);
     outline: none;
     cursor: pointer;
     pointer-events: none;
+    
 
     &.simple_appearance_light {
         background-color: var(--color-background-light);
@@ -42,6 +43,8 @@
         gap: var(--gap);
         outline: none;
         cursor: pointer;
+        position: absolute;
+        left: 0;
 
         &.null_selection {
             color: var(--text-color-placeholder);

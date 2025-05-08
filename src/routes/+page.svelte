@@ -1,5 +1,6 @@
 <script lang="ts">
-    import {
+    import Breadcrumb from "$lib/kit/components/breadcrumb/Breadcrumb.svelte";
+import {
         MFAInput,
         Tooltip,
         LanguageSelector,
@@ -13,6 +14,7 @@
     import Navigation from "$lib/kit/components/navigation/Navigation.svelte";
     import Notifications from "$lib/kit/components/notifications/Notifications.svelte";
     import { notifications } from "$lib/kit/components/notifications/store.js";
+    import ThemeSwitcher from "$lib/kit/components/theme_switcher/ThemeSwitcher.svelte";
     import {
         Icon,
         Radio,
@@ -445,68 +447,98 @@
 
     <div slot="body">
         <div class="sidebar">
+            <Text appearance={Appearance.Muted}>Options</Text>
+            <div class="options">
+                <Switch
+                    size={Size.Large}
+                    icons={[SVGShape.Sun, SVGShape.Moon]}
+                    on:toggled={(e) => {
+                        theme = e.detail === BinaryState.On ? "light" : "dark";
+                        document.documentElement.dataset.theme = theme;
+                    }}
+                />
+
+                <ThemeSwitcher />
+            </div>
+            <Spacer />
             <Text appearance={Appearance.Muted}>Elements</Text>
             <div class="nav-buttons">
-                <Button text="Text" on:pressed={() => scrollToId("text")} />
-                <Button text="Icons" on:pressed={() => scrollToId("icons")} />
+                <Button shape={Shape.Pill} text="Text" on:pressed={() => scrollToId("text")} />
+                <Button shape={Shape.Pill} text="Icons" on:pressed={() => scrollToId("icons")} />
                 <Button
+                    shape={Shape.Pill}
                     text="Swatches"
                     on:pressed={() => scrollToId("swatches")}
                 />
-                <Button text="Switch" on:pressed={() => scrollToId("switch")} />
+                <Button shape={Shape.Pill} text="Switch" on:pressed={() => scrollToId("switch")} />
                 <Button
+                    shape={Shape.Pill}
                     text="Hamburger"
                     on:pressed={() => scrollToId("hamburger")}
                 />
                 <Button
+                    shape={Shape.Pill}
                     text="Checkbox"
                     on:pressed={() => scrollToId("checkbox")}
                 />
-                <Button text="Input" on:pressed={() => scrollToId("input")} />
-                <Button text="Select" on:pressed={() => scrollToId("select")} />
-                <Button text="Radio" on:pressed={() => scrollToId("radio")} />
-                <Button text="Button" on:pressed={() => scrollToId("button")} />
-                <Button text="Key" on:pressed={() => scrollToId("key")} />
+                <Button shape={Shape.Pill} text="Input" on:pressed={() => scrollToId("input")} />
+                <Button shape={Shape.Pill} text="Select" on:pressed={() => scrollToId("select")} />
+                <Button shape={Shape.Pill} text="Radio" on:pressed={() => scrollToId("radio")} />
+                <Button shape={Shape.Pill} text="Button" on:pressed={() => scrollToId("button")} />
+                <Button shape={Shape.Pill} text="Key" on:pressed={() => scrollToId("key")} />
                 <Button
+                    shape={Shape.Pill}
                     text="Progress"
                     on:pressed={() => scrollToId("progress")}
                 />
-                <Button text="Range" on:pressed={() => scrollToId("range")} />
-                <Button text="Loader" on:pressed={() => scrollToId("loader")} />
+                <Button shape={Shape.Pill} text="Range" on:pressed={() => scrollToId("range")} />
+                <Button shape={Shape.Pill} text="Loader" on:pressed={() => scrollToId("loader")} />
             </div>
             <Spacer />
             <Text appearance={Appearance.Muted}>Components</Text>
             <div class="nav-buttons">
                 <Button
+                    shape={Shape.Pill} 
                     text="Tooltip"
                     on:pressed={() => scrollToId("tooltips")}
                 />
                 <Button
+                    shape={Shape.Pill} 
                     text="MFA Input"
                     on:pressed={() => scrollToId("mfainput")}
                 />
                 <Button
+                    shape={Shape.Pill} 
                     text="Emoji Picker"
                     on:pressed={() => scrollToId("emojipicker")}
                 />
                 <Button
+                    shape={Shape.Pill} 
                     text="Language Selector"
                     on:pressed={() => scrollToId("languageselector")}
                 />
-                <Button text="Modal" on:pressed={() => scrollToId("modal")} />
-                <Button text="Badges" on:pressed={() => scrollToId("badges")} />
+                <Button shape={Shape.Pill} text="Modal" on:pressed={() => scrollToId("modal")} />
+                <Button shape={Shape.Pill} text="Badges" on:pressed={() => scrollToId("badges")} />
                 <Button
+                    shape={Shape.Pill} 
                     text="Notification"
                     on:pressed={() => scrollToId("notifications")}
                 />
-                <Button text="Alert" on:pressed={() => scrollToId("alerts")} />
+                <Button shape={Shape.Pill} text="Alert" on:pressed={() => scrollToId("alerts")} />
                 <Button
+                    shape={Shape.Pill} 
                     text="Key Recording"
                     on:pressed={() => scrollToId("keyrecording")}
                 />
                 <Button
+                    shape={Shape.Pill} 
                     text="Carousel"
                     on:pressed={() => scrollToId("carousel")}
+                />
+                <Button
+                    shape={Shape.Pill} 
+                    text="Breadcrumb"
+                    on:pressed={() => scrollToId("breadcrumb")}
                 />
             </div>
         </div>
@@ -523,19 +555,9 @@
     </div>
 
     <div class="container">
-        <Text appearance={Appearance.Muted}>Options</Text>
-        <Switch
-            size={Size.Large}
-            icons={[SVGShape.Sun, SVGShape.Moon]}
-            on:toggled={(e) => {
-                theme = e.detail === BinaryState.On ? "light" : "dark";
-                document.documentElement.dataset.theme = theme;
-            }}
-        />
-
         <span id="carousel"></span>
         <Card title="Carousel">
-            <Carousel interval={3000} adaptive showDots={false}>
+            <Carousel interval={3000} adaptive showDots={true}>
                 <img src="/june/carousel/frame_1.avif" alt="Frame 1">
                 <img src="/june/carousel/frame_2.avif" alt="Frame 2">
                 <img src="/june/carousel/frame_3.avif" alt="Frame 3">
@@ -893,7 +915,20 @@
                 </div>
             </div>
         </Card>
+
+        <span id="breadcrumb"></span>
+        <Card title="Breadcrumb">
+            <div class="section">
+                <Text appearance={Appearance.Bright} size={Size.Small}>
+                    Default
+                </Text>
+                <div class="grid">
+                    <Breadcrumb route="/settings/users/123/edit" />
+                </div>
+            </div>
+        </Card>
     </div>
+    
 </Sidebar>
 
 <style lang="scss">
@@ -905,6 +940,7 @@
 
     .sidebar {
         display: inline-flex;
+        flex-direction: column;
         flex-wrap: wrap;
         gap: var(--gap-less);
         padding: 0 var(--padding);
@@ -913,6 +949,12 @@
             display: inline-flex;
             flex-wrap: wrap;
             gap: var(--gap-less);
+        }
+
+        .options {
+            display: inline-flex;
+            flex-direction: column;
+            gap: var(--gap);
         }
     }
 

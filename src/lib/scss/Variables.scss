@@ -80,6 +80,7 @@
     --notification-size: 23rem;
     --sidebar-width: 20rem;
     --sidebar-collapsed-width: 4rem;
+    --select-size: 8rem;
 
     // General
     --blur-radius: 0.25rem;
@@ -105,6 +106,30 @@
 
     // Secondary Elements
     --color-secondary: #e4e4ea;
+    --color-border: #d3d3dc;
+    --color-secondary-disabled: #b6b6c9a7;
+}
+
+:root[data-theme="olivia"] {
+
+    // Text Color overrides
+    --text-color: #edd6e0;
+    --text-color-light: #c4c4c8;
+    --text-color-dark: #ffffff;
+    --text-color-muted: #c6a8a2;
+    --text-color-placeholder: #c6a8a2;
+
+    // Backgrounds
+    --color-background: #11120f;
+    --color-background-secondary: #1d1e1b;
+    --color-background-light: #ffffff;
+    --color-background-dark: #040404;
+    --color-background-opaque: #97979795;
+
+
+    // Secondary Elements
+    --color-primary: #d67584;
+    --color-secondary: #333239;
     --color-border: #d3d3dc;
     --color-secondary-disabled: #b6b6c9a7;
 }

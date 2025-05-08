@@ -1,39 +1,39 @@
 <script lang="ts">
 	import { createEventDispatcher } from "svelte";
-	import { BinaryState, Shape, SimpleApperance, SVGShape, type SelectOption } from "$lib/types/index.js";
+	import type { SelectOption } from "$lib/types/index.js";
+	import { BinaryState, Shape, SimpleApperance, SVGShape } from "$lib/types/index.js";
 	import { Icon } from "../index.js";
 	import { defaultAppearance, defaultShape, defaultState } from "./Select.js";
 
-	export let options: Array<SelectOption> = [];
+	export let options: SelectOption[] = [];
 	export let shape: Shape = defaultShape;
-    export let appearance: SimpleApperance = defaultAppearance;
-	export let defaultValue: string | null = null;
-    export let state: BinaryState = defaultState;
+	export let appearance: SimpleApperance = defaultAppearance;
+	export let state: BinaryState = defaultState;
+
+	export let value: string = "";
 
 	const dispatch = createEventDispatcher();
 
-	let selected: string = defaultValue ?? "";
-
 	function handleChange(event: Event) {
-		selected = (event.target as HTMLSelectElement).value;
-		dispatch("change", selected);
+		const selectedValue = (event.target as HTMLSelectElement).value;
+		dispatch("change", selectedValue);
 	}
 </script>
 
 <div class="select-group {shape} {appearance} {state}">
 	<select
 		name="generic-select"
-        disabled={state === BinaryState.Disabled}
-		class="select {defaultValue === null && selected === "" ? "null_selection" : ""}"
-		bind:value={selected}
+		disabled={state === BinaryState.Disabled}
+		class="select {value === '' ? 'null_selection' : ''}"
+		bind:value
 		on:change={handleChange}
 	>
-		{#if defaultValue === null}
+		{#if value === ""}
 			<option disabled selected value="">Select Option</option>
 		{/if}
 
-		{#each options as { key, value }}
-			<option value={key}>{value}</option>
+		{#each options as { key, value: label }}
+			<option value={key}>{label}</option>
 		{/each}
 	</select>
 	<Icon icon={SVGShape.ChevronDown} />

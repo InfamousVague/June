@@ -23,7 +23,7 @@ For usage and examples see [USAGE.md](USAGE.md).
 - [x] Loader
 - [x] Keyboard Key
 - [ ] Textarea
-- [ ] Breadcrumbs
+- [x] Breadcrumbs
 - [x] Badge
 - [x] Spacer
 
@@ -44,7 +44,9 @@ For usage and examples see [USAGE.md](USAGE.md).
 - [ ] Tab Menu
 - [ ] Dropdown Menu
 - [ ] Chatbar
-- [ ] Navigation
+- [x] Navigation
+- [ ] Notification Drawer
+- [x] Theme Switcher
 
 ### Layout
 

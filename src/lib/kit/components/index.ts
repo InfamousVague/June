@@ -1,5 +1,6 @@
 export { default as Alert } from "./alert/Alert.svelte";
 export { default as Badge } from "./badge/Badge.svelte";
+export { default as Breadcrumb } from "./breadcrumb/Breadcrumb.svelte";
 export { default as Carousel } from "./carousel/Carousel.svelte";
 export { default as EmojiPicker } from "./emoji_picker/EmojiPicker.svelte";
 export { default as Keyboard } from "./keyboard/Keyboard.svelte";
@@ -8,5 +9,6 @@ export { default as LanguageSelector } from "./language_selector/LanguageSelecto
 export { default as MFAInput } from "./mfa_input/MFAInput.svelte";
 export { default as Modal } from "./modal/Modal.svelte";
 export { default as Navigation } from "./navigation/Navigation.svelte";
-export { default as Tooltip } from "./tooltip/Tooltip.svelte";
 export { default as Notifications } from "./notifications/Notifications.svelte";
+export { default as ThemeSwitcher } from "./theme_switcher/ThemeSwitcher.svelte"; 
+export { default as Tooltip } from "./tooltip/Tooltip.svelte";
