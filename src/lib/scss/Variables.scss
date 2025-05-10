@@ -1,3 +1,13 @@
+$size-scales: (
+    size_extra_small: 0.55,
+    size_small: 0.75,
+    size_medium: 1,
+    size_large: 1.25,
+    size_extra_large: 1.45
+);
+
+// TODO: Mixins for consistant scaling across components.
+
 :root {
     // Animations
     --animation-duration: 1s;
@@ -22,6 +32,7 @@
     --hover-modifier: #fff;
     --color-primary: #05b0b9;
     --color-secondary: #333239;
+    --color-secondary-opaque: #3332398d;
     --color-info: #54a0ff;
     --color-success: #1dd1a1;
     --color-warning: #ffc777;
@@ -30,6 +41,7 @@
     --color-background-opaque: #0b0b0b87;
     --color-background-dark: #131316;
     --color-background-secondary: #222127;
+    --color-background-secondary-opaque: #22212779;
     --color-background-light: #cfcdde;
     --color-border: #2b2930;
     --color-secondary-disabled: #565f89a7;

@@ -59,15 +59,19 @@ $highlights: (
             } @else {
                 background-color: var(#{$var});
             }
-
+    
             color: if(
                 $appearance == secondary or $appearance == primary,
                 var(--text-color-light),
                 var(--text-color-dark)
             );
-
+    
             &:hover:not(:disabled) {
-                background-color: color-mix(in srgb, var(#{$var}) 100%, var(--hover-modifier) 20%);
+                @if $appearance == "transparent" {
+                    background-color: var(--color-secondary-opaque);
+                } @else {
+                    background-color: color-mix(in srgb, var(#{$var}) 100%, var(--hover-modifier) 20%);
+                }
             }
         }
     }

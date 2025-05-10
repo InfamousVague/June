@@ -1,6 +1,7 @@
 <script lang="ts">
     import Avatar from "$lib/kit/components/avatar/Avatar.svelte";
     import Breadcrumb from "$lib/kit/components/breadcrumb/Breadcrumb.svelte";
+    import ContextMenu from "$lib/kit/components/context/ContextMenu.svelte";
 import {
         MFAInput,
         Tooltip,
@@ -941,7 +942,7 @@ import {
                     Default
                 </Text>
                 <div class="grid">
-                    <Avatar image="/assets/june.png" />
+                    <Avatar />
                 </div>
             </div>
             <div class="section">
@@ -980,6 +981,20 @@ import {
                     <Avatar image="/assets/june.png" indicator={Appearance.Warning}/>
                     <Avatar image="/assets/june.png" indicator={Appearance.Info}/>
                     <Avatar image="/assets/june.png" indicator={Appearance.Error}/>
+                </div>
+            </div>
+        </Card>
+
+        <span id="context"></span>
+        <Card title="Context">
+            <div class="section">
+                <Text appearance={Appearance.Bright} size={Size.Small}>
+                    Default
+                </Text>
+                <div class="grid">
+                    <ContextMenu>
+                        <Text>Right click me</Text>
+                    </ContextMenu>
                 </div>
             </div>
         </Card>

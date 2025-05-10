@@ -40,13 +40,14 @@ For usage and examples see [USAGE.md](USAGE.md).
 - [ ] Date Picker
 - [x] Toast Notification
 - [x] Alert
-- [ ] Avatar
+- [x] Avatar
 - [ ] Tab Menu
 - [ ] Dropdown Menu
 - [ ] Chatbar
 - [x] Navigation
 - [ ] Notification Drawer
 - [x] Theme Switcher
+- [ ] Context Menu
 
 ### Layout
 

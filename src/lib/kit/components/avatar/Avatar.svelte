@@ -47,6 +47,7 @@ $highlights: (
     border-radius: 50%;
     width: var(--computed-avatar-size);
     height: var(--computed-avatar-size);
+    background-color: var(--color-secondary);
 
     @each $highlight, $var in $highlights {
         &.highlight_#{$highlight} {
