@@ -3,7 +3,7 @@
 	import Text from "$lib/kit/elements/text/Text.svelte";
 	import type { ContextItem } from "$lib/types/Context.js";
 	import { Appearance, Size, SVGShape } from "$lib/types/index.js";
-    import { createEventDispatcher } from "svelte";
+    import { createEventDispatcher, tick } from "svelte";
     import { positionSubmenu } from "./ContextMenu.js";
 
 	export let item: ContextItem;
@@ -14,10 +14,15 @@
 	let openLeft = false;
 	let submenuTop = 0;
 
-	async function showSubmenu() {
+    async function showSubmenu() {
         submenuVisible = true;
 
-        const parent = submenuRef?.parentElement ?? null;
+        await tick(); // Wait for submenu to render
+        await new Promise((resolve) => requestAnimationFrame(resolve)); // Ensure it's painted
+
+        if (!submenuRef) return;
+
+        const parent = submenuRef.parentElement;
         const { openLeft: shouldOpenLeft, submenuTop: top } = await positionSubmenu(submenuRef, parent);
         openLeft = shouldOpenLeft;
         submenuTop = top;

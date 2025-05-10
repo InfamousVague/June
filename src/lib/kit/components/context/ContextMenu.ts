@@ -34,30 +34,32 @@ export async function positionSubmenu(
 ): Promise<{ openLeft: boolean; submenuTop: number }> {
 	await tick();
 
-	// Wait until the submenu has dimensions
-	for (let i = 0; i < 10; i++) {
-		if (ref?.offsetHeight) break;
-		await tick();
-	}
-
 	if (!ref || !parentRef) {
 		return { openLeft: false, submenuTop: 0 };
 	}
 
-	const rect = ref.getBoundingClientRect();
+	const submenuRect = ref.getBoundingClientRect();
 	const parentRect = parentRef.getBoundingClientRect();
 	const viewportWidth = window.innerWidth;
 	const viewportHeight = window.innerHeight;
 
-	const openLeft = rect.left + rect.width > viewportWidth;
+	const submenuHeight = submenuRect.height;
+	const parentTop = parentRect.top;
+	const parentBottom = parentRect.bottom;
+
+	const openLeft = parentRect.right + submenuRect.width > viewportWidth;
 
 	let submenuTop = 0;
-	const overflowBottom = parentRect.top + rect.height > viewportHeight;
 
-	if (overflowBottom) {
-		const maxTop = viewportHeight - rect.height - padding;
-		submenuTop = Math.max(0, maxTop - parentRect.top);
+	if (submenuHeight <= viewportHeight - parentBottom - padding) {
+		submenuTop = 0;
+	} else if (submenuHeight <= parentTop - padding) {
+		submenuTop = parentRect.height - submenuHeight;
+	} else {
+		const availableTop = Math.max(padding, viewportHeight - submenuHeight - padding);
+		submenuTop = Math.min(0, availableTop - parentTop);
 	}
 
 	return { openLeft, submenuTop };
 }
+
