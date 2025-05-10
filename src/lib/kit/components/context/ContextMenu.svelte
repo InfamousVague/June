@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { onMount, tick } from 'svelte';
+    import { createEventDispatcher, onMount, tick } from 'svelte';
     import ContextMenuItem from './ContextMenuItem.svelte';
     import type { ContextItem } from '$lib/types/Context.js';
   
@@ -39,6 +39,12 @@
   
       window.addEventListener('click', handleClickOutside);
     }
+
+    const dispatch = createEventDispatcher();
+
+    function select(item: ContextItem) {
+        dispatch("select", item);
+    }
   </script>
   
   <!-- svelte-ignore a11y_no_static_element_interactions -->
@@ -53,7 +59,7 @@
       style="top: {menuY}px; left: {menuX}px; position: fixed;"
     >
       {#each items as item}
-        <ContextMenuItem {item} />
+        <ContextMenuItem {item} on:select={i => select(i.detail)}/>
       {/each}
     </div>
   {/if}
