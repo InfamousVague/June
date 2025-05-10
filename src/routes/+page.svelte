@@ -2,7 +2,7 @@
     import Avatar from "$lib/kit/components/avatar/Avatar.svelte";
     import Breadcrumb from "$lib/kit/components/breadcrumb/Breadcrumb.svelte";
     import ContextMenu from "$lib/kit/components/context/ContextMenu.svelte";
-import {
+    import {
         MFAInput,
         Tooltip,
         LanguageSelector,
@@ -443,8 +443,14 @@ import {
 
 <Sidebar>
     <div slot="title" class="title">
-        <Icon icon={SVGShape.Junebug} size={Size.ExtraLarge} appearance={Appearance.Primary}></Icon>
-        <Text size={Size.Medium} appearance={Appearance.Primary}>June UI Kit</Text>
+        <Icon
+            icon={SVGShape.Junebug}
+            size={Size.ExtraLarge}
+            appearance={Appearance.Primary}
+        ></Icon>
+        <Text size={Size.Medium} appearance={Appearance.Primary}
+            >June UI Kit</Text
+        >
     </div>
 
     <div slot="body">
@@ -465,14 +471,26 @@ import {
             <Spacer />
             <Text appearance={Appearance.Muted}>Elements</Text>
             <div class="nav-buttons">
-                <Button shape={Shape.Pill} text="Text" on:pressed={() => scrollToId("text")} />
-                <Button shape={Shape.Pill} text="Icons" on:pressed={() => scrollToId("icons")} />
+                <Button
+                    shape={Shape.Pill}
+                    text="Text"
+                    on:pressed={() => scrollToId("text")}
+                />
+                <Button
+                    shape={Shape.Pill}
+                    text="Icons"
+                    on:pressed={() => scrollToId("icons")}
+                />
                 <Button
                     shape={Shape.Pill}
                     text="Swatches"
                     on:pressed={() => scrollToId("swatches")}
                 />
-                <Button shape={Shape.Pill} text="Switch" on:pressed={() => scrollToId("switch")} />
+                <Button
+                    shape={Shape.Pill}
+                    text="Switch"
+                    on:pressed={() => scrollToId("switch")}
+                />
                 <Button
                     shape={Shape.Pill}
                     text="Hamburger"
@@ -483,67 +501,107 @@ import {
                     text="Checkbox"
                     on:pressed={() => scrollToId("checkbox")}
                 />
-                <Button shape={Shape.Pill} text="Input" on:pressed={() => scrollToId("input")} />
-                <Button shape={Shape.Pill} text="Select" on:pressed={() => scrollToId("select")} />
-                <Button shape={Shape.Pill} text="Radio" on:pressed={() => scrollToId("radio")} />
-                <Button shape={Shape.Pill} text="Button" on:pressed={() => scrollToId("button")} />
-                <Button shape={Shape.Pill} text="Key" on:pressed={() => scrollToId("key")} />
+                <Button
+                    shape={Shape.Pill}
+                    text="Input"
+                    on:pressed={() => scrollToId("input")}
+                />
+                <Button
+                    shape={Shape.Pill}
+                    text="Select"
+                    on:pressed={() => scrollToId("select")}
+                />
+                <Button
+                    shape={Shape.Pill}
+                    text="Radio"
+                    on:pressed={() => scrollToId("radio")}
+                />
+                <Button
+                    shape={Shape.Pill}
+                    text="Button"
+                    on:pressed={() => scrollToId("button")}
+                />
+                <Button
+                    shape={Shape.Pill}
+                    text="Key"
+                    on:pressed={() => scrollToId("key")}
+                />
                 <Button
                     shape={Shape.Pill}
                     text="Progress"
                     on:pressed={() => scrollToId("progress")}
                 />
-                <Button shape={Shape.Pill} text="Range" on:pressed={() => scrollToId("range")} />
-                <Button shape={Shape.Pill} text="Loader" on:pressed={() => scrollToId("loader")} />
+                <Button
+                    shape={Shape.Pill}
+                    text="Range"
+                    on:pressed={() => scrollToId("range")}
+                />
+                <Button
+                    shape={Shape.Pill}
+                    text="Loader"
+                    on:pressed={() => scrollToId("loader")}
+                />
             </div>
             <Spacer />
             <Text appearance={Appearance.Muted}>Components</Text>
             <div class="nav-buttons">
                 <Button
-                    shape={Shape.Pill} 
+                    shape={Shape.Pill}
                     text="Tooltip"
                     on:pressed={() => scrollToId("tooltips")}
                 />
                 <Button
-                    shape={Shape.Pill} 
+                    shape={Shape.Pill}
                     text="MFA Input"
                     on:pressed={() => scrollToId("mfainput")}
                 />
                 <Button
-                    shape={Shape.Pill} 
+                    shape={Shape.Pill}
                     text="Emoji Picker"
                     on:pressed={() => scrollToId("emojipicker")}
                 />
                 <Button
-                    shape={Shape.Pill} 
+                    shape={Shape.Pill}
                     text="Language Selector"
                     on:pressed={() => scrollToId("languageselector")}
                 />
-                <Button shape={Shape.Pill} text="Modal" on:pressed={() => scrollToId("modal")} />
-                <Button shape={Shape.Pill} text="Badges" on:pressed={() => scrollToId("badges")} />
                 <Button
-                    shape={Shape.Pill} 
+                    shape={Shape.Pill}
+                    text="Modal"
+                    on:pressed={() => scrollToId("modal")}
+                />
+                <Button
+                    shape={Shape.Pill}
+                    text="Badges"
+                    on:pressed={() => scrollToId("badges")}
+                />
+                <Button
+                    shape={Shape.Pill}
                     text="Notification"
                     on:pressed={() => scrollToId("notifications")}
                 />
-                <Button shape={Shape.Pill} text="Alert" on:pressed={() => scrollToId("alerts")} />
                 <Button
-                    shape={Shape.Pill} 
+                    shape={Shape.Pill}
+                    text="Alert"
+                    on:pressed={() => scrollToId("alerts")}
+                />
+                <Button
+                    shape={Shape.Pill}
                     text="Key Recording"
                     on:pressed={() => scrollToId("keyrecording")}
                 />
                 <Button
-                    shape={Shape.Pill} 
+                    shape={Shape.Pill}
                     text="Carousel"
                     on:pressed={() => scrollToId("carousel")}
                 />
                 <Button
-                    shape={Shape.Pill} 
+                    shape={Shape.Pill}
                     text="Breadcrumb"
                     on:pressed={() => scrollToId("breadcrumb")}
                 />
                 <Button
-                    shape={Shape.Pill} 
+                    shape={Shape.Pill}
                     text="Avatar"
                     on:pressed={() => scrollToId("avatar")}
                 />
@@ -552,23 +610,30 @@ import {
     </div>
 
     <div slot="footer">
-        <Navigation routes={[
-            { to: "/home", name: "Home", icon: SVGShape.Home },
-            { to: "/friends", name: "Friends", icon: SVGShape.Users },
-            { to: "/pulse", name: "Pulse", icon: SVGShape.Pulse },
-            { to: "/notifications", name: "Notifications", icon: SVGShape.Bell },
-            { to: "/settings", name: "Settings", icon: SVGShape.Cog },
-        ]} active={"/pulse"}></Navigation>
+        <Navigation
+            routes={[
+                { to: "/home", name: "Home", icon: SVGShape.Home },
+                { to: "/friends", name: "Friends", icon: SVGShape.Users },
+                { to: "/pulse", name: "Pulse", icon: SVGShape.Pulse },
+                {
+                    to: "/notifications",
+                    name: "Notifications",
+                    icon: SVGShape.Bell,
+                },
+                { to: "/settings", name: "Settings", icon: SVGShape.Cog },
+            ]}
+            active={"/pulse"}
+        ></Navigation>
     </div>
 
     <div class="container">
         <span id="carousel"></span>
         <Card title="Carousel">
             <Carousel interval={3000} adaptive showDots={true}>
-                <img src="/june/carousel/frame_1.avif" alt="Frame 1">
-                <img src="/june/carousel/frame_2.avif" alt="Frame 2">
-                <img src="/june/carousel/frame_3.avif" alt="Frame 3">
-                <img src="/june/carousel/frame_4.avif" alt="Frame 4">
+                <img src="/june/carousel/frame_1.avif" alt="Frame 1" />
+                <img src="/june/carousel/frame_2.avif" alt="Frame 2" />
+                <img src="/june/carousel/frame_3.avif" alt="Frame 3" />
+                <img src="/june/carousel/frame_4.avif" alt="Frame 4" />
             </Carousel>
         </Card>
 
@@ -623,9 +688,14 @@ import {
                         >
                         <div class="icons">
                             {#each Object.keys(SVGShape) as shape}
-                            <Tooltip content={shape}>
-                                <Icon icon={SVGShape[shape as keyof typeof SVGShape]} size={Size.ExtraLarge}></Icon>
-                            </Tooltip>
+                                <Tooltip content={shape}>
+                                    <Icon
+                                        icon={SVGShape[
+                                            shape as keyof typeof SVGShape
+                                        ]}
+                                        size={Size.ExtraLarge}
+                                    ></Icon>
+                                </Tooltip>
                             {/each}
                         </div>
                     </div>
@@ -923,6 +993,72 @@ import {
             </div>
         </Card>
 
+        <span id="context"></span>
+        <Card title="Context">
+            <div class="section">
+                <Text appearance={Appearance.Bright} size={Size.Small}>
+                    Default
+                </Text>
+                <div class="grid">
+                    <ContextMenu
+                        items={[
+                            {
+                                id: "subscribe",
+                                text: "Notify",
+                                icon: SVGShape.Bell,
+                            },
+                            {
+                                id: "feed",
+                                text: "Add to Feed",
+                                icon: SVGShape.Pulse,
+                            },
+                            {
+                                id: "download",
+                                text: "Download",
+                                icon: SVGShape.Download,
+                            },
+                            {
+                                id: "admin",
+                                text: "Admin",
+                                icon: SVGShape.Cog,
+                                children: [
+                                    {
+                                        id: "report",
+                                        text: "Report",
+                                        icon: SVGShape.Flag,
+                                    },
+                                    {
+                                        id: "delete",
+                                        text: "Delete",
+                                        icon: SVGShape.XMark,
+                                    },
+                                    {
+                                        id: "more",
+                                        text: "More",
+                                        icon: SVGShape.Plus,
+                                        children: [
+                                            {
+                                                id: "bug",
+                                                text: "Flag Bug",
+                                                icon: SVGShape.Junebug,
+                                            },
+                                            {
+                                                id: "grapes",
+                                                text: "Grapes",
+                                                icon: SVGShape.Grapes,
+                                            },
+                                        ],
+                                    },
+                                ],
+                            },
+                        ]}
+                    >
+                        <Text>Right click me</Text>
+                    </ContextMenu>
+                </div>
+            </div>
+        </Card>
+
         <span id="breadcrumb"></span>
         <Card title="Breadcrumb">
             <div class="section">
@@ -950,12 +1086,30 @@ import {
                     Highlight
                 </Text>
                 <div class="grid">
-                    <Avatar image="/assets/june.png" highlight={Highlight.Primary}/>
-                    <Avatar image="/assets/june.png" highlight={Highlight.Secondary}/>
-                    <Avatar image="/assets/june.png" highlight={Highlight.Info}/>
-                    <Avatar image="/assets/june.png" highlight={Highlight.Success}/>
-                    <Avatar image="/assets/june.png" highlight={Highlight.Warning}/>
-                    <Avatar image="/assets/june.png" highlight={Highlight.Error}/>
+                    <Avatar
+                        image="/assets/june.png"
+                        highlight={Highlight.Primary}
+                    />
+                    <Avatar
+                        image="/assets/june.png"
+                        highlight={Highlight.Secondary}
+                    />
+                    <Avatar
+                        image="/assets/june.png"
+                        highlight={Highlight.Info}
+                    />
+                    <Avatar
+                        image="/assets/june.png"
+                        highlight={Highlight.Success}
+                    />
+                    <Avatar
+                        image="/assets/june.png"
+                        highlight={Highlight.Warning}
+                    />
+                    <Avatar
+                        image="/assets/june.png"
+                        highlight={Highlight.Error}
+                    />
                 </div>
             </div>
             <div class="section">
@@ -963,11 +1117,11 @@ import {
                     Size
                 </Text>
                 <div class="grid">
-                    <Avatar image="/assets/june.png" size={Size.ExtraSmall}/>
-                    <Avatar image="/assets/june.png" size={Size.Small}/>
-                    <Avatar image="/assets/june.png" size={Size.Medium}/>
-                    <Avatar image="/assets/june.png" size={Size.Large}/>
-                    <Avatar image="/assets/june.png" size={Size.ExtraLarge}/>
+                    <Avatar image="/assets/june.png" size={Size.ExtraSmall} />
+                    <Avatar image="/assets/june.png" size={Size.Small} />
+                    <Avatar image="/assets/june.png" size={Size.Medium} />
+                    <Avatar image="/assets/june.png" size={Size.Large} />
+                    <Avatar image="/assets/june.png" size={Size.ExtraLarge} />
                 </div>
             </div>
             <div class="section">
@@ -975,31 +1129,34 @@ import {
                     Indicator
                 </Text>
                 <div class="grid">
-                    <Avatar image="/assets/june.png" indicator={Appearance.Primary}/>
-                    <Avatar image="/assets/june.png" indicator={Appearance.Secondary}/>
-                    <Avatar image="/assets/june.png" indicator={Appearance.Success}/>
-                    <Avatar image="/assets/june.png" indicator={Appearance.Warning}/>
-                    <Avatar image="/assets/june.png" indicator={Appearance.Info}/>
-                    <Avatar image="/assets/june.png" indicator={Appearance.Error}/>
-                </div>
-            </div>
-        </Card>
-
-        <span id="context"></span>
-        <Card title="Context">
-            <div class="section">
-                <Text appearance={Appearance.Bright} size={Size.Small}>
-                    Default
-                </Text>
-                <div class="grid">
-                    <ContextMenu>
-                        <Text>Right click me</Text>
-                    </ContextMenu>
+                    <Avatar
+                        image="/assets/june.png"
+                        indicator={Appearance.Primary}
+                    />
+                    <Avatar
+                        image="/assets/june.png"
+                        indicator={Appearance.Secondary}
+                    />
+                    <Avatar
+                        image="/assets/june.png"
+                        indicator={Appearance.Success}
+                    />
+                    <Avatar
+                        image="/assets/june.png"
+                        indicator={Appearance.Warning}
+                    />
+                    <Avatar
+                        image="/assets/june.png"
+                        indicator={Appearance.Info}
+                    />
+                    <Avatar
+                        image="/assets/june.png"
+                        indicator={Appearance.Error}
+                    />
                 </div>
             </div>
         </Card>
     </div>
-    
 </Sidebar>
 
 <style lang="scss">
