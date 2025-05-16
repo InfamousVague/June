@@ -1,0 +1,36 @@
+:root[data-theme="synthwave84"] {
+    // Text Colors
+    --text-color: #f1fcff;
+    --text-color-light: #ffffff;
+    --text-color-dark: #0f0f1b;
+    --text-color-muted: #9d7cd8;
+    --text-color-placeholder: #8172b2;
+
+    // Backgrounds
+    --color-background: #2b213a;
+    --color-background-secondary: #3b2e59;
+    --color-background-light: #a599e9;
+    --color-background-dark: #1e1b2d;
+    --color-background-opaque: #2b213acc;
+
+    // Primary & Secondary
+    --color-primary: #f700ff; // Neon pink
+    --color-secondary: #513e7e;
+    --color-secondary-opaque: #3b2e5999;
+    --color-secondary-disabled: #9d7cd877;
+    --color-border: #815ac0;
+
+    // Status Colors
+    --color-info: #36f9f6;     // Aqua neon
+    --color-success: #72f1b8;  // Mint neon
+    --color-warning: #fede5d;  // Warm neon yellow
+    --color-error: #ff6ac1;    // Soft neon red-pink
+
+    // Generic Colors (retro neon palette)
+    --color-red: #ff6ac1;
+    --color-yellow: #fede5d;
+    --color-green: #72f1b8;
+    --color-blue: #36f9f6;
+    --color-purple: #c792ea;
+    --color-pink: #f700ff;
+}

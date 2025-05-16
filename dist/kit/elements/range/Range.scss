@@ -1,0 +1,115 @@
+$appearances: (
+    primary: --color-primary,
+    secondary: --color-secondary,
+    info: --color-info,
+    success: --color-success,
+    warning: --color-warning,
+    error: --color-error,
+    bright: --text-color-light,
+    muted: --text-color-muted,
+    inherit: inherit
+);
+
+$sizes: (
+    extra_small: --text-size-extra-small,
+    small: --text-size-small,
+    medium: --text-size-medium,
+    large: --text-size-large,
+    extra_large: --text-size-extra-large
+);
+
+.range-wrapper {
+    display: flex;
+    min-width: var(--min-progress-width);
+    align-items: center;
+    gap: var(--gap);
+
+    &.size_extra_small {
+        --control-size: 1rem;
+    }
+
+    &.size_small {
+        --control-size: 1.25rem;
+    }
+
+    &.size_medium {
+        --control-size: 1.5rem;
+    }
+
+    &.size_large {
+        --control-size: 1.75rem;
+    }
+
+    &.size_extra_large {
+        --control-size: 2rem;
+    }
+
+
+    input[type="range"] {
+        width: 100%;
+        -webkit-appearance: none;
+        appearance: none;
+        height: calc(var(--control-size) / 1.75);
+        border-radius: var(--border-radius-pill);
+        background: linear-gradient(
+            to right,
+            var(--color-accent, var(--color-primary)) 0%,
+            var(--color-accent, var(--color-primary)) var(--fill-percent),
+            var(--color-secondary, var(--color-secondary)) var(--fill-percent),
+            var(--color-secondary, var(--color-secondary)) 100%
+        );
+        outline: none;
+        transition: background var(--animation-duration-fast) ease;
+        cursor: pointer;
+    }
+    
+    input[type="range"]::-webkit-slider-thumb {
+        width: 100%;
+        -webkit-appearance: none;
+        appearance: none;
+        border-radius: var(--border-radius-pill);
+        height: var(--control-size);
+        width: var(--control-size);
+        background: var(--text-color-light);
+        border: none;
+        transition: transform var(--animation-duration-fast) ease;
+        cursor: pointer;
+    }
+    
+    input[type="range"]::-moz-range-thumb {
+        height: var(--control-size);
+        width: var(--control-size);
+        background: var(--text-color-light);
+        border: none;
+        border-radius: var(--border-radius-pill);
+        transition: transform var(--animation-duration-fast) ease;
+        cursor: pointer;
+    }
+    
+    input[type="range"]::-moz-range-track {
+        background: transparent;
+        height: var(control-size);
+        border-radius: var(--border-radius-pill);
+    }
+    
+    .range-value {
+        font-size: var(--text-size-small);
+        color: var(--text-color-muted);
+        min-width: 2ch;
+        text-align: right;
+    }
+
+    @each $appearance, $var in $appearances {
+        &.appearance_#{$appearance} {
+            input[type="range"] {
+                background: linear-gradient(
+                    to right,
+                    var(#{$var}) 0%,
+                    var(#{$var}) var(--fill-percent),
+                    var(--color-secondary, var(--color-secondary)) var(--fill-percent),
+                    var(--color-secondary, var(--color-secondary)) 100%
+                );
+            }
+        }
+    }
+}

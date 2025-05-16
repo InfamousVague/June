@@ -1,0 +1,35 @@
+:root[data-theme="coexist"] {
+    // Text Colors
+    --text-color: #2d0000;                  // Deep maroon for dark text
+    --text-color-bright: #fffefb;           // Nearly white
+    --text-color-dark: #3a0f0f;             // Softer version of maroon
+    --text-color-muted: #b56e6e;            // Muted rose
+    --text-color-placeholder: #afabab;      // Neutral light gray
+
+    // Backgrounds
+    --color-background: #281412;            // Cream
+    --color-background-secondary: #fbf7e4;  // Light pastel yellow
+    --color-background-light: #ffefd3;      // Slightly darker cream
+    --color-background-dark: #ebd8b7;       // Aged parchment
+    --color-background-opaque: #fdf8e3cc;   // Translucent cream
+
+    // Primary & Secondary
+    --color-primary: #ff3c1f;               // Neon red (from COEXIST)
+    --color-secondary: #540600;             // Aqua (from STORAGE)
+    --color-border: #300509;                // Deep maroon (border, like text)
+    --color-secondary-disabled: #00dbc388;  // Transparent aqua
+
+    // Status Colors (adapted from palette)
+    --color-info: #00dbc3;                  // Aqua
+    --color-success: #ffd100;               // Yellow (from square)
+    --color-warning: #ff3c1f;               // Reused as warning (aggressive red)
+    --color-error: #6b0014;                 // Deep maroon for error
+
+    // Generic Colors
+    --color-red: #ff3c1f;
+    --color-yellow: #ffd100;
+    --color-green: #00dbc3;
+    --color-blue: #006d6d;                  // Darkened aqua for contrast
+    --color-purple: #57002e;                // Very deep plum (derived from maroon)
+    --color-pink: #ff7b7b;                  // Soft highlighter pink (for fun accents)
+}

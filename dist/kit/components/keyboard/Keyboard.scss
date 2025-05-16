@@ -1,0 +1,17 @@
+.keyboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--gap);
+}
+
+.row {
+    display: flex;
+    gap: 8px;
+}
+
+@media (max-width: 600px) {
+    .keyboard {
+        transform: scale(0.8);
+    }
+}

@@ -1,0 +1,89 @@
+$appearances: (
+    primary: --color-primary,
+    secondary: --color-secondary,
+    info: --color-info,
+    "transparent": transparent,
+    success: --color-success,
+    warning: --color-warning,
+    bright: --text-color-light,
+    muted: --text-color-muted,
+    error: --color-error
+);
+
+.progress-container {
+    // Base value
+    --computed-control-size: var(--control-size);
+    height: var(--computed-control-size);
+    min-width: var(--min-progress-width);
+    background-color: var(--color-secondary);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    position: relative;
+
+    &.size_extra_small {
+        --computed-control-size: calc(var(--control-size) * 0.67);
+    }
+
+    &.size_small {
+        --computed-control-size: calc(var(--control-size) * 0.83);
+    }
+
+    &.size_medium {
+        --computed-control-size: var(--control-size);
+    }
+
+    &.size_large {
+        --computed-control-size: calc(var(--control-size) * 1.17);
+    }
+
+    &.size_extra_large {
+        --computed-control-size: calc(var(--control-size) * 1.33);
+    }
+
+    &.shape_pill {
+        border-radius: var(--border-radius-pill);
+    }
+
+    .progress-bar {
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+
+        &.animated::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -150%;
+            height: 100%;
+            width: 150%;
+            animation: sweep 2s infinite linear;
+            background: linear-gradient(
+                120deg,
+                transparent 0%,
+                var(--progress-glow) 50%,
+                transparent 100%
+            );
+        }
+    }
+
+    @each $appearance, $var in $appearances {
+        &.appearance_#{$appearance} {
+            .progress-bar {
+                background: var(#{$var});
+            }
+
+            .progress-bar.animated {
+                --progress-glow: color-mix(in srgb, var(#{$var}) 70%, var(--hover-modifier));
+            }
+        }
+    }
+}
+
+@keyframes sweep {
+    from {
+        left: -150%;
+    }
+    to {
+        left: 100%;
+    }
+}

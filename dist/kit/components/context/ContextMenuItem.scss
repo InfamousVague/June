@@ -1,0 +1,15 @@
+.submenu-indicator {
+    margin-left: auto;
+    padding-left: 0.5rem;
+}
+
+.submenu {
+    position: absolute;
+    z-index: 1000;
+    background-color: var(--color-background-dark);
+    border-radius: var(--border-radius);
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+}

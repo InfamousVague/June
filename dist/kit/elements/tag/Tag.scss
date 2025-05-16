@@ -1,0 +1,134 @@
+
+$appearances: (
+    primary: --color-primary,
+    secondary: --color-secondary,
+    info: --color-info,
+    "transparent": transparent,
+    success: --color-success,
+    warning: --color-warning,
+    bright: --text-color-light,
+    muted: --text-color-muted,
+    error: --color-error
+);
+
+$sizes: (
+    extra_small: --text-size-extra-small,
+    small: --text-size-small,
+    medium: --text-size-medium,
+    large: --text-size-large,
+    extra_large: --text-size-extra-large
+);
+
+$highlights: (
+    primary: --color-primary,
+    secondary: --color-secondary,
+    info: --color-info,
+    success: --color-success,
+    warning: --color-warning,
+    error: --color-error
+);
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--padding-less) var(--padding) var(--padding-less) 0;
+    background-color: var(--color-secondary);
+    color: var(--color-tag-text, white);
+    border-radius: var(--border-radius);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    margin-left: 1rem;
+    position: relative;
+    font-size: var(--text-size-medium);
+    line-height: 1;
+    gap: 0.4em;
+    overflow: visible;
+    padding-left: 0.2rem;
+    border: none;
+
+    &.no_hole {
+        border-radius: var(--border-radius);
+        padding: var(--padding-less) var(--padding) var(--padding-less) var(--padding);
+        margin-left: 0;
+    }
+
+    .hole {
+        position: absolute;
+        left: -1.5em;
+        width: 1.5rem;
+        height: 100%;
+        background-color: var(--color-secondary);
+        border-radius: 0;
+        border-top-left-radius: var(--border-radius);
+        border-bottom-left-radius: var(--border-radius);
+        mask-image: radial-gradient(circle 0.3em at 50% 50%, transparent 0.3em, black 0);
+        mask-composite: exclude;
+        -webkit-mask-image: radial-gradient(circle 0.3em at 50% 50%, transparent 0.3em, black 0);
+        -webkit-mask-composite: destination-out;
+    }
+
+    @each $appearance, $var in $appearances {
+        &.appearance_#{$appearance} {
+            background-color: var(#{$var});
+
+            .hole {
+                background-color: var(#{$var});
+            }
+
+            color: if(
+                $appearance == secondary or $appearance == primary,
+                var(--text-color-light),
+                var(--text-color-dark)
+            );
+        }
+    }
+
+    @each $highlight, $var in $highlights {
+        border: var(--outline-size) solid var(--text-color-light);
+
+        &.highlight_#{$highlight} {
+            border: var(--outline-size) solid var(#{$var});
+            border-left: none;
+            .hole { 
+                border: var(--outline-size) solid var(#{$var});
+                border-right: none;
+            }
+        }
+
+        &.highlight_none {
+            border: none;
+        }
+    }
+
+
+    @each $size, $var in $sizes {
+        &.size_#{$size} {
+            font-size: if($size == inherit, inherit, var(#{$var}));
+        }
+    }
+    
+
+    &.size_extra_small {
+        padding-left: 0.5rem;
+    }
+
+    &.size_small {
+        padding-left: 0.3rem;
+    }
+
+    &.size_large {
+        padding-left: 0.35rem;
+        .hole {
+            position: absolute;
+            left: -1.4rem;
+        }
+    }
+
+    &.size_extra_large {
+        padding-left: 0.5rem;
+        .hole {
+            position: absolute;
+            left: -1.4rem;
+        }
+    }
+}

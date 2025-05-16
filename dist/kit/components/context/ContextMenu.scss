@@ -1,0 +1,15 @@
+.wrapper {
+    display: contents;
+}
+
+.context {
+    background-color: var(--color-background-dark);
+    border-radius: var(--border-radius);
+    padding: 0.5rem;
+    z-index: 1000;
+    width: fit-content;
+    height: fit-content;
+    display: inline-flex;
+    flex-direction: column;
+    gap: var(--gap);
+}

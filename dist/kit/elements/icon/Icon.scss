@@ -1,0 +1,84 @@
+$appearances: (
+    primary: --color-primary,
+    secondary: --color-secondary,
+    info: --color-info,
+    "transparent": transparent,
+    success: --color-success,
+    warning: --color-warning,
+    bright: --text-color-light,
+    muted: --text-color-muted,
+    error: --color-error
+);
+
+
+@keyframes pulse {
+    0% {
+        opacity: 0.25;
+    }
+
+    25% {
+        opacity: 0.75;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.25;
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.icon {
+    width: 1rem;
+    height: 1rem;
+
+    &.animation_pulse {
+        animation: pulse var(--animation-duration) linear infinite;
+    }
+
+    &.animation_spin {
+        animation: spin var(--animation-duration) linear infinite;
+    }
+
+    &.size_extra_small {
+        min-width: var(--text-size-extra-small);
+        min-height: var(--text-size-extra-small);
+    }
+
+    &.size_small {
+        min-width: var(--text-size-small);
+        min-height: var(--text-size-small);
+    }
+
+    &.size_medium {
+        min-width: var(--text-size-medium);
+        min-height: var(--text-size-medium);
+    }
+
+    &.size_large {
+        min-width: var(--text-size-large);
+        min-height: var(--text-size-large);
+    }
+
+    &.size_extra_large {
+        min-width: var(--text-size-extra-large);
+        min-height: var(--text-size-extra-large);
+    }
+
+    @each $appearance, $var in $appearances {
+        &.appearance_#{$appearance} {
+            color: var(#{$var});
+        }
+    }
+}

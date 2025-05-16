@@ -1,0 +1,113 @@
+// Themes
+@use "./themes/Dracula.scss";
+@use "./themes/Olivia.scss";
+@use "./themes/Tokyo.scss";
+@use "./themes/Synthwave.scss";
+@use "./themes/Light.scss";
+@use "./themes/Lumen.scss";
+@use "./themes/Coexist.scss";
+
+$size-scales: (
+    size_extra_small: 0.55,
+    size_small: 0.75,
+    size_medium: 1,
+    size_large: 1.25,
+    size_extra_large: 1.45
+);
+
+// TODO: Mixins for consistant scaling across components.
+
+:root {
+    // Animations
+    --animation-duration: 1s;
+    --animation-duration-fast: 0.2s;
+
+    // Text Color
+    --text-color: #b8b8bc;
+    --text-color-light: #fbfbfe;
+    --text-color-dark: #000000;
+    --text-color-muted: #71748f;
+    --text-color-placeholder: #818187;
+    --text-color-placeholder-light: #505056;
+
+    // Text Size
+    --text-size-extra-small: 0.75rem;
+    --text-size-small: 0.85rem;
+    --text-size-medium: 1rem;
+    --text-size-large: 1.5rem;
+    --text-size-extra-large: 2rem;
+    
+    // Colors
+    --hover-modifier: #fff;
+    --color-primary: #05b0b9;
+    --color-secondary: #333239;
+    --color-secondary-opaque: #3332398d;
+    --color-info: #54a0ff;
+    --color-success: #1dd1a1;
+    --color-warning: #ffc777;
+    --color-error: #ef4343;
+    --color-background: #1c1b21;
+    --color-background-opaque: #0b0b0b87;
+    --color-background-dark: #131316;
+    --color-background-secondary: #222127;
+    --color-background-secondary-opaque: #22212779;
+    --color-background-light: #cfcdde;
+    --color-border: #2b2930;
+    --color-secondary-disabled: #565f89a7;
+
+    // Elements
+    --color-tooltip: #000;
+    
+
+    // Generic Colors
+    --color-red: #ff3838;
+    --color-yellow: #fff200;
+    --color-green: #32ff7e;
+    --color-blue: #18dcff;
+    --color-purple: #7d5fff;
+    --color-pink: #ffcccc;
+
+    // Spacing
+    --padding-less: 0.25rem;
+    --padding: 0.5rem;
+    --padding-more: 1rem;
+
+    --margin-less: 1rem;
+    --margin: 2rem;
+    --margin-more: 3rem;
+
+    --gap-more: 1.5rem;
+    --gap: 1rem;
+    --gap-less: 0.5rem;
+
+
+    // Elements
+    --border-size: 1px;
+    --border-radius: 0.33rem;
+    --border-radius-small: 0.2rem;
+    --border-radius-large: 2rem;
+    --border-radius-pill: 4rem;
+    --outline-size: 2px;
+    --control-size: 1.5rem;
+    --element-size: 2.5rem;
+    --min-control-width: 4rem;
+    --disabled-opacity-modifier: 0.5;
+    --switch-size: 1.5rem;
+    --min-progress-width: 16rem;
+    --min-volume-width: 10rem;
+    --emoji-picker-width: 28rem;
+    --emoji-picker-height: 30rem;
+    --modal-size: 25rem;
+    --min-modal-width: 15rem;
+    --min-modal-height: 15rem;
+    --spacer-size: 2.5rem;
+    --notification-size: 23rem;
+    --sidebar-width: 20rem;
+    --sidebar-collapsed-width: 4rem;
+    --select-size: 8rem;
+    --avatar-size: 4rem;
+
+    // General
+    --blur-radius: 0.25rem;
+    --shadow: 4px 8px 14px var(--color-background-opaque);
+}

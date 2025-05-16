@@ -1,0 +1,88 @@
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0;
+
+    .modal_mask {
+        position: fixed;
+        inset: 0;
+        background-color: var(--color-background-opaque);
+        backdrop-filter: blur(var(--blur-radius));
+    }
+
+    .body {
+        background-color: var(--color-background);
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: var(--border-radius);
+        display: flex;
+        flex-direction: column;
+        padding: var(--padding-more);
+        width: 90vw;
+        max-width: 600px;
+        min-width: 0;
+        max-height: 90vh;
+        overflow-y: auto;
+
+        .titlebar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: var(--padding);
+            margin-bottom: var(--padding);
+            border-bottom: 1px solid var(--color-border-light);
+            width: 100%;
+
+            .dummy {
+                visibility: hidden;
+            }
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            padding: var(--padding) 0 0 0;
+        }
+    }
+
+    &.open {
+        pointer-events: all;
+        opacity: 1;
+    }
+
+    &.slide_modal {
+        .body {
+            position: fixed;
+            bottom: 0;
+            top: unset;
+            left: 50%;
+            transform: translateX(-50%) translateY(100%);
+            width: 90vw;
+            max-width: 600px;
+            min-width: 0;
+            max-height: 90vh;
+            background-color: var(--color-background);
+            padding: var(--padding-more);
+            display: flex;
+            flex-direction: column;
+            border-top-left-radius: var(--border-radius);
+            border-top-right-radius: var(--border-radius);
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            transition: transform 300ms ease, opacity 300ms ease;
+            overflow: hidden;
+            height: auto;
+        }
+
+        &.open {
+            .body {
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+    }
+}

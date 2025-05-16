@@ -67,6 +67,7 @@
 		"svelte"
 	],
 	"dependencies": {
-		"@emoji-mart/data": "^1.2.1"
+		"@emoji-mart/data": "^1.2.1",
+		"@sveltejs/kit": "2.21.0"
 	}
 }

@@ -1,0 +1,442 @@
+<script lang="ts">
+	import {
+		Button,
+		Range,
+		Input,
+		Text,
+		Icon,
+	} from "../../elements/index.js";
+	import { SVGShape, Appearance, Size } from "../../../types/index.js";
+	import {
+		emojiData,
+		defaultEmoji,
+		filterEmojis,
+		clickOutside,
+		updateEmojiUsage,
+		loadFrequentlyUsed,
+		tabIcons,
+	} from "./EmojiPicker.js";
+	import { onMount, tick } from "svelte";
+
+	export let open: boolean = false;
+	function toggle() {
+		open = !open;
+	}
+
+	let emojiScale = 2.2;
+	let searchTerm = "";
+	let hoveredEmoji = defaultEmoji;
+	let showSkinTones = false;
+	let selectedSkinToneIndex = 0;
+	let skinTonePool = [
+		"wave", "hand", "spock-hand", "call_me_hand",
+		"facepunch", "index_pointing_at_the_viewer",
+		"handshake", "i_love_you_hand_sign"
+	];
+    let iconPool = ["😂", "😍", "😜", "🙃", "😤", "🫠", "🙂", "😳", "🥺"];
+    let icon = "🙂";
+	let skintoneEmoji = emojiData.emojis["call_me_hand"];
+	let frequentlyUsedIds: string[] = [];
+	let selectedCategory: string | null = "frequently-used";
+	let listWrapRef: HTMLDivElement;
+	let disableScrollUpdate = false;
+
+    let searchInputRef: Input | null = null;
+
+	onMount(() => {
+		frequentlyUsedIds = loadFrequentlyUsed();
+		randomizeSkintoneEmoji();
+	});
+
+	$: if (open) {
+		randomizeSkintoneEmoji();
+        randomizeIcon();
+	}
+
+	function randomizeSkintoneEmoji() {
+		const random = skinTonePool[Math.floor(Math.random() * skinTonePool.length)];
+		const chosen = emojiData.emojis[random];
+		if (chosen && chosen.skins?.length > 1) {
+			skintoneEmoji = chosen;
+		}
+	}
+
+    function randomizeIcon() {
+		const random = iconPool[Math.floor(Math.random() * iconPool.length)];
+        icon = random;
+	}
+
+	function handleHover(id: string) {
+		hoveredEmoji = emojiData.emojis[id];
+	}
+
+	function handleEmojiClick(id: string) {
+		frequentlyUsedIds = updateEmojiUsage(id, frequentlyUsedIds);
+	}
+
+	async function scrollToCategory(id: string) {
+		selectedCategory = id;
+		disableScrollUpdate = true;
+		await tick();
+
+		const el = document.getElementById(`category-${id}`);
+		el?.scrollIntoView({ behavior: "smooth", block: "start" });
+
+		setTimeout(() => {
+			disableScrollUpdate = false;
+		}, 300);
+	}
+
+	function handleScroll() {
+		if (disableScrollUpdate || !listWrapRef) return;
+
+		const categoryElements = Array.from(
+			listWrapRef.querySelectorAll(".category")
+		) as HTMLElement[];
+
+		let closestCategory: string | null = null;
+		let minDistance = Infinity;
+
+		for (const el of categoryElements) {
+			const rect = el.getBoundingClientRect();
+			const containerRect = listWrapRef.getBoundingClientRect();
+			const distance = Math.abs(rect.top - containerRect.top);
+
+			if (distance < minDistance) {
+				minDistance = distance;
+				closestCategory = el.id.replace("category-", "");
+			}
+		}
+
+		if (closestCategory && closestCategory !== selectedCategory) {
+			selectedCategory = closestCategory;
+		}
+	}
+
+    function clearSearch() {
+		searchTerm = "";
+        if (searchInputRef) {
+            const realInput = searchInputRef.getInputElement();
+            if (realInput) realInput.value = "";   
+        }
+	}
+</script>
+
+<div class="emoji_picker" style={`--emoji-size: ${emojiScale}rem`}>
+	<div class="trigger-wrap">
+		<div class="picker" class:open use:clickOutside={() => (open = false)}>
+			<div class="controls">
+				<div class="header">
+					<Input
+						size={Size.Medium}
+						icon={SVGShape.Search}
+						on:input={(v) => (searchTerm = v.detail)}
+						placeholder="Search emojis..."
+                        iconRight={SVGShape.Backspace}
+                        bind:this={searchInputRef}
+                        on:rightIconPressed={clearSearch}
+					/>
+					<Button
+						simple
+						on:pressed={() => (showSkinTones = !showSkinTones)}
+						appearance={Appearance.Transparent}
+					>
+						<span class="skin_tone_selector">
+							{skintoneEmoji.skins[selectedSkinToneIndex].native}
+						</span>
+					</Button>
+				</div>
+
+				{#if showSkinTones}
+					<div
+						class="skin_tone_selector_options open"
+						use:clickOutside={() => (showSkinTones = false)}
+					>
+						<div class="skin_tones">
+							{#each skintoneEmoji.skins as skin, index}
+								<button
+									type="button"
+									class="emoji option"
+									aria-label={`Skin tone ${index + 1}`}
+									on:click={() => {
+										selectedSkinToneIndex = index;
+										showSkinTones = false;
+									}}
+								>
+									{skin.native}
+								</button>
+							{/each}
+						</div>
+					</div>
+				{/if}
+			</div>
+
+			<div class="tab-row">
+				{#if frequentlyUsedIds.length > 0}
+					<button on:click={() => scrollToCategory("frequently-used")}>
+						<Icon
+							icon={SVGShape.Heart}
+							appearance={selectedCategory === "frequently-used"
+								? Appearance.Bright
+								: Appearance.Muted}
+							size={Size.Large}
+						/>
+					</button>
+				{/if}
+				{#each emojiData.categories as category}
+					<button on:click={() => scrollToCategory(category.id)}>
+						<Icon
+							icon={tabIcons[category.id as keyof typeof tabIcons]}
+							appearance={selectedCategory === category.id
+								? Appearance.Bright
+								: Appearance.Muted}
+							size={Size.Large}
+						/>
+					</button>
+				{/each}
+			</div>
+
+			<div class="list-wrap" bind:this={listWrapRef} on:scroll={handleScroll}>
+				<div class="list">
+                    {#if frequentlyUsedIds.length > 0 && searchTerm.trim() === ""}
+						<div class="category frequently-used" id="category-frequently-used">
+							<Text appearance={Appearance.Muted} size={Size.Small}>FREQUENTLY USED</Text>
+							<div class="emojis">
+								{#each frequentlyUsedIds as emojiId}
+									<button
+										type="button"
+										class="emoji"
+										aria-label={`Use emoji ${emojiData.emojis[emojiId].name}`}
+										on:click={() => handleEmojiClick(emojiId)}
+										on:mouseenter={() => handleHover(emojiId)}
+										on:mouseleave={() => (hoveredEmoji = defaultEmoji)}
+									>
+										{emojiData.emojis[emojiId].skins[selectedSkinToneIndex]?.native ||
+											emojiData.emojis[emojiId].skins[0].native}
+									</button>
+								{/each}
+							</div>
+						</div>
+					{/if}
+
+					{#each emojiData.categories as category (category.id)}
+						{#if filterEmojis(searchTerm, category).length > 0}
+							<div class="category" id={`category-${category.id}`}>
+								<Text appearance={Appearance.Muted} size={Size.Small}>
+									{category.id.toUpperCase()}
+								</Text>
+								<div class="emojis">
+									{#each filterEmojis(searchTerm, category) as emojiId}
+										<button
+											type="button"
+											class="emoji"
+											aria-label={`Use emoji ${emojiData.emojis[emojiId].name}`}
+											on:click={() => handleEmojiClick(emojiId)}
+											on:mouseenter={() => handleHover(emojiId)}
+											on:mouseleave={() => (hoveredEmoji = defaultEmoji)}
+										>
+											{emojiData.emojis[emojiId].skins[selectedSkinToneIndex]?.native ||
+												emojiData.emojis[emojiId].skins[0].native}
+										</button>
+									{/each}
+								</div>
+							</div>
+						{/if}
+					{/each}
+				</div>
+			</div>
+
+			<div class="controls">
+				{#if hoveredEmoji}
+					<div class="hover-info">
+						<span class="emoji-preview">{hoveredEmoji.skins[0].native}</span>
+						<div class="details">
+							<Text size={Size.Medium} appearance={Appearance.Inherit}>
+								{hoveredEmoji.name}
+							</Text>
+							<Text size={Size.Medium} appearance={Appearance.Muted}>
+								:{hoveredEmoji.id}:
+							</Text>
+						</div>
+					</div>
+				{/if}
+				<div class="scale">
+					<Text appearance={Appearance.Muted} size={Size.Small}>
+						Emoji Scale ({emojiScale}x)
+					</Text>
+					<Range
+						min={1}
+						max={4}
+						step={0.1}
+						bind:value={emojiScale}
+						size={Size.ExtraSmall}
+                        appearance={Appearance.Muted}
+					/>
+				</div>
+			</div>
+		</div>
+
+		<Button
+            simple
+			on:pressed={toggle}
+			size={Size.Medium}
+			appearance={Appearance.Secondary}
+		>
+            {icon}
+        </Button>
+	</div>
+</div>
+
+<style>.emoji_picker {
+  --emoji-picker-z-index: 1000;
+}
+.emoji_picker .trigger-wrap {
+  position: relative;
+  display: inline-block;
+}
+.emoji_picker .picker {
+  display: none;
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  width: var(--emoji-picker-width);
+  min-height: var(--emoji-picker-height);
+  background-color: var(--color-background);
+  border-radius: var(--border-radius);
+  padding: var(--padding-more);
+  z-index: var(--emoji-picker-z-index);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+.emoji_picker .picker .tab-row {
+  display: flex;
+  padding: var(--padding-less) var(--padding);
+  overflow-x: auto;
+  overflow-y: hidden;
+  height: var(--control-size);
+  align-items: center;
+  box-sizing: border-box;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+.emoji_picker .picker .tab-row button {
+  border: none;
+  padding: none;
+  background: transparent;
+}
+.emoji_picker .picker .controls {
+  flex: 0 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  position: relative;
+}
+.emoji_picker .picker .controls .header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--gap-less);
+}
+.emoji_picker .picker .controls .header :global(.input-group) {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.emoji_picker .picker .controls .header .skin_tone_selector {
+  font-size: 1.5rem;
+}
+.emoji_picker .picker .controls .skin_tone_selector_options {
+  display: none;
+  font-size: var(--emoji-size);
+  justify-content: flex-end;
+  gap: var(--gap-less);
+  background-color: var(--color-background-opaque);
+  position: absolute;
+  right: 0;
+  border-radius: var(--border-radius-pill);
+  padding: var(--padding-less) var(--padding-more);
+  top: calc(100% - 0.25rem);
+  z-index: 1001;
+  backdrop-filter: blur(var(--blur-radius));
+}
+.emoji_picker .picker .controls .skin_tone_selector_options .skin_tones {
+  display: inline-flex;
+  gap: var(--gap-less);
+}
+.emoji_picker .picker .controls .skin_tone_selector_options .skin_tones .option {
+  cursor: pointer;
+  font-size: 2rem;
+  background: none;
+  border: none;
+}
+.emoji_picker .picker .controls .skin_tone_selector_options.open {
+  display: inline-flex;
+}
+.emoji_picker .picker .controls .scale {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--gap-less);
+}
+.emoji_picker .picker .controls .hover-info {
+  display: flex;
+  align-items: center;
+  gap: var(--gap);
+  padding: var(--padding);
+  margin-top: auto;
+  position: absolute;
+  background-color: var(--color-background-opaque);
+  backdrop-filter: blur(var(--blur-radius));
+  right: 0;
+  left: 0;
+  bottom: calc(100% + 1rem);
+  border-radius: var(--border-radius);
+  margin: var(--padding-less) var(--padding);
+}
+.emoji_picker .picker .controls .hover-info .emoji-preview {
+  font-size: 2.5rem;
+  line-height: 1;
+}
+.emoji_picker .picker .controls .hover-info .details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.emoji_picker .picker.open {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: var(--gap);
+  height: 100%;
+}
+.emoji_picker .picker.open .list-wrap {
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: var(--padding-more);
+  scrollbar-gutter: stable both-edges;
+}
+.emoji_picker .picker.open .list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  margin-bottom: 5rem;
+}
+.emoji_picker .picker.open .list .category {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+.emoji_picker .picker.open .list .category .emojis {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--emoji-size), 1fr));
+  gap: var(--gap-less);
+  justify-items: center;
+}
+.emoji_picker .picker.open .list .category .emojis .emoji {
+  font-size: var(--emoji-size);
+  transition: font-size var(--animation-duration-fast) ease;
+  cursor: pointer;
+  background: none;
+  border: none;
+}</style>

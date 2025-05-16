@@ -1,0 +1,126 @@
+:root {
+    --checkmark-width: 6px;
+    --checkmark-height: 12px;
+}
+
+%input-reset {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+%control-base {
+    position: relative;
+    width: var(--computed-control-size);
+    height: var(--computed-control-size);
+    min-width: var(--computed-control-size);
+    min-height: var(--computed-control-size);
+    border: var(--outline-size) solid var(--color-primary);
+}
+
+%control-hover {
+    &:hover {
+        transform: scale(1.05);
+        border-color: var(--hover-color);
+    }
+}
+
+.checkbox {
+    position: relative;
+    display: flex;
+    gap: var(--spacing-sm);
+    cursor: pointer;
+    transition: all var(--animation-duration-fast) ease;
+
+    --computed-control-size: var(--control-size);
+    --computed-checkmark-width: var(--checkmark-width);
+    --computed-checkmark-height: var(--checkmark-height);
+
+    &.size_extra_small {
+        --computed-control-size: calc(var(--control-size) * 0.55);
+        --computed-checkmark-width: calc(var(--checkmark-width) * 0.55);
+        --computed-checkmark-height: calc(var(--checkmark-height) * 0.55);
+    }
+
+    &.size_small {
+        --computed-control-size: calc(var(--control-size) * 0.75);
+        --computed-checkmark-width: calc(var(--checkmark-width) * 0.75);
+        --computed-checkmark-height: calc(var(--checkmark-height) * 0.75);
+    }
+
+    &.size_medium {
+        --computed-control-size: var(--control-size);
+        --computed-checkmark-width: var(--checkmark-width);
+        --computed-checkmark-height: var(--checkmark-height);
+    }
+
+    &.size_large {
+        --computed-control-size: calc(var(--control-size) * 1.25);
+        --computed-checkmark-width: calc(var(--checkmark-width) * 1.25);
+        --computed-checkmark-height: calc(var(--checkmark-height) * 1.25);
+    }
+
+    &.size_extra_large {
+        --computed-control-size: calc(var(--control-size) * 1.45);
+        --computed-checkmark-width: calc(var(--checkmark-width) * 1.45);
+        --computed-checkmark-height: calc(var(--checkmark-height) * 1.45);
+    }
+
+    .checkbox-input {
+        @extend %input-reset;
+    }
+
+    .checkbox-control {
+        @extend %control-base;
+        border-radius: var(--border-radius);
+        background-color: transparent;
+        transition:
+            background-color var(--animation-duration-fast) ease,
+            border-color var(--animation-duration-fast) ease;
+
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            transition:
+                transform var(--animation-duration-fast) ease,
+                opacity var(--animation-duration-fast) ease;
+            will-change: transform, opacity;
+        }
+
+        &::after {
+            left: 50%;
+            top: 45%;
+            width: var(--computed-checkmark-width);
+            height: var(--computed-checkmark-height);
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: translate(-50%, -50%) rotate(45deg) scale(0);
+            opacity: 0;
+        }
+    }
+
+    .checkbox-input:checked ~ .checkbox-control {
+        background-color: var(--color-primary);
+        border-color: var(--color-primary);
+
+        &::after {
+            transform: translate(-50%, -50%) rotate(45deg) scale(1);
+            opacity: 1;
+        }
+    }
+
+    .checkbox-input:disabled ~ .checkbox-control {
+        opacity: var(--disabled-opacity-modifier);
+        cursor: not-allowed;
+    }
+
+    .checkbox-input:disabled ~ .checkbox-control::after {
+        pointer-events: none;
+    }
+
+    .checkbox-input:disabled ~ * {
+        pointer-events: none;
+    }
+}

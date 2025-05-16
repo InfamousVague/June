@@ -1,0 +1,87 @@
+$appearances: (
+    primary: --text-color,
+    secondary: --text-color-muted,
+    info: --color-info,
+    success: --color-success,
+    warning: --color-warning,
+    error: --color-error,
+    bright: --text-color-light,
+    muted: --text-color-muted,
+    inherit: inherit
+);
+
+$sizes: (
+    extra_small: --text-size-extra-small,
+    small: --text-size-small,
+    medium: --text-size-medium,
+    large: --text-size-large,
+    extra_large: --text-size-extra-large
+);
+
+@keyframes loading-sweep {
+    0% { background-position: 100% 0; }
+    100% { background-position: -100% 0; }
+}
+
+
+.text {
+    margin: 0;
+    padding: 0;
+    line-height: 100%;
+  
+    @each $appearance, $var in $appearances {
+        &.appearance_#{$appearance} {
+            color: if($appearance == inherit, inherit, var(#{$var}));
+        }
+    }
+
+
+    @each $size, $var in $sizes {
+        &.size_#{$size} {
+            font-size: if($size == inherit, inherit, var(#{$var}));
+            height: if($size == inherit, inherit, var(#{$var}));
+        }
+    }
+
+    &.loading {
+        display: inline-block;
+        min-width: 150px;
+        max-width: 100%;
+        min-height: var(--text-size-medium);
+        border-radius: var(--border-radius-small);
+        background: linear-gradient(
+            90deg,
+            var(--color-secondary) 0%,
+            var(--text-color) 40%,
+            var(--color-secondary) 41%,
+            var(--color-secondary) 100%
+        );
+        background-size: 200% 100%;
+        animation: loading-sweep var(--animation-duration) infinite ease;
+    } 
+
+    &.text_style_bold {
+        font-weight: bold;
+    }
+
+    &.text_style_italic {
+        font-style: italic;
+    }
+
+    &.text_style_underline {
+        text-decoration: underline;
+    }
+
+    &.text_style_strike {
+        text-decoration: line-through;
+    }
+
+    &.padded {
+        padding: 0 var(--padding);
+    }
+
+    &.interactable {
+        cursor: pointer;
+    }
+}
+

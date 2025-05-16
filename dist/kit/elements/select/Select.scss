@@ -1,0 +1,66 @@
+.select-group {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: var(--color-secondary);
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 0 var(--padding-more);
+    gap: var(--gap);
+    height: var(--element-size);
+    min-width: var(--select-size);
+    color: var(--text-color-bright);
+    font-size: var(--text-size);
+    outline: none;
+    cursor: pointer;
+    pointer-events: none;
+    
+
+    &.simple_appearance_light {
+        background-color: var(--color-background-light);
+        color: var(--text-color-dark);
+
+        .select {
+            &.null_selection {
+                color: var(--text-color-placeholder-light);
+            }
+        }
+    }
+
+    .select {
+        pointer-events: all;
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+        border: none;
+        appearance: none;
+        color: var(--text-color-bright);
+        font-size: var(--text-size);
+        padding: 0 var(--padding-more);
+        display: inline-flex;
+        align-items: center;
+        gap: var(--gap);
+        outline: none;
+        cursor: pointer;
+        position: absolute;
+        left: 0;
+
+        &.null_selection {
+            color: var(--text-color-placeholder);
+        }
+    }
+
+    &.binary_state_disabled {
+        opacity: var(--disabled-opacity-modifier);
+        cursor: not-allowed;
+
+        .select {
+            cursor: not-allowed;
+        }
+    }
+
+    &.shape_pill {
+        border-radius: var(--border-radius-pill);
+    }
+}

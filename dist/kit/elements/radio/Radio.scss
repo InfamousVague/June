@@ -1,0 +1,105 @@
+/* Variables */
+:root {
+    --radio-dot-size: 12px;
+}
+%input-reset {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+%control-base {
+    position: relative;
+    width: var(--computed-control-size);
+    height: var(--computed-control-size);
+    min-width: var(--computed-control-size);
+    min-height: var(--computed-control-size);
+    border: var(--border-size) solid var(--color-primary);
+    transition: all var(--animation-duration-fast) linear;
+}
+
+.radio {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: var(--gap);
+    cursor: pointer;
+
+    // Use original variable names, but compute from base
+    --computed-control-size: var(--control-size);
+    --computed-radio-dot-size: var(--radio-dot-size);
+
+    &.size_extra_small {
+        --computed-control-size: calc(var(--control-size) * 0.55);
+        --computed-radio-dot-size: calc(var(--radio-dot-size) * 0.55);
+    }
+
+    &.size_small {
+        --computed-control-size: calc(var(--control-size) * 0.75);
+        --computed-radio-dot-size: calc(var(--radio-dot-size) * 0.75);
+    }
+
+    &.size_medium {
+        --computed-control-size: var(--control-size);
+        --computed-radio-dot-size: var(--radio-dot-size);
+    }
+
+    &.size_large {
+        --computed-control-size: calc(var(--control-size) * 1.25);
+        --computed-radio-dot-size: calc(var(--radio-dot-size) * 1.25);
+    }
+
+    &.size_extra_large {
+        --computed-control-size: calc(var(--control-size) * 1.45);
+        --computed-radio-dot-size: calc(var(--radio-dot-size) * 1.45);
+    }
+
+    .radio-input {
+        @extend %input-reset;
+    }
+
+    .radio-control {
+        @extend %control-base;
+        border-radius: 50%;
+
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            transition: transform var(--animation-duration-fast) linear,
+                opacity var(--animation-duration-fast) linear;
+            will-change: transform, opacity;
+        }
+
+        &::after {
+            top: 50%;
+            left: 50%;
+            width: var(--computed-radio-dot-size);
+            height: var(--computed-radio-dot-size);
+            border-radius: 50%;
+            background-color: white;
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 0;
+        }
+    }
+
+    .radio-input:checked ~ .radio-control {
+        background-color: var(--color-primary);
+        border-color: var(--color-primary);
+
+        &::before {
+            animation: ripple 240ms linear;
+        }
+
+        &::after {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+    }
+
+    .radio-input:disabled ~ .radio-control {
+        opacity: var(--disabled-opacity-modifier);
+        cursor: not-allowed;
+    }
+}

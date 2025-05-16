@@ -1,0 +1,12 @@
+import { Appearance, Shape, Highlight } from "../../../types/Appearance.js";
+import { Size } from "../../../types/Size.js";
+import { State } from "../../../types/State.js";
+export declare const defaultPlaceholder: string;
+export declare const defaultSize: Size;
+export declare const defaultState: State;
+export declare const defaultShape: Shape;
+export declare const defaultAppearance: Appearance;
+export declare const defaultHighlight: Highlight;
+export declare function handleInput(event: Event, charLimit: number | null, numeric: boolean, dispatch: (type: string, detail?: any) => void): void;
+export declare function handleBeforeInput(event: InputEvent, charLimit: number | null, numeric: boolean): void;
+export declare function forwardKeyEvent(event: KeyboardEvent, dispatch: (type: string, detail?: any) => void): void;
