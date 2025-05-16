@@ -26,6 +26,11 @@ For usage and examples see [USAGE.md](USAGE.md).
 - [x] Breadcrumbs
 - [x] Badge
 - [x] Spacer
+- [ ] Seperator
+- [ ] Link
+- [ ] Rating Stars
+- [ ] Stepper Input
+- [x] Tag
 
 ### Components
 
@@ -41,17 +46,28 @@ For usage and examples see [USAGE.md](USAGE.md).
 - [x] Toast Notification
 - [x] Alert
 - [x] Avatar
+- [ ] Avatar Group
 - [ ] Tab Menu
 - [ ] Dropdown Menu
 - [ ] Chatbar
 - [x] Navigation
 - [ ] Notification Drawer
 - [x] Theme Switcher
-- [ ] Context Menu
+- [x] Context Menu
+- [ ] Embed
+- [ ] Pagination
+- [ ] Search Bar
+- [ ] Empty Content
+- [ ] Image Cropper
+- [ ] QR
 
 ### Layout
 
 - [x] Card
-- [ ] Accordion
+- [x] Accordion
 - [x] Carousel
 - [x] Sidebar
+- [ ] Grid System
+- [ ] Stack
+- [ ] Sticky Header/Footer
+- [ ] Masonry/Grid List

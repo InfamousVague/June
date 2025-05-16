@@ -1,5 +1,6 @@
 <script lang="ts">
     import Hamburger from "$lib/kit/elements/hamburger/Hamburger.svelte";
+    import { Appearance } from "$lib/types/Appearance.js";
 
     export let open: boolean = true;
 
@@ -16,7 +17,7 @@
                     <slot name="title" class="title"></slot>
                 </div>
             {/if}
-            <Hamburger {open} on:toggle={toggleSidebar} />
+            <Hamburger {open} on:toggle={toggleSidebar} appearance={Appearance.Muted} />
         </div>
 
         <div class="inner">
@@ -26,7 +27,7 @@
                 </header>
 
                 <div class="body">
-                    <slot name="body" />
+                    <slot name="body" class="body"/>
                 </div>
 
                 <footer>

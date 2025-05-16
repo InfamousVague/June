@@ -1,0 +1,36 @@
+:root[data-theme="lumenvoid"] {
+    // Text Colors
+    --text-color: #d1ecf9;
+    --text-color-light: #ffffff;
+    --text-color-dark: #101317;
+    --text-color-muted: #7f9cae;
+    --text-color-placeholder: #5c6b77;
+
+    // Backgrounds
+    --color-background: #0d1117;
+    --color-background-secondary: #141b24;
+    --color-background-light: #1e2a36;
+    --color-background-dark: #080c10;
+    --color-background-opaque: #0d1117cc;
+
+    // Primary & Secondary
+    --color-primary: #00e3c1; // Radiant aqua
+    --color-secondary: #1e2a36;
+    --color-secondary-opaque: #1e2a3699;
+    --color-secondary-disabled: #7f9cae88;
+    --color-border: #1f3947;
+
+    // Status Colors
+    --color-info: #46a7f9;    // Cool sky
+    --color-success: #22c55e; // Emerald
+    --color-warning: #ffb547; // Burnt gold
+    --color-error: #f94d5c;   // Signal red
+
+    // Generic Colors
+    --color-red: #f94d5c;
+    --color-yellow: #ffb547;
+    --color-green: #22c55e;
+    --color-blue: #46a7f9;
+    --color-purple: #ad6eff;
+    --color-pink: #ff8fcf;
+}

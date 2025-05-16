@@ -1,3 +1,12 @@
+// Themes
+@use "./themes/Dracula.scss";
+@use "./themes/Olivia.scss";
+@use "./themes/Tokyo.scss";
+@use "./themes/Synthwave.scss";
+@use "./themes/Light.scss";
+@use "./themes/Lumen.scss";
+@use "./themes/Coexist.scss";
+
 $size-scales: (
     size_extra_small: 0.55,
     size_small: 0.75,
@@ -45,6 +54,9 @@ $size-scales: (
     --color-background-light: #cfcdde;
     --color-border: #2b2930;
     --color-secondary-disabled: #565f89a7;
+
+    // Elements
+    --color-tooltip: #000;
     
 
     // Generic Colors
@@ -98,51 +110,4 @@ $size-scales: (
     // General
     --blur-radius: 0.25rem;
     --shadow: 4px 8px 14px var(--color-background-opaque);
-}
-
-:root[data-theme="light"] {
-    // Text Color overrides
-    --text-color: #1c1c1e;
-    --text-color-light: #1c1c1e;
-    --text-color-dark: #ffffff;
-    --text-color-muted: #63636d;
-    --text-color-placeholder: #9a9aa0;
-
-    // Backgrounds
-    --color-background: #ffffff;
-    --color-background-secondary: #f0f0f5;
-    --color-background-light: #ffffff;
-    --color-background-dark: #c8c8c8;
-    --color-background-opaque: #97979795;
-
-
-
-    // Secondary Elements
-    --color-secondary: #e4e4ea;
-    --color-border: #d3d3dc;
-    --color-secondary-disabled: #b6b6c9a7;
-}
-
-:root[data-theme="olivia"] {
-
-    // Text Color overrides
-    --text-color: #edd6e0;
-    --text-color-light: #c4c4c8;
-    --text-color-dark: #ffffff;
-    --text-color-muted: #c6a8a2;
-    --text-color-placeholder: #c6a8a2;
-
-    // Backgrounds
-    --color-background: #11120f;
-    --color-background-secondary: #1d1e1b;
-    --color-background-light: #ffffff;
-    --color-background-dark: #040404;
-    --color-background-opaque: #97979795;
-
-
-    // Secondary Elements
-    --color-primary: #d67584;
-    --color-secondary: #333239;
-    --color-border: #d3d3dc;
-    --color-secondary-disabled: #b6b6c9a7;
 }

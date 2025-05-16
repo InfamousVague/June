@@ -8,7 +8,12 @@
 	const themes: SelectOption[] = [
 		{ key: "dark", value: "Dark" },
 		{ key: "light", value: "Light" },
-		{ key: "olivia", value: "Olivia" }
+		{ key: "coexist", value: "Coex.ist" },
+		{ key: "olivia", value: "Olivia" },
+		{ key: "dracula", value: "Dracula" },
+        { key: "tokyo", value: "Tokyo" },
+        { key: "synthwave84", value: "Synthwave '84" },
+        { key: "lumenvoid", value: "Lumen Void" },
 	];
 
 	let selectedThemeKey: string = themes[0].key;

@@ -16,6 +16,7 @@
     import Navigation from "$lib/kit/components/navigation/Navigation.svelte";
     import Notifications from "$lib/kit/components/notifications/Notifications.svelte";
     import { notifications } from "$lib/kit/components/notifications/store.js";
+    import Pagination from "$lib/kit/components/pagination/Pagination.svelte";
     import ThemeSwitcher from "$lib/kit/components/theme_switcher/ThemeSwitcher.svelte";
     import {
         Icon,
@@ -33,8 +34,12 @@
         Select,
         Swatch,
         Hamburger,
+        Tag,
     } from "$lib/kit/elements/index.js";
+    import Link from "$lib/kit/elements/link/Link.svelte";
     import Spacer from "$lib/kit/elements/spacer/Spacer.svelte";
+    import Accordion from "$lib/kit/layout/accordion/Accordion.svelte";
+    import AccordionItem from "$lib/kit/layout/accordion/AccordionItem.svelte";
     import Card from "$lib/kit/layout/card/Card.svelte";
     import Sidebar from "$lib/kit/layout/sidebar/Sidebar.svelte";
     import {
@@ -368,6 +373,45 @@
             key: "appearance",
         },
 
+        // Tag
+        {
+            category: "tag",
+            title: "Appearance",
+            component: Tag,
+            items: appearances,
+            key: "appearance",
+        },
+        {
+            category: "tag",
+            title: "Size",
+            component: Tag,
+            items: sizes,
+            key: "size",
+        },
+        {
+            category: "tag",
+            title: "Highlight",
+            component: Tag,
+            items: highlights,
+            key: "highlight",
+        },
+
+        // Link
+        {
+            category: "link",
+            title: "Appearance",
+            component: Link,
+            items: appearances,
+            key: "appearance",
+        },
+        {
+            category: "link",
+            title: "Size",
+            component: Link,
+            items: sizes,
+            key: "size",
+        },
+
         // Progress
         {
             category: "progress",
@@ -439,6 +483,9 @@
             el.scrollIntoView({ behavior: "smooth", block: "start" });
         }
     }
+
+    let currentPage = 1;
+
 </script>
 
 <Sidebar>
@@ -453,159 +500,164 @@
         >
     </div>
 
-    <div slot="body">
+    <div slot="body" class="body">
         <div class="sidebar">
-            <Text appearance={Appearance.Muted}>Options</Text>
-            <div class="options">
-                <Switch
-                    size={Size.Large}
-                    icons={[SVGShape.Sun, SVGShape.Moon]}
-                    on:toggled={(e) => {
-                        theme = e.detail === BinaryState.On ? "light" : "dark";
-                        document.documentElement.dataset.theme = theme;
-                    }}
-                />
-
-                <ThemeSwitcher />
-            </div>
-            <Spacer />
-            <Text appearance={Appearance.Muted}>Elements</Text>
-            <div class="nav-buttons">
-                <Button
-                    shape={Shape.Pill}
-                    text="Text"
-                    on:pressed={() => scrollToId("text")}
-                />
-                <Button
-                    shape={Shape.Pill}
-                    text="Icons"
-                    on:pressed={() => scrollToId("icons")}
-                />
-                <Button
-                    shape={Shape.Pill}
-                    text="Swatches"
-                    on:pressed={() => scrollToId("swatches")}
-                />
-                <Button
-                    shape={Shape.Pill}
-                    text="Switch"
-                    on:pressed={() => scrollToId("switch")}
-                />
-                <Button
-                    shape={Shape.Pill}
-                    text="Hamburger"
-                    on:pressed={() => scrollToId("hamburger")}
-                />
-                <Button
-                    shape={Shape.Pill}
-                    text="Checkbox"
-                    on:pressed={() => scrollToId("checkbox")}
-                />
-                <Button
-                    shape={Shape.Pill}
-                    text="Input"
-                    on:pressed={() => scrollToId("input")}
-                />
-                <Button
-                    shape={Shape.Pill}
-                    text="Select"
-                    on:pressed={() => scrollToId("select")}
-                />
-                <Button
-                    shape={Shape.Pill}
-                    text="Radio"
-                    on:pressed={() => scrollToId("radio")}
-                />
-                <Button
-                    shape={Shape.Pill}
-                    text="Button"
-                    on:pressed={() => scrollToId("button")}
-                />
-                <Button
-                    shape={Shape.Pill}
-                    text="Key"
-                    on:pressed={() => scrollToId("key")}
-                />
-                <Button
-                    shape={Shape.Pill}
-                    text="Progress"
-                    on:pressed={() => scrollToId("progress")}
-                />
-                <Button
-                    shape={Shape.Pill}
-                    text="Range"
-                    on:pressed={() => scrollToId("range")}
-                />
-                <Button
-                    shape={Shape.Pill}
-                    text="Loader"
-                    on:pressed={() => scrollToId("loader")}
-                />
-            </div>
-            <Spacer />
-            <Text appearance={Appearance.Muted}>Components</Text>
-            <div class="nav-buttons">
-                <Button
-                    shape={Shape.Pill}
-                    text="Tooltip"
-                    on:pressed={() => scrollToId("tooltips")}
-                />
-                <Button
-                    shape={Shape.Pill}
-                    text="MFA Input"
-                    on:pressed={() => scrollToId("mfainput")}
-                />
-                <Button
-                    shape={Shape.Pill}
-                    text="Emoji Picker"
-                    on:pressed={() => scrollToId("emojipicker")}
-                />
-                <Button
-                    shape={Shape.Pill}
-                    text="Language Selector"
-                    on:pressed={() => scrollToId("languageselector")}
-                />
-                <Button
-                    shape={Shape.Pill}
-                    text="Modal"
-                    on:pressed={() => scrollToId("modal")}
-                />
-                <Button
-                    shape={Shape.Pill}
-                    text="Badges"
-                    on:pressed={() => scrollToId("badges")}
-                />
-                <Button
-                    shape={Shape.Pill}
-                    text="Notification"
-                    on:pressed={() => scrollToId("notifications")}
-                />
-                <Button
-                    shape={Shape.Pill}
-                    text="Alert"
-                    on:pressed={() => scrollToId("alerts")}
-                />
-                <Button
-                    shape={Shape.Pill}
-                    text="Key Recording"
-                    on:pressed={() => scrollToId("keyrecording")}
-                />
-                <Button
-                    shape={Shape.Pill}
-                    text="Carousel"
-                    on:pressed={() => scrollToId("carousel")}
-                />
-                <Button
-                    shape={Shape.Pill}
-                    text="Breadcrumb"
-                    on:pressed={() => scrollToId("breadcrumb")}
-                />
-                <Button
-                    shape={Shape.Pill}
-                    text="Avatar"
-                    on:pressed={() => scrollToId("avatar")}
-                />
-            </div>
+            <Accordion>
+                <AccordionItem title="Options" icon={SVGShape.Cog} open={true}>
+                    <Text appearance={Appearance.Muted}>Theme</Text>
+                    <ThemeSwitcher />
+                </AccordionItem>
+            
+                <AccordionItem title="Elements" icon={SVGShape.Code} open={true}>
+                    <div class="nav-buttons">
+                        <Button
+                            shape={Shape.Pill}
+                            text="Text"
+                            on:pressed={() => scrollToId("text")}
+                        />
+                        <Button
+                            shape={Shape.Pill}
+                            text="Icons"
+                            on:pressed={() => scrollToId("icons")}
+                        />
+                        <Button
+                            shape={Shape.Pill}
+                            text="Swatches"
+                            on:pressed={() => scrollToId("swatches")}
+                        />
+                        <Button
+                            shape={Shape.Pill}
+                            text="Switch"
+                            on:pressed={() => scrollToId("switch")}
+                        />
+                        <Button
+                            shape={Shape.Pill}
+                            text="Hamburger"
+                            on:pressed={() => scrollToId("hamburger")}
+                        />
+                        <Button
+                            shape={Shape.Pill}
+                            text="Checkbox"
+                            on:pressed={() => scrollToId("checkbox")}
+                        />
+                        <Button
+                            shape={Shape.Pill}
+                            text="Input"
+                            on:pressed={() => scrollToId("input")}
+                        />
+                        <Button
+                            shape={Shape.Pill}
+                            text="Select"
+                            on:pressed={() => scrollToId("select")}
+                        />
+                        <Button
+                            shape={Shape.Pill}
+                            text="Radio"
+                            on:pressed={() => scrollToId("radio")}
+                        />
+                        <Button
+                            shape={Shape.Pill}
+                            text="Button"
+                            on:pressed={() => scrollToId("button")}
+                        />
+                        <Button
+                            shape={Shape.Pill}
+                            text="Key"
+                            on:pressed={() => scrollToId("key")}
+                        />
+                        <Button
+                            shape={Shape.Pill}
+                            text="Progress"
+                            on:pressed={() => scrollToId("progress")}
+                        />
+                        <Button
+                            shape={Shape.Pill}
+                            text="Range"
+                            on:pressed={() => scrollToId("range")}
+                        />
+                        <Button
+                            shape={Shape.Pill}
+                            text="Tag"
+                            on:pressed={() => scrollToId("tag")}
+                        />
+                        <Button
+                            shape={Shape.Pill}
+                            text="Loader"
+                            on:pressed={() => scrollToId("loader")}
+                        />
+                    </div>
+                </AccordionItem>
+            
+                <AccordionItem title="Components" icon={SVGShape.Puzzle} open={false}>
+                    <div class="nav-buttons">
+                        <Button
+                            shape={Shape.Pill}
+                            text="Tooltip"
+                            on:pressed={() => scrollToId("tooltips")}
+                        />
+                        <Button
+                            shape={Shape.Pill}
+                            text="MFA Input"
+                            on:pressed={() => scrollToId("mfainput")}
+                        />
+                        <Button
+                            shape={Shape.Pill}
+                            text="Emoji Picker"
+                            on:pressed={() => scrollToId("emojipicker")}
+                        />
+                        <Button
+                            shape={Shape.Pill}
+                            text="Language Selector"
+                            on:pressed={() => scrollToId("languageselector")}
+                        />
+                        <Button
+                            shape={Shape.Pill}
+                            text="Modal"
+                            on:pressed={() => scrollToId("modal")}
+                        />
+                        <Button
+                            shape={Shape.Pill}
+                            text="Badges"
+                            on:pressed={() => scrollToId("badges")}
+                        />
+                        <Button
+                            shape={Shape.Pill}
+                            text="Notification"
+                            on:pressed={() => scrollToId("notifications")}
+                        />
+                        <Button
+                            shape={Shape.Pill}
+                            text="Alert"
+                            on:pressed={() => scrollToId("alerts")}
+                        />
+                        <Button
+                            shape={Shape.Pill}
+                            text="Key Recording"
+                            on:pressed={() => scrollToId("keyrecording")}
+                        />
+                        <Button
+                            shape={Shape.Pill}
+                            text="Context Menu"
+                            on:pressed={() => scrollToId("context")}
+                        />
+                        <Button
+                            shape={Shape.Pill}
+                            text="Carousel"
+                            on:pressed={() => scrollToId("carousel")}
+                        />
+                        <Button
+                            shape={Shape.Pill}
+                            text="Breadcrumb"
+                            on:pressed={() => scrollToId("breadcrumb")}
+                        />
+                        <Button
+                            shape={Shape.Pill}
+                            text="Avatar"
+                            on:pressed={() => scrollToId("avatar")}
+                        />
+                    </div>
+                </AccordionItem>
+            </Accordion>
         </div>
     </div>
 
@@ -1071,6 +1123,23 @@
             </div>
         </Card>
 
+        <span id="pagination"></span>
+        <Card title="Pagination">
+            <div class="section">
+                <Text appearance={Appearance.Bright} size={Size.Small}>
+                    Default
+                </Text>
+                <div class="grid">
+                    <Pagination
+                        bind:currentPage
+                        totalPages={1000}
+                        maxVisible={7}
+                        on:change={(e) => currentPage = e.detail.page}
+                    />
+                </div>
+            </div>
+        </Card>
+
         <span id="avatar"></span>
         <Card title="Avatar">
             <div class="section">
@@ -1166,23 +1235,23 @@
         gap: var(--gap-less);
     }
 
+
+    .body {
+        display: inline-flex;
+        flex: 1;
+    }
     .sidebar {
         display: inline-flex;
         flex-direction: column;
         flex-wrap: wrap;
         gap: var(--gap-less);
         padding: 0 var(--padding);
+        flex: 1;
 
         .nav-buttons {
             display: inline-flex;
             flex-wrap: wrap;
             gap: var(--gap-less);
-        }
-
-        .options {
-            display: inline-flex;
-            flex-direction: column;
-            gap: var(--gap);
         }
     }
 
@@ -1200,7 +1269,7 @@
             flex-direction: column;
             padding: var(--padding-more);
             border-radius: var(--border-radius);
-            background-color: var(--color-background);
+            background-color: var(--color-background-dark);
             flex: 1;
 
             .grid {

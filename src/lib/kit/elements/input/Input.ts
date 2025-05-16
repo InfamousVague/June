@@ -53,4 +53,5 @@ export function forwardKeyEvent(
     dispatch: (type: string, detail?: any) => void
 ) {
     dispatch("keyevent", event);
+    dispatch("keydownNative", event);
 }

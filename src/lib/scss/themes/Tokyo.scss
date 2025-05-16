@@ -1,0 +1,23 @@
+:root[data-theme="tokyo"] {
+    --text-color: #c0caf5;
+    --text-color-light: #ffffff;
+    --text-color-dark: #1a1b26;
+    --text-color-muted: #7aa2f7;
+    --text-color-placeholder: #565f89;
+
+    --color-background: #1a1b26;
+    --color-background-secondary: #24283b;
+    --color-background-light: #414868;
+    --color-background-dark: #16161e;
+    --color-background-opaque: #1a1b2688;
+
+    --color-primary: #7aa2f7;
+    --color-secondary: #414868;
+    --color-border: #3b4261;
+    --color-secondary-disabled: #3b426188;
+
+    --color-info: #7dcfff;
+    --color-success: #9ece6a;
+    --color-warning: #e0af68;
+    --color-error: #f7768e;
+}

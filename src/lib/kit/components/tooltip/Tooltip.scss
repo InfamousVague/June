@@ -5,7 +5,7 @@
     
     .tooltip-box {
         position: absolute;
-        background-color: var(--color-background-dark);
+        background-color: var(--color-tooltip);
         color: var(--text-color-light);
         padding: var(--padding) var(--padding-more);
         font-size: var(--text-size-medium);
@@ -53,7 +53,7 @@
                 left: 50%;
                 transform: translateX(-50%);
                 border-width: 6px 6px 0 6px;
-                border-color: var(--color-background-dark) transparent transparent transparent;
+                border-color: var(--color-tooltip) transparent transparent transparent;
             }
 
             &.position_bottom {
@@ -61,7 +61,7 @@
                 left: 50%;
                 transform: translateX(-50%);
                 border-width: 0 6px 6px 6px;
-                border-color: transparent transparent var(--color-background-dark) transparent;
+                border-color: transparent transparent var(--color-tooltip) transparent;
             }
 
             &.position_left {
@@ -69,7 +69,7 @@
                 top: 50%;
                 transform: translateY(-50%);
                 border-width: 6px 0 6px 6px;
-                border-color: transparent transparent transparent var(--color-background-dark);
+                border-color: transparent transparent transparent var(--color-tooltip);
             }
 
             &.position_right {
@@ -77,7 +77,7 @@
                 top: 50%;
                 transform: translateY(-50%);
                 border-width: 6px 6px 6px 0;
-                border-color: transparent var(--color-background-dark) transparent transparent;
+                border-color: transparent var(--color-tooltip) transparent transparent;
             }
         }
     }
