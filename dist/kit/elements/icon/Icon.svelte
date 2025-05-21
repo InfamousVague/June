@@ -71,12 +71,12 @@
   min-height: var(--text-size-medium);
 }
 .icon.size_large {
-  min-width: var(--text-size-large);
-  min-height: var(--text-size-large);
+  min-width: calc(var(--text-size-large) * 2);
+  min-height: calc(var(--text-size-large) * 2);
 }
 .icon.size_extra_large {
-  min-width: var(--text-size-extra-large);
-  min-height: var(--text-size-extra-large);
+  min-width: calc(var(--text-size-extra-large) * 2);
+  min-height: calc(var(--text-size-extra-large) * 2);
 }
 .icon.appearance_primary {
   color: var(--color-primary);

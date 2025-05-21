@@ -123,4 +123,10 @@
 }
 .text.interactable {
   cursor: pointer;
+}
+.text.one_line {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }</style>

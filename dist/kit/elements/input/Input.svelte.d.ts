@@ -29,10 +29,12 @@ declare const Input: $$__sveltets_2_IsomorphicComponent<{
     clearOnFocus?: boolean;
     inputRef?: HTMLInputElement | undefined;
     fill?: boolean;
+    value?: string;
     getInputElement?: () => HTMLInputElement | undefined;
 }, {
     rightIconPressed: CustomEvent<any>;
     input: CustomEvent<any>;
+    blur: CustomEvent<any>;
 } & {
     [evt: string]: CustomEvent<any>;
 }, {}, {

@@ -77,5 +77,5 @@
   height: fit-content;
   display: inline-flex;
   flex-direction: column;
-  gap: var(--gap);
+  gap: var(--gap-less);
 }</style>

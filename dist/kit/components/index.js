@@ -3,6 +3,8 @@ export { default as Badge } from "./badge/Badge.svelte";
 export { default as Breadcrumb } from "./breadcrumb/Breadcrumb.svelte";
 export { default as Carousel } from "./carousel/Carousel.svelte";
 export { default as EmojiPicker } from "./emoji_picker/EmojiPicker.svelte";
+export { default as File } from "../components/file/File.svelte";
+export { default as Folder } from "../components/folder/Folder.svelte";
 export { default as Keyboard } from "./keyboard/Keyboard.svelte";
 export { default as KeybaordRecording } from "./keyrecording/KeyRecording.svelte";
 export { default as LanguageSelector } from "./language_selector/LanguageSelector.svelte";

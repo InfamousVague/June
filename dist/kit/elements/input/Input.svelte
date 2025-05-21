@@ -36,6 +36,8 @@
     export let clearOnFocus: boolean = false;
     export let inputRef: HTMLInputElement | undefined = undefined;
     export let fill: boolean = false;
+    export let value: string = "";
+
 
 	export function getInputElement() {
 		return inputRef;
@@ -49,6 +51,10 @@
             dispatch("input", { value: "" });
         }
     }
+
+    function handleBlur() {
+        dispatch("blur");
+    }
     
 </script>
 
@@ -61,6 +67,7 @@
     {/if}
     <input
         bind:this={inputRef}
+        bind:value
         class="input {hideCursor ? 'no-caret' : ''}"
         placeholder={numeric
             ? "0"
@@ -75,6 +82,7 @@
         on:beforeinput={(e) => handleBeforeInput(e, charLimit, numeric)}
         on:keydown={(e) => forwardKeyEvent(e, dispatch)}
         on:focus={handleFocus}
+        on:blur={handleBlur}
     />
     {#if iconRight && state !== State.Loading}
         <Icon icon={iconRight} {size} on:press={() => {

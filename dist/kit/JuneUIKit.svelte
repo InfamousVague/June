@@ -196,6 +196,7 @@
   --gap-more: 1.5rem;
   --gap: 1rem;
   --gap-less: 0.5rem;
+  --gap-minimal: 0.2rem;
   --border-size: 1px;
   --border-radius: 0.33rem;
   --border-radius-small: 0.2rem;
