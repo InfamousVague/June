@@ -11,6 +11,8 @@
         Alert,
         Badge,
         Carousel,
+        Folder,
+        File,
     } from "$lib/kit/components/index.js";
     import KeyRecording from "$lib/kit/components/keyrecording/KeyRecording.svelte";
     import Navigation from "$lib/kit/components/navigation/Navigation.svelte";
@@ -588,7 +590,7 @@
                     </div>
                 </AccordionItem>
             
-                <AccordionItem title="Components" icon={SVGShape.Puzzle} open={false}>
+                <AccordionItem title="Components" icon={SVGShape.Puzzle} open={true}>
                     <div class="nav-buttons">
                         <Button
                             shape={Shape.Pill}
@@ -629,6 +631,16 @@
                             shape={Shape.Pill}
                             text="Alert"
                             on:pressed={() => scrollToId("alerts")}
+                        />
+                         <Button
+                            shape={Shape.Pill}
+                            text="Pagination"
+                            on:pressed={() => scrollToId("pagination")}
+                        />
+                         <Button
+                            shape={Shape.Pill}
+                            text="File / Folder"
+                            on:pressed={() => scrollToId("folder")}
                         />
                         <Button
                             shape={Shape.Pill}
@@ -745,7 +757,7 @@
                                         icon={SVGShape[
                                             shape as keyof typeof SVGShape
                                         ]}
-                                        size={Size.ExtraLarge}
+                                        size={Size.Large}
                                     ></Icon>
                                 </Tooltip>
                             {/each}
@@ -1136,6 +1148,19 @@
                         maxVisible={7}
                         on:change={(e) => currentPage = e.detail.page}
                     />
+                </div>
+            </div>
+        </Card>
+
+        <span id="folder"></span>
+        <Card title="Folder">
+            <div class="section">
+                <Text appearance={Appearance.Bright} size={Size.Small}>
+                    Default
+                </Text>
+                <div class="grid">
+                    <Folder />
+                    <File />
                 </div>
             </div>
         </Card>

@@ -1,5 +1,6 @@
-<slot></slot>
+<script lang="ts">
+    import { JuneUIKit } from "$lib/index.js";
+</script>
 
-<style lang="scss">
-    @use "$lib/June.scss" as *;
-</style>
+<JuneUIKit></JuneUIKit>
+<slot></slot>

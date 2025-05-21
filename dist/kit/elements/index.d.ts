@@ -1,5 +1,6 @@
 export { default as Button } from "./button/Button.svelte";
 export { default as Checkbox } from "./checkbox/Checkbox.svelte";
+export { default as Filler } from "./filler/Filler.svelte";
 export { default as Hamburger } from "./hamburger/Hamburger.svelte";
 export { default as Icon } from "./icon/Icon.svelte";
 export { default as Input } from "./input/Input.svelte";

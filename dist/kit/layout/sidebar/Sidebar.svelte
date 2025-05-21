@@ -118,7 +118,8 @@
   width: var(--sidebar-collapsed-width);
   transition: transform var(--animation-duration-fast) ease;
   display: flex;
-  justify-content: center;
+  justify-content: end;
+  align-items: center;
   padding: var(--padding) 0;
 }
 .layout .sidebar .inner .aside.hidden {
@@ -127,10 +128,14 @@
   top: 0;
   bottom: 0;
   transform: translateX(100%);
+  opacity: 0;
 }
 .layout .sidebar .inner .aside.visible {
+  opacity: 1;
   position: static;
   transform: translateX(0);
+  display: inline-flex;
+  flex-direction: column;
 }
 .layout .content {
   transition: margin-left var(--animation-duration-fast) ease;

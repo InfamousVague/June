@@ -1,9 +1,8 @@
-import type { Route } from "../../../types/Routes.js";
 interface $$__sveltets_2_IsomorphicComponent<Props extends Record<string, any> = any, Events extends Record<string, any> = any, Slots extends Record<string, any> = any, Exports = {}, Bindings = string> {
     new (options: import('svelte').ComponentConstructorOptions<Props>): import('svelte').SvelteComponent<Props, Events, Slots> & {
         $$bindings?: Bindings;
     } & Exports;
-    (internal: unknown, props: Props & {
+    (internal: unknown, props: {
         $$events?: Events;
         $$slots?: Slots;
     }): Exports & {
@@ -12,14 +11,8 @@ interface $$__sveltets_2_IsomorphicComponent<Props extends Record<string, any> =
     };
     z_$$bindings?: Bindings;
 }
-declare const Navigation: $$__sveltets_2_IsomorphicComponent<{
-    routes?: Route[];
-    active?: string;
-    vertical?: boolean;
-}, {
-    navigate: CustomEvent<any>;
-} & {
+declare const Filler: $$__sveltets_2_IsomorphicComponent<Record<string, never>, {
     [evt: string]: CustomEvent<any>;
 }, {}, {}, string>;
-type Navigation = InstanceType<typeof Navigation>;
-export default Navigation;
+type Filler = InstanceType<typeof Filler>;
+export default Filler;

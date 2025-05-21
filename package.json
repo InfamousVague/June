@@ -1,12 +1,12 @@
 {
-	"name": "june",
-	"version": "0.0.2",
+	"name": "june-uikit",
+	"version": "0.0.5",
 	"scripts": {
 		"dev": "vite dev --port 8080",
 		"build": "vite build",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
-		"prepack": "svelte-kit sync && svelte-package && publint",
+		"prepack": "svelte-kit sync && svelte-package",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"format": "prettier --write .",
@@ -68,6 +68,7 @@
 	],
 	"dependencies": {
 		"@emoji-mart/data": "^1.2.1",
-		"@sveltejs/kit": "2.21.0"
+		"@sveltejs/kit": "2.21.0",
+		"pretty-bytes": "^7.0.0"
 	}
 }

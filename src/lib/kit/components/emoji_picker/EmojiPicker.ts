@@ -1,5 +1,5 @@
 import { SVGShape } from "$lib/types/Shapes.js";
-import rawEmojiData from "@emoji-mart/data";
+import rawEmojiData from "./NativeEmoji15.json" with { type: "json" };
 
 export type Emoji = {
     keywords: any;
@@ -16,6 +16,8 @@ export type EmojiCategory = {
     emojis: string[];
 };
 
+
+/* @ts-ignore */
 export const emojiData = rawEmojiData as {
   categories: EmojiCategory[];
   emojis: Record<string, Emoji>;

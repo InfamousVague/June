@@ -83,5 +83,12 @@ $sizes: (
     &.interactable {
         cursor: pointer;
     }
+
+    &.one_line {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
+    }
 }
 

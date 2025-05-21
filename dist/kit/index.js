@@ -1,4 +1,5 @@
-export * as Components from "./components/index.js";
-export * as Elements from "./elements/index.js";
-export * as Layouts from "./layout/index.js";
-export * as Utils from "./utils/index.js";
+export * from "./components/index.js";
+export * from "./elements/index.js";
+export * from "./layout/index.js";
+export * from "./utils/index.js";
+export { default as JuneUIKit } from "./JuneUIKit.svelte";

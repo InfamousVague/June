@@ -7,6 +7,7 @@
 
     export let routes: Route[] = [];
     export let active: string = "";
+    export let vertical: boolean = false;
 
     const dispatch = createEventDispatcher();
 
@@ -16,7 +17,7 @@
     }
 </script>
 
-<div class="nav">
+<div class="nav {vertical ? "vertical" : ""}">
     {#each routes as route}
         <Tooltip content={route.name}>
             <Button 

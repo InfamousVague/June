@@ -7,6 +7,7 @@
 
     export let routes: Route[] = [];
     export let active: string = "";
+    export let vertical: boolean = false;
 
     const dispatch = createEventDispatcher();
 
@@ -16,7 +17,7 @@
     }
 </script>
 
-<div class="nav">
+<div class="nav {vertical ? "vertical" : ""}">
     {#each routes as route}
         <Tooltip content={route.name}>
             <Button 
@@ -34,4 +35,9 @@
   display: inline-flex;
   justify-content: space-between;
   padding: var(--padding) var(--padding-more) var(--padding-more) var(--padding-more);
+}
+.nav.vertical {
+  flex-direction: column;
+  gap: var(--gap);
+  padding: var(--padding);
 }</style>

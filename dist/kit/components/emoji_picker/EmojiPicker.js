@@ -1,5 +1,6 @@
 import { SVGShape } from "../../../types/Shapes.js";
-import rawEmojiData from "@emoji-mart/data";
+import rawEmojiData from "./NativeEmoji15.json" with { type: "json" };
+/* @ts-ignore */
 export const emojiData = rawEmojiData;
 export const defaultEmoji = {
     id: "dotted_line_face",

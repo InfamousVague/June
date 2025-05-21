@@ -6,6 +6,7 @@
     import { SVGShape } from "../../../types/Shapes.js";
     import { createEventDispatcher, onMount } from "svelte";
     import { defaultKind, defaultOpen, defaultTitle } from "./Modal.js";
+    import { browser } from "$app/environment";
     import { Size } from "../../../types/Size.js";
 
     export let kind: ModalKind = defaultKind;
@@ -19,17 +20,19 @@
     }
 
     function lockBodyScroll() {
+        if (browser) {
             document.body.style.overflow = 'hidden';
-        
+        }
     }
 
     function unlockBodyScroll() {
+        if (browser) {
             document.body.style.overflow = '';
-        
+        }
     }
 
     onMount(() => {
-        if (open) {
+        if (browser && open) {
             lockBodyScroll();
         }
 
@@ -38,12 +41,13 @@
         };
     });
 
-    $: if (open) {
-        lockBodyScroll();
-    } else {
-        unlockBodyScroll();
+    $: if (browser) {
+        if (open) {
+            lockBodyScroll();
+        } else {
+            unlockBodyScroll();
+        }
     }
-    
 </script>
 
 <!-- svelte-ignore a11y_no_static_element_interactions -->
