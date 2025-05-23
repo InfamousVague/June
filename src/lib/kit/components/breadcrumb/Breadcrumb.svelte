@@ -2,7 +2,6 @@
     import { createEventDispatcher } from "svelte";
     import Text from "$lib/kit/elements/text/Text.svelte";
     import { Appearance, TextStyle } from "$lib/types/index.js";
-    import { toTitleCase } from "$lib/kit/utils/index.js";
 
     export let route: string = "";
 
@@ -37,7 +36,7 @@
                 singleLine={true}
                 interactable
             >
-                {toTitleCase(decodeURIComponent(segment))}
+                {decodeURIComponent(segment)}
             </Text>
             {#if i < segments.length - 1}
                 <Text appearance={Appearance.Muted} padded>/</Text>

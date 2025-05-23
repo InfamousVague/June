@@ -1160,8 +1160,8 @@
                     Default
                 </Text>
                 <div class="grid">
-                    <Folder />
-                    <File />
+                    <Folder color={PredefinedColor.AppleValley}/>
+                    <File color={PredefinedColor.Biscay} />
                 </div>
             </div>
         </Card>
