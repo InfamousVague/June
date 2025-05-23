@@ -1,8 +1,10 @@
 <script lang="ts">
-    export let pill: boolean = false;
+    import { Shape } from "$lib/types/Appearance.js";
+
+    export let shape: Shape = Shape.Standard
 </script>
 
-<div class="toolbar { pill ? "pill" : ""}">
+<div class="toolbar {shape}">
     <div class="left">
         <slot name="left"></slot>
     </div>
@@ -24,7 +26,7 @@
         align-items: center;
         gap: var(--gap);
 
-        &.pill {
+        &.shape_pill {
             border-radius: var(--border-radius-pill);
         }
 
