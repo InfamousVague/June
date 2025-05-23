@@ -139,6 +139,7 @@
 }
 .layout .content {
   transition: margin-left var(--animation-duration-fast) ease;
+  display: inline-flex;
   flex-grow: 1;
   width: 100%;
   overflow-y: scroll;
