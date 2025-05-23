@@ -1,4 +1,8 @@
-<div class="toolbar">
+<script lang="ts">
+    export let pill: boolean = false;
+</script>
+
+<div class="toolbar { pill ? "pill" : ""}">
     <div class="left">
         <slot name="left"></slot>
     </div>
@@ -19,6 +23,10 @@
         width: calc(100% - (var(--padding) * 2));
         align-items: center;
         gap: var(--gap);
+
+        &.pill {
+            border-radius: var(--border-radius-pill);
+        }
 
         .left {
             align-self: flex-start;
