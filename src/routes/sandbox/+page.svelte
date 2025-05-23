@@ -1,39 +1,33 @@
 <script lang="ts">
-	import Pagination from "$lib/kit/components/pagination/Pagination.svelte";
-	import Text from "$lib/kit/elements/text/Text.svelte";
-    import { Appearance } from "$lib/types/Appearance.js";
+    import { Input, Sidebar, SVGShape } from "$lib/index.js";
+    import Button from "$lib/kit/elements/button/Button.svelte";
+    import Toolbar from "$lib/kit/layout/toolbar/Toolbar.svelte";
   
 	let totalPages = 1000;
 	let currentPage = 1;
   </script>
   
   <div class="demo">
-	<Text>Paginated Content</Text>
-  
-	<div class="content">
-	  <Text appearance={Appearance.Muted}>Showing results for page {currentPage}</Text>
-	</div>
-  
-	<Pagination
-		bind:currentPage
-		totalPages={1000}
-		maxVisible={7}
-		on:change={(e) => currentPage = e.detail.page}
-	/>
-  
+	<Sidebar>
+
+		<Toolbar>
+			<div slot="left" class="left">
+				<Input icon={SVGShape.Search} />
+			</div>
+
+			<div>
+				Middle
+			</div>
+
+			<div slot="right" class="right">
+				<Button icon={SVGShape.FolderPlus} />
+			</div>
+
+		</Toolbar>
+	</Sidebar>
+	
   </div>
   
   <style lang="scss">
-  .demo {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: var(--gap);
-	padding: var(--padding-more);
-  
-	.content {
-	  margin-bottom: var(--gap-more);
-	}
-  }
   </style>
   
