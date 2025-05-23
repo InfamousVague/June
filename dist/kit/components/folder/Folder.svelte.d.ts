@@ -17,6 +17,8 @@ declare const Folder: $$__sveltets_2_IsomorphicComponent<{
     items?: number;
     open?: boolean;
 }, {
+    open: CustomEvent<any>;
+} & {
     [evt: string]: CustomEvent<any>;
 }, {}, {}, string>;
 type Folder = InstanceType<typeof Folder>;

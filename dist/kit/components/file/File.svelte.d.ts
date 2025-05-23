@@ -16,6 +16,8 @@ declare const File: $$__sveltets_2_IsomorphicComponent<{
     bytes?: number;
     type?: string;
 }, {
+    open: CustomEvent<any>;
+} & {
     [evt: string]: CustomEvent<any>;
 }, {}, {}, string>;
 type File = InstanceType<typeof File>;
