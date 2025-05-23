@@ -1065,6 +1065,7 @@
                 </Text>
                 <div class="grid">
                     <ContextMenu
+                    leftClick
                         items={[
                             {
                                 id: "subscribe",
