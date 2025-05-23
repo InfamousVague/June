@@ -34,10 +34,10 @@
   flex: 1;
   display: inline-flex;
   justify-content: space-between;
+  gap: var(--gap);
   padding: var(--padding) var(--padding-more) var(--padding-more) var(--padding-more);
 }
 .nav.vertical {
   flex-direction: column;
-  gap: var(--gap);
   padding: var(--padding);
 }</style>

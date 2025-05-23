@@ -1,6 +1,6 @@
 <script lang="ts">
     import { Appearance, Icon, Input, Size, SVGShape, Text } from "$lib/index.js";
-    import { tick } from "svelte";
+    import { createEventDispatcher, tick } from "svelte";
     import ContextMenu from "../context/ContextMenu.svelte";
     import prettyBytes from 'pretty-bytes';
 
@@ -37,6 +37,8 @@
         tick().then(() => inputRef?.focus());
     }
     $: fileIcon = getIconForType(type);
+
+    const dispatch = createEventDispatcher();
 </script>
 
 <ContextMenu
@@ -58,7 +60,9 @@
             rename = true;
         }
     }}>
-    <div class="file">
+    <!-- svelte-ignore a11y_click_events_have_key_events -->
+    <!-- svelte-ignore a11y_no_static_element_interactions -->
+    <div class="file" on:click={() => dispatch("open")}>
         <Icon icon={fileIcon} size={Size.ExtraLarge} />
         <div class="details">
             {#if rename}

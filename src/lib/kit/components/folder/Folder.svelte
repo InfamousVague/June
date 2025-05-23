@@ -1,6 +1,6 @@
 <script lang="ts">
     import { Appearance, Icon, Input, Size, SVGShape, Text } from "$lib/index.js";
-    import { tick } from "svelte";
+    import { createEventDispatcher, tick } from "svelte";
     import ContextMenu from "../context/ContextMenu.svelte";
     import prettyBytes from 'pretty-bytes';
 
@@ -11,7 +11,7 @@
 
     let rename: boolean = false;
     let inputRef: HTMLInputElement | undefined;
-    
+    const dispatch = createEventDispatcher();
 
     $: if (rename && inputRef) {
         // delay one tick to ensure input is rendered
@@ -38,7 +38,9 @@
             rename = true;
         }
     }}>
-    <div class="folder">
+    <!-- svelte-ignore a11y_click_events_have_key_events -->
+    <!-- svelte-ignore a11y_no_static_element_interactions -->
+    <div class="folder" on:click={() => dispatch("open")}>
         <Icon icon={open ? SVGShape.FolderOpen : SVGShape.Folder} size={Size.ExtraLarge} />
         <div class="details">
             {#if rename}
