@@ -19,6 +19,7 @@ type $$__sveltets_2_PropsWithChildren<Props, Slots> = Props & (Slots extends {
 } : {});
 declare const ContextMenu: $$__sveltets_2_IsomorphicComponent<$$__sveltets_2_PropsWithChildren<{
     items?: ContextItem[];
+    leftClick?: boolean;
 }, {
     default: {};
 }>, {

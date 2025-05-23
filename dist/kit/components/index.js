@@ -2,6 +2,7 @@ export { default as Alert } from "./alert/Alert.svelte";
 export { default as Badge } from "./badge/Badge.svelte";
 export { default as Breadcrumb } from "./breadcrumb/Breadcrumb.svelte";
 export { default as Carousel } from "./carousel/Carousel.svelte";
+export { default as ContextMenu } from "./context/ContextMenu.svelte";
 export { default as EmojiPicker } from "./emoji_picker/EmojiPicker.svelte";
 export { default as File } from "../components/file/File.svelte";
 export { default as Folder } from "../components/folder/Folder.svelte";
