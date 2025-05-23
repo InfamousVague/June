@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { createEventDispatcher, onMount } from "svelte";
+    import { createEventDispatcher } from "svelte";
     import Text from "../../elements/text/Text.svelte";
     import { Appearance, TextStyle } from "../../../types/index.js";
     import { toTitleCase } from "../../utils/index.js";
@@ -7,11 +7,8 @@
     export let route: string = "";
 
     const dispatch = createEventDispatcher();
-    let currentRoute: string;
 
-    onMount(() => {
-        currentRoute = route;
-    });
+    $: currentRoute = route;
 
     $: segments =
         currentRoute
@@ -24,6 +21,7 @@
         dispatch("navigate", { path: currentRoute });
     }
 </script>
+
 
 <nav class="breadcrumb">
     {#each segments as segment, i}
