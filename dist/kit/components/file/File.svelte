@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Appearance, Icon, Input, Size, SVGShape, Text } from "../../../index.js";
+    import { Appearance, Icon, Input, PredefinedColor, Size, SVGShape, Text } from "../../../index.js";
     import { createEventDispatcher, tick } from "svelte";
     import ContextMenu from "../context/ContextMenu.svelte";
     import prettyBytes from 'pretty-bytes';
@@ -7,6 +7,7 @@
     export let name: string = "Untitled File";
     export let bytes: number = 0;   
     export let type: string = "txt";
+    export let color: PredefinedColor | undefined = undefined;
 
     const fileTypeIcons = [
         { name: "Text", icon: SVGShape.DocumentTXT, filetypes: ["txt", "rtf"] },
@@ -63,7 +64,7 @@
     <!-- svelte-ignore a11y_click_events_have_key_events -->
     <!-- svelte-ignore a11y_no_static_element_interactions -->
     <div class="file" on:click={() => dispatch("open")}>
-        <Icon icon={fileIcon} size={Size.ExtraLarge} />
+        <Icon icon={fileIcon} size={Size.ExtraLarge} {color} />
         <div class="details">
             {#if rename}
                 <Input bind:value={name} size={Size.Small} bind:inputRef on:blur={() => rename = false} on:keyevent={(e) => {
@@ -86,6 +87,7 @@
   align-items: center;
   gap: var(--gap-less);
   width: var(--file-size);
+  height: fit-content;
   aspect-ratio: 1/1;
   overflow: hidden;
   border-radius: var(--border-radius);

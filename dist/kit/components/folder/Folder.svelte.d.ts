@@ -1,3 +1,4 @@
+import { PredefinedColor } from "../../../index.js";
 interface $$__sveltets_2_IsomorphicComponent<Props extends Record<string, any> = any, Events extends Record<string, any> = any, Slots extends Record<string, any> = any, Exports = {}, Bindings = string> {
     new (options: import('svelte').ComponentConstructorOptions<Props>): import('svelte').SvelteComponent<Props, Events, Slots> & {
         $$bindings?: Bindings;
@@ -16,6 +17,7 @@ declare const Folder: $$__sveltets_2_IsomorphicComponent<{
     bytes?: number;
     items?: number;
     open?: boolean;
+    color?: PredefinedColor | undefined;
 }, {
     open: CustomEvent<any>;
 } & {

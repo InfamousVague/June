@@ -4,6 +4,7 @@
     import type { Route } from "$lib/types/Routes.js";
     import { createEventDispatcher } from "svelte";
     import Tooltip from "../tooltip/Tooltip.svelte";
+    import { Position } from "$lib/types/Position.js";
 
     export let routes: Route[] = [];
     export let active: string = "";
@@ -19,7 +20,7 @@
 
 <div class="nav {vertical ? "vertical" : ""}">
     {#each routes as route}
-        <Tooltip content={route.name}>
+        <Tooltip content={route.name} position={vertical ? Position.Right : Position.Top}>
             <Button 
                 icon={route.icon}
                 simple

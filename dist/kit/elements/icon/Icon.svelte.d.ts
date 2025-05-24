@@ -1,4 +1,4 @@
-import { Animation, Appearance, SVGShape } from "../../../types/index.js";
+import { Animation, Appearance, PredefinedColor, SVGShape } from "../../../types/index.js";
 import { Size } from "../../../types/Size.js";
 interface $$__sveltets_2_IsomorphicComponent<Props extends Record<string, any> = any, Events extends Record<string, any> = any, Slots extends Record<string, any> = any, Exports = {}, Bindings = string> {
     new (options: import('svelte').ComponentConstructorOptions<Props>): import('svelte').SvelteComponent<Props, Events, Slots> & {
@@ -19,6 +19,7 @@ declare const Icon: $$__sveltets_2_IsomorphicComponent<{
     fill?: boolean;
     animation?: Animation;
     appearance?: Appearance;
+    color?: PredefinedColor | undefined;
 }, {
     press: CustomEvent<any>;
 } & {
