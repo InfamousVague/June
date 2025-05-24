@@ -51,7 +51,7 @@
   gap: var(--gap);
   height: var(--element-size);
   min-width: var(--select-size);
-  color: var(--text-color-bright);
+  color: var(--text-color-light);
   font-size: var(--text-size);
   outline: none;
   cursor: pointer;
@@ -71,7 +71,7 @@
   background-color: transparent;
   border: none;
   appearance: none;
-  color: var(--text-color-bright);
+  color: var(--text-color-light);
   font-size: var(--text-size);
   padding: 0 var(--padding-more);
   display: inline-flex;
