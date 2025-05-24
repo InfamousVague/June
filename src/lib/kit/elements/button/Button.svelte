@@ -3,7 +3,7 @@
     import { createEventDispatcher } from "svelte";
     import Icon from "../icon/Icon.svelte";
     import Text from "../text/Text.svelte";
-    import { 
+    import {
         defaultAppearance,
         defaultHighlight,
         defaultSize,
@@ -12,7 +12,7 @@
         defaultShape,
         defaultText,
     } from './Button.js';
-  
+
     export let appearance: Appearance = defaultAppearance;
     export let highlight: Highlight = defaultHighlight;
     export let style: Style = defaultStyle;
