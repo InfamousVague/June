@@ -12,6 +12,7 @@
     export let kind: ModalKind = defaultKind;
     export let open: boolean = defaultOpen;
     export let title: string = defaultTitle;
+    export let dynamic: boolean = false;
 
     const dispatch = createEventDispatcher();
 
@@ -54,22 +55,21 @@
 <div class="modal {kind} {open ? 'open' : ''}">
     <!-- svelte-ignore a11y_click_events_have_key_events -->
     <div class="modal_mask" on:click={close}></div>
-    <div class="body">
+    <div class="body {dynamic ? "dynamic" : ""}">
         <div class="titlebar">
             <div class="dummy">
                 <Button />
             </div>
             {#if title.length}
-                <Text appearance={Appearance.Muted}>{title}</Text>
+                <Text appearance={Appearance.Muted} size={Size.Small}>{title}</Text>
             {/if}
-            <Button icon={SVGShape.XMark} on:pressed={close} appearance={Appearance.Secondary} size={Size.Small} />
+            <Button icon={SVGShape.XMark} on:pressed={close} appearance={Appearance.Secondary} size={Size.ExtraSmall} />
         </div>
         <div class="content">
             <slot></slot>
         </div>
     </div>
 </div>
-
 
 <style lang="scss">
     @use "./Modal.scss" as *;

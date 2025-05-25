@@ -3,11 +3,13 @@
     import { createEventDispatcher, tick } from "svelte";
     import ContextMenu from "../context/ContextMenu.svelte";
     import prettyBytes from 'pretty-bytes';
+    import type { ContextItem } from "../../../types/Context.js";
 
     export let name: string = "Untitled File";
     export let bytes: number = 0;   
     export let type: string = "txt";
     export let color: PredefinedColor | undefined = undefined;
+    export let additionalContext: ContextItem[] = []
 
     const fileTypeIcons = [
         { name: "Text", icon: SVGShape.DocumentTXT, filetypes: ["txt", "rtf"] },
@@ -49,17 +51,15 @@
             text: "Rename",
             icon: SVGShape.Pencil,
         },
-        {
-            id: "rename",
-            text: "Delete",
-            icon: SVGShape.XMark,
-        }
+        ...additionalContext
     ]}
     
     on:select={opt => {
         if (opt.detail.id === "rename") {
             rename = true;
+            return;
         }
+        dispatch("context", opt.detail);
     }}>
     <!-- svelte-ignore a11y_click_events_have_key_events -->
     <!-- svelte-ignore a11y_no_static_element_interactions -->
