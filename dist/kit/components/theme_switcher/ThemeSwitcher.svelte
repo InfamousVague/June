@@ -8,7 +8,7 @@
 	const themes: SelectOption[] = [
 		{ key: "dark", value: "Dark" },
 		{ key: "light", value: "Light" },
-		{ key: "coexist", value: "Coex.ist" },
+		{ key: "panda", value: "Panda" },
 		{ key: "olivia", value: "Olivia" },
 		{ key: "dracula", value: "Dracula" },
         { key: "tokyo", value: "Tokyo" },

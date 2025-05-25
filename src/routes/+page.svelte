@@ -76,8 +76,6 @@
         return positions[Math.floor(Math.random() * positions.length)];
     }
 
-    let theme: "light" | "dark" = "dark";
-
     // Value collections
     const appearances = Object.values(Appearance);
     const simpleAppearances = Object.values(SimpleApperance);

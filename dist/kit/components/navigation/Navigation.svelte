@@ -36,9 +36,8 @@
   display: inline-flex;
   justify-content: space-between;
   gap: var(--gap);
-  padding: var(--padding) var(--padding-more) var(--padding-more) var(--padding-more);
+  padding: var(--padding);
 }
 .nav.vertical {
   flex-direction: column;
-  padding: var(--padding);
 }</style>
