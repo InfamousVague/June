@@ -51,6 +51,7 @@
     const dispatch = createEventDispatcher();
 
     function select(item: ContextItem) {
+        menuVisible = false;
         dispatch("select", item);
     }
   </script>

@@ -41,7 +41,7 @@
     }}>
     <!-- svelte-ignore a11y_click_events_have_key_events -->
     <!-- svelte-ignore a11y_no_static_element_interactions -->
-    <div class="folder" on:click={() => dispatch("open")}>
+    <div class="folder" on:click={() => {if (!rename) dispatch("open")}}>
         <Icon icon={open ? SVGShape.FolderOpen : SVGShape.Folder} size={Size.ExtraLarge} {color} />
         <div class="details">
             {#if rename}
