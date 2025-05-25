@@ -1158,8 +1158,16 @@
                     Default
                 </Text>
                 <div class="grid">
-                    <Folder color={PredefinedColor.AppleValley}/>
-                    <File color={PredefinedColor.Biscay} />
+                    <Folder color={PredefinedColor.AppleValley} additionalContext={[{
+                        id: "delete",
+                        text: "Delete",
+                        icon: SVGShape.XMark,
+                    }]} on:context={e => console.log(e.detail)} />
+                    <File color={PredefinedColor.Biscay} additionalContext={[{
+                        id: "delete",
+                        text: "Delete",
+                        icon: SVGShape.XMark,
+                    }]} on:context={e => console.log(e.detail)} />
                 </div>
             </div>
         </Card>
