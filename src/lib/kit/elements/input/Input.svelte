@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { createEventDispatcher } from "svelte";
+    import { createEventDispatcher, onMount } from "svelte";
     import { SVGShape } from "$lib/types/Shapes.js";
     import { Size } from "$lib/types/Size.js";
     import {
@@ -37,7 +37,7 @@
     export let inputRef: HTMLInputElement | undefined = undefined;
     export let fill: boolean = false;
     export let value: string = "";
-
+    export let autofocus: boolean = false;
 
 	export function getInputElement() {
 		return inputRef;
@@ -55,8 +55,14 @@
     function handleBlur() {
         dispatch("blur");
     }
-    
+
+    onMount(() => {
+        if (autofocus && inputRef) {
+            inputRef.focus();
+        }
+    });
 </script>
+
 
 <div
     class="input-group {size} {shape} {appearance} {highlight} {state} {charLimit === 1 ? 'single-char' : ''} {fill ? "fill" : ""}">
