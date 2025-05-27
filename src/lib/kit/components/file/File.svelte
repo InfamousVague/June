@@ -1,10 +1,9 @@
 <script lang="ts">
-    import { Appearance, Icon, Input, PredefinedColor, Size, SVGShape, Text } from "$lib/index.js";
+    import { Appearance, getIconForType, Icon, Input, PredefinedColor, Size, SVGShape, Text } from "$lib/index.js";
     import { createEventDispatcher, tick } from "svelte";
     import ContextMenu from "../context/ContextMenu.svelte";
     import prettyBytes from 'pretty-bytes';
     import type { ContextItem } from "$lib/types/Context.js";
-    import { getIconForType } from "./File.js";
 
     export let name: string = "Untitled File";
     export let bytes: number = 0;   

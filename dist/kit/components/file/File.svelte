@@ -4,6 +4,7 @@
     import ContextMenu from "../context/ContextMenu.svelte";
     import prettyBytes from 'pretty-bytes';
     import type { ContextItem } from "../../../types/Context.js";
+    import { getIconForType } from "./File.js";
 
     export let name: string = "Untitled File";
     export let bytes: number = 0;   
@@ -11,26 +12,6 @@
     export let color: PredefinedColor | undefined = undefined;
     export let additionalContext: ContextItem[] = []
 
-    const fileTypeIcons = [
-        { name: "Text", icon: SVGShape.DocumentTXT, filetypes: ["txt", "rtf"] },
-        { name: "Document", icon: SVGShape.Document, filetypes: ["doc", "docx", "odt"] },
-        { name: "Spreadsheet", icon: SVGShape.DocumentChart, filetypes: ["xls", "xlsx", "ods", "csv"] },
-        { name: "Presentation", icon: SVGShape.DocumentChart, filetypes: ["ppt", "pptx", "odp"] },
-        { name: "Image", icon: SVGShape.DocumentMedia, filetypes: ["jpg", "jpeg", "png", "gif", "bmp", "webp"] },
-        { name: "Video", icon: SVGShape.DocumentMedia, filetypes: ["mp4", "mkv", "mov", "avi", "webm"] },
-        { name: "Audio", icon: SVGShape.DocumentMedia, filetypes: ["mp3", "wav", "ogg", "flac"] },
-        { name: "PDF", icon: SVGShape.DocumentPDF, filetypes: ["pdf"] },
-        { name: "Archive", icon: SVGShape.Archive, filetypes: ["zip", "rar", "7z", "tar", "gz"] },
-        { name: "Code", icon: SVGShape.DocumentCode, filetypes: ["js", "ts", "html", "css", "json", "xml", "py", "cpp", "java"] },
-    ];
-
-    function getIconForType(ext: string): SVGShape {
-        ext = ext.toLowerCase();
-        for (const group of fileTypeIcons) {
-            if (group.filetypes.includes(ext)) return group.icon;
-        }
-        return SVGShape.Document;
-    }
 
     let rename: boolean = false;
     let inputRef: HTMLInputElement | undefined;
