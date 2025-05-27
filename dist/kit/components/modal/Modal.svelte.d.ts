@@ -21,6 +21,7 @@ declare const Modal: $$__sveltets_2_IsomorphicComponent<$$__sveltets_2_PropsWith
     kind?: ModalKind;
     open?: boolean;
     title?: string;
+    dynamic?: boolean;
 }, {
     default: {};
 }>, {
