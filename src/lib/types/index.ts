@@ -1,3 +1,5 @@
+import { SVGShape } from "./Shapes.js";
+
 export * from "./Animations.js";
 export * from "./Appearance.js";
 export * from "./Color.js";
