@@ -30,6 +30,7 @@ declare const Input: $$__sveltets_2_IsomorphicComponent<{
     inputRef?: HTMLInputElement | undefined;
     fill?: boolean;
     value?: string;
+    autofocus?: boolean;
     getInputElement?: () => HTMLInputElement | undefined;
 }, {
     rightIconPressed: CustomEvent<any>;

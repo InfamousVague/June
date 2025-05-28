@@ -1,6 +1,6 @@
 {
 	"name": "june-uikit",
-	"version": "0.0.30",
+	"version": "0.0.31",
 	"scripts": {
 		"dev": "vite dev --port 8080",
 		"build": "vite build",
