@@ -1,4 +1,5 @@
 export { default as Alert } from "./alert/Alert.svelte";
+export { default as Avatar } from "./avatar/Avatar.svelte";
 export { default as Badge } from "./badge/Badge.svelte";
 export { default as Breadcrumb } from "./breadcrumb/Breadcrumb.svelte";
 export { default as Carousel } from "./carousel/Carousel.svelte";
