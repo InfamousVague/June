@@ -2,6 +2,8 @@
 
 For usage and examples see [USAGE.md](USAGE.md).
 
+Live preview: https://matt.sucks/june
+
 ## Checklist
 
 ### Elements
