@@ -9,7 +9,7 @@
         <slot name="left"></slot>
     </div>
     <div class="middle">
-        <slot class="middle"></slot>
+        <slot name="middle"></slot>
     </div>
     <div class="right">
         <slot name="right"></slot>
