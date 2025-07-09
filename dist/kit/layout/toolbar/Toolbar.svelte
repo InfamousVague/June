@@ -2,18 +2,26 @@
     import { Shape } from "../../../types/Appearance.js";
 
     export let shape: Shape = Shape.Standard
+    const SLOTS = $$slots
+
 </script>
 
 <div class="toolbar {shape}">
-    <div class="left">
-        <slot name="left"></slot>
-    </div>
-    <div class="middle">
-        <slot class="middle"></slot>
-    </div>
-    <div class="right">
-        <slot name="right"></slot>
-    </div>
+    {#if SLOTS.left}
+        <div class="left">
+            <slot name="left"></slot>
+        </div>
+    {/if}
+    {#if SLOTS.middle}
+        <div class="middle">
+            <slot name="middle"></slot>
+        </div>
+    {/if}
+    {#if SLOTS.right}
+        <div class="right">
+            <slot name="right"></slot>
+        </div>
+    {/if}
 </div>
 
 <style>.toolbar {

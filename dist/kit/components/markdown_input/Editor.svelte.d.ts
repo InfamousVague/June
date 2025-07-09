@@ -1,9 +1,8 @@
-import { Shape } from "../../../types/Appearance.js";
 interface $$__sveltets_2_IsomorphicComponent<Props extends Record<string, any> = any, Events extends Record<string, any> = any, Slots extends Record<string, any> = any, Exports = {}, Bindings = string> {
     new (options: import('svelte').ComponentConstructorOptions<Props>): import('svelte').SvelteComponent<Props, Events, Slots> & {
         $$bindings?: Bindings;
     } & Exports;
-    (internal: unknown, props: Props & {
+    (internal: unknown, props: {
         $$events?: Events;
         $$slots?: Slots;
     }): Exports & {
@@ -12,14 +11,8 @@ interface $$__sveltets_2_IsomorphicComponent<Props extends Record<string, any> =
     };
     z_$$bindings?: Bindings;
 }
-declare const Toolbar: $$__sveltets_2_IsomorphicComponent<{
-    shape?: Shape;
-}, {
+declare const Editor: $$__sveltets_2_IsomorphicComponent<Record<string, never>, {
     [evt: string]: CustomEvent<any>;
-}, {
-    left: {};
-    middle: {};
-    right: {};
-}, {}, string>;
-type Toolbar = InstanceType<typeof Toolbar>;
-export default Toolbar;
+}, {}, {}, string>;
+type Editor = InstanceType<typeof Editor>;
+export default Editor;
