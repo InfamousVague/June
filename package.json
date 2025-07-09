@@ -1,6 +1,6 @@
 {
 	"name": "june-uikit",
-	"version": "0.0.35",
+	"version": "0.0.36",
 	"scripts": {
 		"dev": "vite dev --port 8080",
 		"build": "vite build",
@@ -69,6 +69,8 @@
 	"dependencies": {
 		"@emoji-mart/data": "^1.2.1",
 		"@sveltejs/kit": "2.21.0",
+		"dompurify": "^3.2.6",
+		"marked": "^16.0.0",
 		"pretty-bytes": "^7.0.0"
 	}
 }

@@ -1,29 +1,13 @@
 <script lang="ts">
-    import { Input, Sidebar, SVGShape } from "$lib/index.js";
-    import Button from "$lib/kit/elements/button/Button.svelte";
-    import Toolbar from "$lib/kit/layout/toolbar/Toolbar.svelte";
-  
-	let totalPages = 1000;
-	let currentPage = 1;
+  import { Sidebar } from "$lib/index.js";
+  import Editor from "$lib/kit/components/markdown_input/Editor.svelte";
+  import MarkdownInput from "$lib/kit/components/markdown_input/MarkdownInput.svelte";
   </script>
   
   <div class="demo">
 	<Sidebar>
 
-		<Toolbar>
-			<div slot="left" class="left">
-				<Input icon={SVGShape.Search} />
-			</div>
-
-			<div>
-				Middle
-			</div>
-
-			<div slot="right" class="right">
-				<Button icon={SVGShape.FolderPlus} />
-			</div>
-
-		</Toolbar>
+		<Editor />
 	</Sidebar>
 	
   </div>
