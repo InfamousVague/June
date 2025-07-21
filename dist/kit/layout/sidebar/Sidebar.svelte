@@ -44,7 +44,7 @@
         </div>
     </div>
 
-    <div class="content {open ? 'with-sidebar' : 'full-width'}">
+    <div class="content {open ? 'with-sidebar' : 'full-width'} {collapseFully ? 'full-collapse' : ''}">
         <slot />
     </div>
 </div>
@@ -87,9 +87,6 @@
   align-self: flex-end;
   justify-content: center;
   padding: var(--padding) 0;
-}
-.layout .sidebar.full-collapse.closed {
-  transform: translateX(-100%) !important;
 }
 .layout .sidebar .inner {
   display: flex;
@@ -145,6 +142,9 @@
   display: inline-flex;
   flex-direction: column;
 }
+.layout .sidebar.full-collapse.closed {
+  transform: translateX(-100%) !important;
+}
 .layout .content {
   transition: margin-left var(--animation-duration-fast) ease;
   display: inline-flex;
@@ -154,6 +154,9 @@
 }
 .layout .content.with-sidebar {
   margin-left: var(--sidebar-width, 250px);
+}
+.layout .content.full-collapse {
+  margin-left: 0;
 }
 .layout .content.full-width {
   margin-left: var(--sidebar-collapsed-width);
