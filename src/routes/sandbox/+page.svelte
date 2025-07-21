@@ -2,17 +2,18 @@
   import { Button, Shape, Sidebar, SVGShape, ThemeSwitcher, Toolbar } from "$lib/index.js";
   import Editor from "$lib/kit/components/markdown_input/Editor.svelte";
   import MarkdownInput from "$lib/kit/components/markdown_input/MarkdownInput.svelte";
+  import Hamburger from "$lib/kit/elements/hamburger/Hamburger.svelte";
+
+  let sidebarOpen = false;
   </script>
   
  
 <div class="controls">
-    <Toolbar shape={Shape.Pill}>
-        <div slot="right">  
-            <Button shape={Shape.Pill} icon={SVGShape.Plus}></Button>
-            <Button shape={Shape.Pill} icon={SVGShape.Cog}></Button>
-            <ThemeSwitcher />
-        </div>
-    </Toolbar>
+    <Sidebar open={sidebarOpen} collapseFully fullscreen>
+
+    </Sidebar>
+
+    <Hamburger on:toggle={() => sidebarOpen = !sidebarOpen} />
 </div>
 
 

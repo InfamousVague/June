@@ -3,6 +3,8 @@
     import { Appearance } from "$lib/types/Appearance.js";
 
     export let open: boolean = true;
+    export let collapseFully: boolean = false;
+    export let fullscreen: boolean = false;
 
     function toggleSidebar(event: CustomEvent) {
         open = event.detail;
@@ -10,7 +12,7 @@
 </script>
 
 <div class="layout">
-    <div class="sidebar {open ? 'open' : 'closed'}">
+    <div class="sidebar {open ? 'open' : 'closed'} {collapseFully ? 'full-collapse' : ''} {fullscreen ? 'fullscreen' : ''}">
         <div class="controls">
             {#if open}
                 <div>
