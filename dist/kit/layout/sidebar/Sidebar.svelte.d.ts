@@ -18,6 +18,8 @@ type $$__sveltets_2_PropsWithChildren<Props, Slots> = Props & (Slots extends {
 } : {});
 declare const Sidebar: $$__sveltets_2_IsomorphicComponent<$$__sveltets_2_PropsWithChildren<{
     open?: boolean;
+    collapseFully?: boolean;
+    fullscreen?: boolean;
 }, {
     title: {
         class: string;

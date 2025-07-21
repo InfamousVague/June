@@ -3,6 +3,8 @@
     import { Appearance } from "../../../types/Appearance.js";
 
     export let open: boolean = true;
+    export let collapseFully: boolean = false;
+    export let fullscreen: boolean = false;
 
     function toggleSidebar(event: CustomEvent) {
         open = event.detail;
@@ -10,7 +12,7 @@
 </script>
 
 <div class="layout">
-    <div class="sidebar {open ? 'open' : 'closed'}">
+    <div class="sidebar {open ? 'open' : 'closed'} {collapseFully ? 'full-collapse' : ''} {fullscreen ? 'fullscreen' : ''}">
         <div class="controls">
             {#if open}
                 <div>
@@ -65,6 +67,9 @@
   transition: transform var(--animation-duration-fast) ease;
   background-color: var(--color-background-secondary);
 }
+.layout .sidebar.fullscreen {
+  width: 100vw;
+}
 .layout .sidebar.open {
   transform: translateX(0);
 }
@@ -82,6 +87,9 @@
   align-self: flex-end;
   justify-content: center;
   padding: var(--padding) 0;
+}
+.layout .sidebar.full-collapse.closed {
+  transform: translateX(-100%) !important;
 }
 .layout .sidebar .inner {
   display: flex;

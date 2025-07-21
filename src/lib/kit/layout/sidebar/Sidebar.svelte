@@ -44,7 +44,7 @@
         </div>
     </div>
 
-    <div class="content {open ? 'with-sidebar' : 'full-width'}">
+    <div class="content {open ? 'with-sidebar' : 'full-width'} {collapseFully ? 'full-collapse' : ''}">
         <slot />
     </div>
 </div>

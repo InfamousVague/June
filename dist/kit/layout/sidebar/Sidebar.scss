@@ -16,6 +16,10 @@
         transition: transform var(--animation-duration-fast) ease;
         background-color: var(--color-background-secondary);
 
+        &.fullscreen {
+            width: 100vw;
+        }
+
         &.open {
             transform: translateX(0);
         }
@@ -37,6 +41,12 @@
                 align-self: flex-end;
                 justify-content: center;
                 padding: var(--padding) 0;
+            }
+        }
+
+        &.full-collapse {
+            &.closed {
+                transform: translateX(-100%) !important;
             }
         }
 
