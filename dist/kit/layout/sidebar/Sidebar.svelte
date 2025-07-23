@@ -156,7 +156,7 @@
   margin-left: var(--sidebar-width, 250px);
 }
 .layout .content.full-collapse {
-  margin-left: 0;
+  margin-left: 0 !important;
 }
 .layout .content.full-width {
   margin-left: var(--sidebar-collapsed-width);
