@@ -64,8 +64,7 @@
 </script>
 
 
-<div
-    class="input-group {size} {shape} {appearance} {highlight} {state} {charLimit === 1 ? 'single-char' : ''} {fill ? "fill" : ""}">
+<div class="input-group {size} {shape} {appearance} {highlight} {state} {charLimit === 1 ? 'single-char' : ''} {fill ? "fill" : ""}">
     {#if state === State.Loading}
         <Icon icon={SVGShape.Spinner} fill animation={Animation.Spin} />
     {:else if icon}
@@ -81,7 +80,7 @@
               ? "Loading"
               : placeholder}
         disabled={state === State.Disabled || state === State.Loading}
-        type="text"
+        type={state === State.Password ? "password" : "text"}
         inputmode="numeric"
         autocomplete="one-time-code"
         on:input={(e) => handleInput(e, charLimit, numeric, dispatch)}
