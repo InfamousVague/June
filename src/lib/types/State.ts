@@ -3,6 +3,7 @@ export enum State {
     Enabled     = "state_enabled",
     Disabled    = "state_disabled",
     Loading     = "state_loading",
+    Password    = "state_password",
 }
 
 export enum BinaryState {
